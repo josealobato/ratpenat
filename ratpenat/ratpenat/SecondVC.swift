@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeVC: UIViewController {
+class SecondVC: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -8,11 +8,11 @@ class HomeVC: UIViewController {
         // Configure the tab item
         // You need to set this very early otherwise it wont show on the
         // tab.
-        self.tabBarItem.image = UIImage(systemName: "house")
+        self.tabBarItem.image = UIImage(systemName: "headphones")
 
         // The last one of those set is the one that is shown.
         //self.tabBarItem.title = "Draw it"
-        self.title = "Home"
+        self.title = "All"
     }
     
     required init?(coder: NSCoder) {
@@ -20,6 +20,6 @@ class HomeVC: UIViewController {
     }
     
     override func loadView() {
-        self.view = HomeV()
+        self.view = SecondV()
     }
 }

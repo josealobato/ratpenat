@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeV: UIView {
+class SecondV: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -12,9 +12,9 @@ class HomeV: UIView {
     }
     
     func setUp() {
-//        self.backgroundColor = .systemBlue
+//        self.backgroundColor = .systemRed
         let label = UILabel()
-        label.text = "Home"
+        label.text = "All"
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

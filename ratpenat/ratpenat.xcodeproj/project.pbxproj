@@ -14,6 +14,9 @@
 		BC645CD2280B14020032B699 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC645CD0280B14020032B699 /* LaunchScreen.storyboard */; };
 		BC645CDA280B14D90032B699 /* HomeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CD9280B14D90032B699 /* HomeV.swift */; };
 		BC645CDC280B14FA0032B699 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CDB280B14FA0032B699 /* HomeVC.swift */; };
+		BC645CDE280B42960032B699 /* SecondV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CDD280B42960032B699 /* SecondV.swift */; };
+		BC645CE0280B429F0032B699 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CDF280B429F0032B699 /* SecondVC.swift */; };
+		BC645CE2280B44970032B699 /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CE1280B44970032B699 /* TabBarDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		BC645CD3280B14020032B699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC645CD9280B14D90032B699 /* HomeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeV.swift; sourceTree = "<group>"; };
 		BC645CDB280B14FA0032B699 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		BC645CDD280B42960032B699 /* SecondV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondV.swift; sourceTree = "<group>"; };
+		BC645CDF280B429F0032B699 /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		BC645CE1280B44970032B699 /* TabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				BC645CD3280B14020032B699 /* Info.plist */,
 				BC645CD9280B14D90032B699 /* HomeV.swift */,
 				BC645CDB280B14FA0032B699 /* HomeVC.swift */,
+				BC645CDD280B42960032B699 /* SecondV.swift */,
+				BC645CDF280B429F0032B699 /* SecondVC.swift */,
+				BC645CE1280B44970032B699 /* TabBarDelegate.swift */,
 			);
 			path = ratpenat;
 			sourceTree = "<group>";
@@ -142,8 +151,11 @@
 			files = (
 				BC645CCA280B13FE0032B699 /* ViewController.swift in Sources */,
 				BC645CDC280B14FA0032B699 /* HomeVC.swift in Sources */,
+				BC645CE0280B429F0032B699 /* SecondVC.swift in Sources */,
+				BC645CDE280B42960032B699 /* SecondV.swift in Sources */,
 				BC645CDA280B14D90032B699 /* HomeV.swift in Sources */,
 				BC645CC6280B13FE0032B699 /* AppDelegate.swift in Sources */,
+				BC645CE2280B44970032B699 /* TabBarDelegate.swift in Sources */,
 				BC645CC8280B13FE0032B699 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
