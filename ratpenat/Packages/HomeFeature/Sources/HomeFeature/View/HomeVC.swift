@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeVC: UIViewController {
+public class HomeVC: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -19,7 +19,7 @@ class HomeVC: UIViewController {
         fatalError("Home VC not desing to start from xib or storyboard")
     }
     
-    override func loadView() {
+    public override func loadView() {
         self.view = HomeV()
     }
 }

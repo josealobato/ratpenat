@@ -1,6 +1,6 @@
 import UIKit
 
-class SecondVC: UIViewController {
+class AllCollectionVC: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -16,10 +16,10 @@ class SecondVC: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("Home VC not desing to start from xib or storyboard")
+        fatalError("AllCollection VC not desing to start from xib or storyboard")
     }
     
     override func loadView() {
-        self.view = SecondV()
+        self.view = AllCollectionV()
     }
 }
