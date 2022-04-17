@@ -1,4 +1,5 @@
 import UIKit
+import FoundationToolkit
 
 public struct HomeFeature {
     private let internalVC: HomeVC
@@ -7,9 +8,9 @@ public struct HomeFeature {
         
         self.internalVC = vc
     }
-    
-    public func viewController() -> UIViewController { return internalVC}
 }
+
+// MARK: - Interface implementation
 
 extension HomeFeature: HomeFeatureViewInterface {
     
@@ -21,3 +22,18 @@ extension HomeFeature: HomeFeatureViewInterface {
 extension HomeFeature: HomeFeatureLogicInterface {
     
 }
+
+// MARK: - Action implementation
+
+extension HomeFeature: ActionRequester {
+    public var actionRequest: ActionRequest {
+        get {
+//            self.internalVC.showRequest ?? { _ in }
+            { _ in }
+        }
+        set(newValue) {
+//            self.internalVC.showRequest = newValue
+        }
+    }
+}
+

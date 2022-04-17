@@ -1,7 +1,7 @@
 import UIKit
-import HomeFeature
+import AllCollectionFeature
 
-class HomeCoordinator: BaseCoordinator {
+class AllCollectionCoordinator: BaseCoordinator {
         
     init(navigation: UINavigationController) {
         super.init()
@@ -10,13 +10,15 @@ class HomeCoordinator: BaseCoordinator {
     
     override func start() {
         // Is the module around?
-        let feature = HomeFeatureFactory().create()
+        let feature = AllCollectionFeatureFactory().create()
 //        homeModule.showRequest = self.showRequest(action:)
-        navigationController?.pushViewController(feature.viewController(), animated: false)
+        if let vc = feature.viewController() {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
 //    private func showRequest(action: String) {
-//        
+//
 //        if let vc = Feature(rawValue: action)?.moduleVC() {
 //            navigationController?.pushViewController(vc, animated: true)
 //        }

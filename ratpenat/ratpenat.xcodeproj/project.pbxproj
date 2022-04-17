@@ -20,6 +20,8 @@
 		BC645CF2280BF6D80032B699 /* AllCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CF1280BF6D80032B699 /* AllCollectionCoordinator.swift */; };
 		BC645CF8280BF74F0032B699 /* HomeFeature in Frameworks */ = {isa = PBXBuildFile; productRef = BC645CF7280BF74F0032B699 /* HomeFeature */; };
 		BC645CFA280C1A700032B699 /* AllCollectionFeature in Frameworks */ = {isa = PBXBuildFile; productRef = BC645CF9280C1A700032B699 /* AllCollectionFeature */; };
+		BC645CFD280C29020032B699 /* FoundationToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = BC645CFC280C29020032B699 /* FoundationToolkit */; };
+		BC645CFF280C78E30032B699 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CFE280C78E30032B699 /* Feature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		BC645CEF280BED700032B699 /* HomeFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HomeFeature; sourceTree = "<group>"; };
 		BC645CF0280BEE070032B699 /* AllCollectionFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AllCollectionFeature; sourceTree = "<group>"; };
 		BC645CF1280BF6D80032B699 /* AllCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionCoordinator.swift; sourceTree = "<group>"; };
+		BC645CFB280C1DEF0032B699 /* FoundationToolkit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FoundationToolkit; sourceTree = "<group>"; };
+		BC645CFE280C78E30032B699 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC645CFD280C29020032B699 /* FoundationToolkit in Frameworks */,
 				BC645CF8280BF74F0032B699 /* HomeFeature in Frameworks */,
 				BC645CFA280C1A700032B699 /* AllCollectionFeature in Frameworks */,
 			);
@@ -91,6 +96,9 @@
 			children = (
 				BC645CE4280BEA2F0032B699 /* Base */,
 				BC645CE9280BEB750032B699 /* Features */,
+				BC645CEC280BEBC60032B699 /* AppCoordinator.swift */,
+				BC645CEA280BEBA50032B699 /* HomeCoordinator.swift */,
+				BC645CF1280BF6D80032B699 /* AllCollectionCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -107,9 +115,7 @@
 		BC645CE9280BEB750032B699 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				BC645CEC280BEBC60032B699 /* AppCoordinator.swift */,
-				BC645CEA280BEBA50032B699 /* HomeCoordinator.swift */,
-				BC645CF1280BF6D80032B699 /* AllCollectionCoordinator.swift */,
+				BC645CFE280C78E30032B699 /* Feature.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -117,6 +123,7 @@
 		BC645CEE280BEC580032B699 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				BC645CFB280C1DEF0032B699 /* FoundationToolkit */,
 				BC645CEF280BED700032B699 /* HomeFeature */,
 				BC645CF0280BEE070032B699 /* AllCollectionFeature */,
 			);
@@ -149,6 +156,7 @@
 			packageProductDependencies = (
 				BC645CF7280BF74F0032B699 /* HomeFeature */,
 				BC645CF9280C1A700032B699 /* AllCollectionFeature */,
+				BC645CFC280C29020032B699 /* FoundationToolkit */,
 			);
 			productName = ratpenat;
 			productReference = BC645CC2280B13FE0032B699 /* ratpenat.app */;
@@ -206,6 +214,7 @@
 			files = (
 				BC645CED280BEBC60032B699 /* AppCoordinator.swift in Sources */,
 				BC645CCA280B13FE0032B699 /* ViewController.swift in Sources */,
+				BC645CFF280C78E30032B699 /* Feature.swift in Sources */,
 				BC645CE8280BEA7F0032B699 /* BaseCoordinator.swift in Sources */,
 				BC645CE6280BEA420032B699 /* CoordinatorProtocol.swift in Sources */,
 				BC645CF2280BF6D80032B699 /* AllCollectionCoordinator.swift in Sources */,
@@ -429,6 +438,10 @@
 		BC645CF9280C1A700032B699 /* AllCollectionFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AllCollectionFeature;
+		};
+		BC645CFC280C29020032B699 /* FoundationToolkit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FoundationToolkit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

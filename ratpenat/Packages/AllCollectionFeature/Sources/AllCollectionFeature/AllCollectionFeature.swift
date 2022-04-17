@@ -1,4 +1,5 @@
 import UIKit
+import FoundationToolkit
 
 public struct AllCollectionFeature {
     private let internalVC: AllCollectionVC
@@ -7,9 +8,9 @@ public struct AllCollectionFeature {
         
         self.internalVC = vc
     }
-    
-    public func viewController() -> UIViewController { return internalVC}
 }
+
+// MARK: - Interface implementation
 
 extension AllCollectionFeature: AllCollectionFeatureViewInterface {
     
@@ -20,4 +21,18 @@ extension AllCollectionFeature: AllCollectionFeatureViewInterface {
 
 extension AllCollectionFeature: AllCollectionFeatureLogicInterface {
     
+}
+
+// MARK: - Action implementation
+
+extension AllCollectionFeature: ActionRequester {
+    public var actionRequest: ActionRequest {
+        get {
+//            self.internalVC.showRequest ?? { _ in }
+            { _ in }
+        }
+        set(newValue) {
+//            self.internalVC.showRequest = newValue
+        }
+    }
 }
