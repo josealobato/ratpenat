@@ -5,8 +5,6 @@ custom_rules:
   already_bool:
     regex: "== false"
     message: "Don't compare to false, just use !value."
-    
-custom_rules:
   numbers_smell:
     regex: '(return |case |\w\(|: |\?\? |\, |== |<=? |>=? |\+= |\-= |\/= |\*= |%= |\w\.\w+ = )\(*-?\d{2,}'
     message: "Numbers smell; define a constant instead."
@@ -19,3 +17,12 @@ identifier_name:
     - vc
     - v
     - id
+    
+excluded:
+- docs
+
+line_length:
+  ignores_urls: true
+  ignores_function_declarations: false
+  ignores_comments: true
+  ignores_interpolated_strings: true
