@@ -1,0 +1,21 @@
+custom_rules:
+  already_true:
+    regex: "== true"
+    message: "Don't compare to true, just use the bool value."
+  already_bool:
+    regex: "== false"
+    message: "Don't compare to false, just use !value."
+    
+custom_rules:
+  numbers_smell:
+    regex: '(return |case |\w\(|: |\?\? |\, |== |<=? |>=? |\+= |\-= |\/= |\*= |%= |\w\.\w+ = )\(*-?\d{2,}'
+    message: "Numbers smell; define a constant instead."
+    
+disabled_rules:
+- trailing_whitespace
+
+identifier_name:
+  excluded:
+    - vc
+    - v
+    - id

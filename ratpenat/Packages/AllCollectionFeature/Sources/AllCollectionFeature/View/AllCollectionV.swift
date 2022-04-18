@@ -6,11 +6,11 @@ class AllCollectionV: UIView {
         super.init(frame: frame)
         setUp()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) not implemented")
     }
-    
+
     func setUp() {
 //        self.backgroundColor = .systemRed
         let label = UILabel()

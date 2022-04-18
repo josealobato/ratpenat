@@ -20,8 +20,8 @@
 		BC645CF2280BF6D80032B699 /* AllCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CF1280BF6D80032B699 /* AllCollectionCoordinator.swift */; };
 		BC645CF8280BF74F0032B699 /* HomeFeature in Frameworks */ = {isa = PBXBuildFile; productRef = BC645CF7280BF74F0032B699 /* HomeFeature */; };
 		BC645CFA280C1A700032B699 /* AllCollectionFeature in Frameworks */ = {isa = PBXBuildFile; productRef = BC645CF9280C1A700032B699 /* AllCollectionFeature */; };
-		BC645CFD280C29020032B699 /* FoundationToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = BC645CFC280C29020032B699 /* FoundationToolkit */; };
 		BC645CFF280C78E30032B699 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CFE280C78E30032B699 /* Feature.swift */; };
+		BC645D03280C8B220032B699 /* FoundationToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = BC645D02280C8B220032B699 /* FoundationToolkit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +42,7 @@
 		BC645CF1280BF6D80032B699 /* AllCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionCoordinator.swift; sourceTree = "<group>"; };
 		BC645CFB280C1DEF0032B699 /* FoundationToolkit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FoundationToolkit; sourceTree = "<group>"; };
 		BC645CFE280C78E30032B699 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		BC645D00280C80280032B699 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC645CFD280C29020032B699 /* FoundationToolkit in Frameworks */,
+				BC645D03280C8B220032B699 /* FoundationToolkit in Frameworks */,
 				BC645CF8280BF74F0032B699 /* HomeFeature in Frameworks */,
 				BC645CFA280C1A700032B699 /* AllCollectionFeature in Frameworks */,
 			);
@@ -94,6 +95,7 @@
 		BC645CE3280BEA240032B699 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				BC645D00280C80280032B699 /* README.md */,
 				BC645CE4280BEA2F0032B699 /* Base */,
 				BC645CE9280BEB750032B699 /* Features */,
 				BC645CEC280BEBC60032B699 /* AppCoordinator.swift */,
@@ -147,6 +149,7 @@
 				BC645CBE280B13FE0032B699 /* Sources */,
 				BC645CBF280B13FE0032B699 /* Frameworks */,
 				BC645CC0280B13FE0032B699 /* Resources */,
+				BC645D01280C82ED0032B699 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -156,7 +159,7 @@
 			packageProductDependencies = (
 				BC645CF7280BF74F0032B699 /* HomeFeature */,
 				BC645CF9280C1A700032B699 /* AllCollectionFeature */,
-				BC645CFC280C29020032B699 /* FoundationToolkit */,
+				BC645D02280C8B220032B699 /* FoundationToolkit */,
 			);
 			productName = ratpenat;
 			productReference = BC645CC2280B13FE0032B699 /* ratpenat.app */;
@@ -206,6 +209,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BC645D01280C82ED0032B699 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC645CBE280B13FE0032B699 /* Sources */ = {
@@ -439,7 +463,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = AllCollectionFeature;
 		};
-		BC645CFC280C29020032B699 /* FoundationToolkit */ = {
+		BC645D02280C8B220032B699 /* FoundationToolkit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FoundationToolkit;
 		};

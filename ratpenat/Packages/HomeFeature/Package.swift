@@ -10,7 +10,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "HomeFeature",
-            targets: ["HomeFeature"]),
+            targets: ["HomeFeature"])
     ],
     dependencies: [
         .package(path: "../FoundationToolkit")
@@ -25,6 +25,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "HomeFeatureTests",
-            dependencies: ["HomeFeature"]),
+            dependencies: ["HomeFeature"])
     ]
 )

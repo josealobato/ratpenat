@@ -4,23 +4,22 @@ import FoundationToolkit
 public struct AllCollectionFeature {
     private let internalVC: AllCollectionVC
 
-    init(vc: AllCollectionVC) {
-        
-        self.internalVC = vc
+    init(viewController: AllCollectionVC) {
+        self.internalVC = viewController
     }
 }
 
 // MARK: - Interface implementation
 
 extension AllCollectionFeature: AllCollectionFeatureViewInterface {
-    
+
     public func view() -> UIView { internalVC.view }
 
     public func viewController() -> UIViewController? { internalVC }
 }
 
 extension AllCollectionFeature: AllCollectionFeatureLogicInterface {
-    
+
 }
 
 // MARK: - Action implementation
@@ -31,6 +30,7 @@ extension AllCollectionFeature: ActionRequester {
 //            self.internalVC.showRequest ?? { _ in }
             { _ in }
         }
+        // swiftlint:disable:next unused_setter_value
         set(newValue) {
 //            self.internalVC.showRequest = newValue
         }

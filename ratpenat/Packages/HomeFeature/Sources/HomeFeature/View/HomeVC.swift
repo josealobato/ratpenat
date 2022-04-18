@@ -1,10 +1,10 @@
 import UIKit
 
 public class HomeVC: UIViewController {
-    
+
     init() {
         super.init(nibName: nil, bundle: nil)
-        
+
         // Configure the tab item
         // You need to set this very early otherwise it wont show on the
         // tab.
@@ -14,11 +14,11 @@ public class HomeVC: UIViewController {
         //self.tabBarItem.title = "Draw it"
         self.title = "Home"
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("Home VC not desing to start from xib or storyboard")
     }
-    
+
     public override func loadView() {
         self.view = HomeV()
     }

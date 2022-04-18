@@ -6,24 +6,24 @@ import HomeFeature
 /// starting point of the tree.
 /// The AppCoordinator is in charge of setting up the Application.
 class AppCoordinator: BaseCoordinator {
-    
+
     /// The app coordinator keep reference to the main window of the
     /// app that coordinates.
     let window: UIWindow
-    
+
     init(window: UIWindow) {
         self.window = window
         super.init()
     }
-    
+
     override func start() {
-                
+
         window.rootViewController = setTabVC()
         window.makeKeyAndVisible()
     }
-    
+
     private func setTabVC() -> UITabBarController {
-                        
+
         // Home.
         let homeNavigation = UINavigationController()
         let homeCoordinator = HomeCoordinator(navigation: homeNavigation)
@@ -32,21 +32,21 @@ class AppCoordinator: BaseCoordinator {
         }
         self.store(coordinator: homeCoordinator)
         homeCoordinator.start()
-        
+
         // Feature One.
-        let AllCollectionNavigation = UINavigationController()
-        let AllCollectionCoordinator = AllCollectionCoordinator(navigation: AllCollectionNavigation)
-        AllCollectionCoordinator.isCompleted = { [weak self] in
-            self?.free(coordinator: AllCollectionCoordinator)
+        let allCollectionNavigation = UINavigationController()
+        let allCollectionCoordinator = AllCollectionCoordinator(navigation: allCollectionNavigation)
+        allCollectionCoordinator.isCompleted = { [weak self] in
+            self?.free(coordinator: allCollectionCoordinator)
         }
-        self.store(coordinator: AllCollectionCoordinator)
-        AllCollectionCoordinator.start()
-        
+        self.store(coordinator: allCollectionCoordinator)
+        allCollectionCoordinator.start()
+
         // Build the tab bar VC.
         let tabVC = UITabBarController()
-        tabVC.viewControllers = [homeNavigation, AllCollectionNavigation]
+        tabVC.viewControllers = [homeNavigation, allCollectionNavigation]
         tabVC.selectedIndex = 0
-        
+
         return tabVC
     }
 }
