@@ -22,6 +22,8 @@
 		BC645CFA280C1A700032B699 /* AllCollectionFeature in Frameworks */ = {isa = PBXBuildFile; productRef = BC645CF9280C1A700032B699 /* AllCollectionFeature */; };
 		BC645CFF280C78E30032B699 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC645CFE280C78E30032B699 /* Feature.swift */; };
 		BC645D03280C8B220032B699 /* FoundationToolkit in Frameworks */ = {isa = PBXBuildFile; productRef = BC645D02280C8B220032B699 /* FoundationToolkit */; };
+		BC9BAECE281408720061B8BC /* AllCollectionFeatureAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9BAECD281408720061B8BC /* AllCollectionFeatureAdapter.swift */; };
+		BC9BAED028140B4E0061B8BC /* Entities in Frameworks */ = {isa = PBXBuildFile; productRef = BC9BAECF28140B4E0061B8BC /* Entities */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,7 @@
 		BC645CFE280C78E30032B699 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		BC645D00280C80280032B699 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BC645D04280D653B0032B699 /* Entities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Entities; sourceTree = "<group>"; };
+		BC9BAECD281408720061B8BC /* AllCollectionFeatureAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionFeatureAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC645D03280C8B220032B699 /* FoundationToolkit in Frameworks */,
+				BC9BAED028140B4E0061B8BC /* Entities in Frameworks */,
 				BC645CF8280BF74F0032B699 /* HomeFeature in Frameworks */,
 				BC645CFA280C1A700032B699 /* AllCollectionFeature in Frameworks */,
 			);
@@ -81,6 +85,7 @@
 		BC645CC4280B13FE0032B699 /* ratpenat */ = {
 			isa = PBXGroup;
 			children = (
+				BC9BAECC2814082C0061B8BC /* Adapters */,
 				BC645CE3280BEA240032B699 /* Coordinator */,
 				BC645CC5280B13FE0032B699 /* AppDelegate.swift */,
 				BC645CC7280B13FE0032B699 /* SceneDelegate.swift */,
@@ -141,6 +146,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BC9BAECC2814082C0061B8BC /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				BC9BAECD281408720061B8BC /* AllCollectionFeatureAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,6 +175,7 @@
 				BC645CF7280BF74F0032B699 /* HomeFeature */,
 				BC645CF9280C1A700032B699 /* AllCollectionFeature */,
 				BC645D02280C8B220032B699 /* FoundationToolkit */,
+				BC9BAECF28140B4E0061B8BC /* Entities */,
 			);
 			productName = ratpenat;
 			productReference = BC645CC2280B13FE0032B699 /* ratpenat.app */;
@@ -239,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC645CED280BEBC60032B699 /* AppCoordinator.swift in Sources */,
+				BC9BAECE281408720061B8BC /* AllCollectionFeatureAdapter.swift in Sources */,
 				BC645CCA280B13FE0032B699 /* ViewController.swift in Sources */,
 				BC645CFF280C78E30032B699 /* Feature.swift in Sources */,
 				BC645CE8280BEA7F0032B699 /* BaseCoordinator.swift in Sources */,
@@ -468,6 +483,10 @@
 		BC645D02280C8B220032B699 /* FoundationToolkit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FoundationToolkit;
+		};
+		BC9BAECF28140B4E0061B8BC /* Entities */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Entities;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

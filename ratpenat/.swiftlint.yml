@@ -17,6 +17,8 @@ identifier_name:
     - vc
     - v
     - id
+    - i
+    - j
     
 excluded:
 - docs

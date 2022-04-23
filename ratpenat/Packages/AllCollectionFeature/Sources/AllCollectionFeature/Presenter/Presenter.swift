@@ -14,6 +14,7 @@ final class Presenter: InteractorOutput {
 extension ViewModel {
     
     static func from(_ assets: [AudioAsset]) -> ViewModel {
-        return ViewModel() // TODO: conversion.
+        let items = assets.map {ViewModel.Item(id: $0.id, title: $0.title) }
+        return ViewModel(items: items)
     }
 }

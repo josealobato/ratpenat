@@ -9,8 +9,8 @@ class AllCollectionCoordinator: BaseCoordinator {
     }
 
     override func start() {
-        // Is the module around?
-        let feature = AllCollectionFeatureFactory().create()
+        let dataAdapter = AllCollectionFeatureAdapter()
+        let feature = AllCollectionFeatureFactory().create(dataLink: dataAdapter)
 //        homeModule.showRequest = self.showRequest(action:)
         if let viewController = feature.viewController() {
             navigationController?.pushViewController(viewController, animated: false)
