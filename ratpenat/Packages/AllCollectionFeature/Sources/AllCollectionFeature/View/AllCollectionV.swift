@@ -12,7 +12,7 @@ class AllCollectionV: UIView {
     }
 
     func setUp() {
-//        self.backgroundColor = .systemRed
+        self.backgroundColor = UIColor.systemBackground
         let label = UILabel()
         label.text = "All"
         addSubview(label)

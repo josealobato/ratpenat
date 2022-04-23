@@ -1,8 +1,11 @@
 import UIKit
 
-class AllCollectionVC: UIViewController {
+final class AllCollectionVC: UIViewController {
     
-    init() {
+    private let interactor: Interactor
+    
+    init(interactor: Interactor) {
+        self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
 
         // Configure the tab item
@@ -21,5 +24,10 @@ class AllCollectionVC: UIViewController {
 
     override func loadView() {
         self.view = AllCollectionV()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactor.performAction(input: .loadInitialData)
     }
 }

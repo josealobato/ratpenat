@@ -43,6 +43,7 @@
 		BC645CFB280C1DEF0032B699 /* FoundationToolkit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FoundationToolkit; sourceTree = "<group>"; };
 		BC645CFE280C78E30032B699 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		BC645D00280C80280032B699 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BC645D04280D653B0032B699 /* Entities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Entities; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +126,7 @@
 		BC645CEE280BEC580032B699 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				BC645D04280D653B0032B699 /* Entities */,
 				BC645CFB280C1DEF0032B699 /* FoundationToolkit */,
 				BC645CEF280BED700032B699 /* HomeFeature */,
 				BC645CF0280BEE070032B699 /* AllCollectionFeature */,

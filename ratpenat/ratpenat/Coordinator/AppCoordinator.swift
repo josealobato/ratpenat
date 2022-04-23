@@ -33,7 +33,7 @@ class AppCoordinator: BaseCoordinator {
         self.store(coordinator: homeCoordinator)
         homeCoordinator.start()
 
-        // Feature One.
+        // All Collection
         let allCollectionNavigation = UINavigationController()
         let allCollectionCoordinator = AllCollectionCoordinator(navigation: allCollectionNavigation)
         allCollectionCoordinator.isCompleted = { [weak self] in
