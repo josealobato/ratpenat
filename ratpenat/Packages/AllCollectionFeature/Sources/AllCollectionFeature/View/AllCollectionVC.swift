@@ -2,7 +2,12 @@ import UIKit
 
 final class AllCollectionVC: UIViewController {
     
+    let basicCellId = "BasicCell"
+    
     private let interactor: Interactor
+    var viewModel = ViewModel(items: [])
+    
+    weak var collectionView: UICollectionView!
     
     init(interactor: Interactor) {
         self.interactor = interactor
@@ -19,15 +24,24 @@ final class AllCollectionVC: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("AllCollection VC not desing to start from xib or storyboard")
+        fatalError("AllCollection VC is not desing to start from xib or storyboard")
     }
 
     override func loadView() {
+
         self.view = AllCollectionV()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let view = self.view as? AllCollectionV else { return }
+        
+        view.collectionView.dataSource = self
+        view.collectionView.delegate = self
+        
+        view.collectionView.register(BasicCell.self, forCellWithReuseIdentifier: basicCellId)
+        
         interactor.performAction(input: .loadInitialData)
     }
 }
