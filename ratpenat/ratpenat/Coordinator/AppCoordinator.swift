@@ -46,6 +46,8 @@ class AppCoordinator: BaseCoordinator {
         let tabVC = UITabBarController()
         tabVC.viewControllers = [homeNavigation, allCollectionNavigation]
         tabVC.selectedIndex = 0
+        
+        tabVC.tabBar.backgroundColor = .systemBackground
 
         return tabVC
     }

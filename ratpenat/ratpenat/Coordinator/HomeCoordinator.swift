@@ -6,6 +6,7 @@ class HomeCoordinator: BaseCoordinator {
     init(navigation: UINavigationController) {
         super.init()
         self.navigationController = navigation
+        self.navigationController?.navigationBar.backgroundColor = .systemBackground
     }
 
     override func start() {

@@ -12,13 +12,16 @@ class AllCollectionV: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) not implemented")
     }
-
-    func setUp() {
-        
+    
+    func configureHierarchy(with layout: UICollectionViewLayout) {
         self.backgroundColor = UIColor.systemBackground
         
+        // Creating a List compositional Layout.
+        
+//        let config = UICollectionLayoutListConfiguration(appearance: .plain)
+//        let listLayout = UICollectionViewCompositionalLayout.list(using: config)
         let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: UICollectionViewFlowLayout())
+                                              collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -28,14 +31,26 @@ class AllCollectionV: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         self.collectionView = collectionView
+
+    }
+
+    func setUp() {
         
-//        let label = UILabel()
-//        label.text = "All"
-//        addSubview(label)
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            label.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            label.centerYAnchor.constraint(equalTo: centerYAnchor)
-//        ])
+        self.backgroundColor = UIColor.systemBackground
+        
+        // Creating a List compositional Layout.
+        let config = UICollectionLayoutListConfiguration(appearance: .plain)
+        let listLayout = UICollectionViewCompositionalLayout.list(using: config)
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: listLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        self.collectionView = collectionView
     }
 }
