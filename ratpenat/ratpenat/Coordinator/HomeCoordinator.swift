@@ -6,7 +6,11 @@ class HomeCoordinator: BaseCoordinator {
     init(navigation: UINavigationController) {
         super.init()
         self.navigationController = navigation
-        self.navigationController?.navigationBar.backgroundColor = .systemBackground
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.backgroundColor = .systemBackground
+        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
 
     override func start() {
