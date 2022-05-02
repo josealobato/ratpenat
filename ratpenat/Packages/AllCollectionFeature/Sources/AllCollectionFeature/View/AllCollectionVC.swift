@@ -72,17 +72,16 @@ extension AllCollectionVC {
         guard let view = self.view as? AllCollectionV else { return }
         
         // Registering the cell and providing the cell configuration for the items:
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, ViewModel.Item> {
+        let cellRegistration = UICollectionView.CellRegistration<BasicListCell, ViewModel.Item> {
             // swiftlint:disable:next closure_parameter_position unused_closure_parameter
             (cell, indexPath, item) in
-            var content = cell.defaultContentConfiguration()
-            content.text = item.title
-            cell.contentConfiguration = content
-        }
+            cell.updateWithItem(item)
+            cell.accessories = [.disclosureIndicator()]
+       }
         
         // Creating the data source:
         dataSource = UICollectionViewDiffableDataSource<Section, ViewModel.Item>(collectionView: view.collectionView) {
-            // swiftlint:disable:next closure_parameter_position line_length
+            // swiftlint:disable:next closure_parameter_position
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: ViewModel.Item) -> UICollectionViewCell? in
             
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration,

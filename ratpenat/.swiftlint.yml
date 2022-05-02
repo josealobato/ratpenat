@@ -24,6 +24,7 @@ excluded:
 - docs
 
 line_length:
+  warning: 140
   ignores_urls: true
   ignores_function_declarations: false
   ignores_comments: true

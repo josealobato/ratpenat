@@ -7,6 +7,7 @@ class AllCollectionCoordinator: BaseCoordinator {
         super.init()
         self.navigationController = navigation
         
+        // We want the navigation bar background to extend under the status bar.
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.standardAppearance = navBarAppearance
