@@ -20,6 +20,10 @@
 		B49C268029D05EB000EF08C5 /* Coordinator in Frameworks */ = {isa = PBXBuildFile; productRef = B49C267F29D05EB000EF08C5 /* Coordinator */; };
 		B49C268229D05EB400EF08C5 /* Entities in Frameworks */ = {isa = PBXBuildFile; productRef = B49C268129D05EB400EF08C5 /* Entities */; };
 		B49C268429D05EB800EF08C5 /* JToolKit in Frameworks */ = {isa = PBXBuildFile; productRef = B49C268329D05EB800EF08C5 /* JToolKit */; };
+		B49C268629D0622900EF08C5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C268529D0622900EF08C5 /* AppCoordinator.swift */; };
+		B49C268C29D0641600EF08C5 /* ManagersMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C268B29D0641600EF08C5 /* ManagersMapping.swift */; };
+		B49C268E29D0645C00EF08C5 /* DismissManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C268D29D0645C00EF08C5 /* DismissManager.swift */; };
+		B4ADB40129D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADB40029D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		B49C267B29D05A9F00EF08C5 /* Coordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Coordinator; sourceTree = "<group>"; };
 		B49C267C29D05D2600EF08C5 /* JToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JToolKit; sourceTree = "<group>"; };
 		B49C267D29D05E0200EF08C5 /* Entities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Entities; sourceTree = "<group>"; };
+		B49C268529D0622900EF08C5 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B49C268B29D0641600EF08C5 /* ManagersMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagersMapping.swift; sourceTree = "<group>"; };
+		B49C268D29D0645C00EF08C5 /* DismissManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissManager.swift; sourceTree = "<group>"; };
+		B4ADB40029D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoordinator+BuildRootViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,14 +120,13 @@
 		B49C264129CF59A900EF08C5 /* Ratpenat */ = {
 			isa = PBXGroup;
 			children = (
+				B49C268729D0632700EF08C5 /* Coordinator */,
 				B49C264229CF59A900EF08C5 /* AppDelegate.swift */,
 				B49C264429CF59A900EF08C5 /* SceneDelegate.swift */,
 				B49C264629CF59A900EF08C5 /* ViewController.swift */,
 				B49C264B29CF59AA00EF08C5 /* Assets.xcassets */,
 				B49C264D29CF59AA00EF08C5 /* LaunchScreen.storyboard */,
 				B49C265029CF59AA00EF08C5 /* Info.plist */,
-				B49C267229D0551B00EF08C5 /* HomeV.swift */,
-				B49C267429D0554700EF08C5 /* HomeVC.swift */,
 			);
 			path = Ratpenat;
 			sourceTree = "<group>";
@@ -156,6 +163,43 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B49C268729D0632700EF08C5 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B49C268A29D063B700EF08C5 /* Services */,
+				B49C268929D063B000EF08C5 /* Managers */,
+				B49C268829D063AB00EF08C5 /* Context */,
+				B49C267229D0551B00EF08C5 /* HomeV.swift */,
+				B49C267429D0554700EF08C5 /* HomeVC.swift */,
+				B4ADB40029D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift */,
+				B49C268529D0622900EF08C5 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B49C268829D063AB00EF08C5 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		B49C268929D063B000EF08C5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B49C268B29D0641600EF08C5 /* ManagersMapping.swift */,
+				B49C268D29D0645C00EF08C5 /* DismissManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		B49C268A29D063B700EF08C5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,11 +337,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B49C268C29D0641600EF08C5 /* ManagersMapping.swift in Sources */,
+				B49C268629D0622900EF08C5 /* AppCoordinator.swift in Sources */,
 				B49C264729CF59A900EF08C5 /* ViewController.swift in Sources */,
 				B49C267529D0554700EF08C5 /* HomeVC.swift in Sources */,
 				B49C267329D0551B00EF08C5 /* HomeV.swift in Sources */,
 				B49C264329CF59A900EF08C5 /* AppDelegate.swift in Sources */,
+				B49C268E29D0645C00EF08C5 /* DismissManager.swift in Sources */,
 				B49C264529CF59A900EF08C5 /* SceneDelegate.swift in Sources */,
+				B4ADB40129D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

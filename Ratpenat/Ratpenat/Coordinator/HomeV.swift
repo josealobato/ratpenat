@@ -12,7 +12,7 @@ class HomeV: UIView {
     }
 
     func setUp() {
-        self.backgroundColor = .systemBlue
+        self.backgroundColor = .systemBackground
         let label = UILabel()
         label.text = "Hello World!"
         addSubview(label)
