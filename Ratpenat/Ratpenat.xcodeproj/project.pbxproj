@@ -65,6 +65,7 @@
 		B49C268B29D0641600EF08C5 /* ManagersMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagersMapping.swift; sourceTree = "<group>"; };
 		B49C268D29D0645C00EF08C5 /* DismissManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissManager.swift; sourceTree = "<group>"; };
 		B4ADB40029D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoordinator+BuildRootViewController.swift"; sourceTree = "<group>"; };
+		B4E3980229DABA8900BC4BE0 /* Data */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Data; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +152,7 @@
 		B49C267A29D05A7E00EF08C5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				B4E3980229DABA8900BC4BE0 /* Data */,
 				B49C267D29D05E0200EF08C5 /* Entities */,
 				B49C267C29D05D2600EF08C5 /* JToolKit */,
 				B49C267B29D05A9F00EF08C5 /* Coordinator */,
