@@ -1,5 +1,7 @@
 import UIKit
 import Coordinator
+import LectureCollection
+import RData
 
 extension AppCoordinator {
 
@@ -16,22 +18,37 @@ extension AppCoordinator {
         childCoordinators.append(homeCoordinator)
         //homeCoordinator.start()
 
-        // Home 2
-        let homeNavigation2 = UINavigationController()
-        homeNavigation2.pushViewController(HomeVC(), animated: false)
-        let homeCoordinator2 = BaseFlowCoordinator(managersTypeMapping: coordinatorManagersMapping)
-        homeCoordinator2.navigationController = homeNavigation
-        homeCoordinator2.parentCoordinator = self
-        childCoordinators.append(homeCoordinator2)
+        // List
+        let listNavigation = buildLectureListTabContent()
+        let ListCoordinator = BaseFlowCoordinator(managersTypeMapping: coordinatorManagersMapping)
+        ListCoordinator.navigationController = listNavigation
+        ListCoordinator.parentCoordinator = self
+        childCoordinators.append(ListCoordinator)
         //homeCoordinator.start()
 
         // Build the tab bar VC.
         let tabVC = UITabBarController()
-        tabVC.viewControllers = [homeNavigation, homeNavigation2]
+        tabVC.viewControllers = [homeNavigation, listNavigation]
         tabVC.selectedIndex = 0
 
         rootViewController = tabVC
         return rootViewController
+    }
+
+    private func buildLectureListTabContent() -> UINavigationController {
+
+        let listNavigation = UINavigationController()
+
+        let listRepository = LecturesRepositoryBuilder.build()
+        let listAdapter = LectureCollectionAdapter(repository: listRepository)
+        let listVC = LectureCollectionBuilder.build(services: listAdapter)
+
+        listVC.tabBarItem.image = UIImage(systemName: "books.vertical")
+        listVC.tabBarItem.title = "Library"
+
+        listNavigation.pushViewController(listVC, animated: false)
+
+        return listNavigation
     }
     
 }

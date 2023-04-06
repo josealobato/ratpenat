@@ -1,0 +1,14 @@
+{
+    "lectures": [
+        {
+            "id": "01",
+            "title": "This is lecture one",
+            "location": "file://aFolder"
+        },
+        {
+            "id": "02",
+            "title": "This is lecture two",
+            "location": "file://aFolder"
+        }
+    ]
+}

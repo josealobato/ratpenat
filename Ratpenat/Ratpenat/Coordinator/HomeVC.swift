@@ -8,11 +8,11 @@ class HomeVC: UIViewController {
         // Configure the tab item
         // You need to set this very early otherwise it wont show on the
         // tab.
-        self.tabBarItem.image = UIImage(systemName: "house")
+        self.tabBarItem.image = UIImage(systemName: "play")
 
         // The last one of those set is the one that is shown.
         //self.tabBarItem.title = "Draw it"
-        self.title = "Home"
+        self.title = "Play"
     }
 
     required init?(coder: NSCoder) {
