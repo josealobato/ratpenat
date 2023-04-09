@@ -49,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		B447946B29DECD8A00A7356D /* RStorage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RStorage.json; sourceTree = "<group>"; };
+		B447946D29DEDE2200A7356D /* Player */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Player; sourceTree = "<group>"; };
 		B48502A929DECA74002EB1B8 /* JToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JToolKit; sourceTree = "<group>"; };
 		B48502AA29DECA96002EB1B8 /* Coordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Coordinator; sourceTree = "<group>"; };
 		B48502AB29DECAA9002EB1B8 /* LectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LectureCollection; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 				B48502AA29DECA96002EB1B8 /* Coordinator */,
 				B48502AB29DECAA9002EB1B8 /* LectureCollection */,
 				B48502AC29DECB14002EB1B8 /* Entities */,
+				B447946D29DEDE2200A7356D /* Player */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
