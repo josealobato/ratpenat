@@ -6,12 +6,17 @@ struct PlayControls: View {
     let internalPadding = 60.0
     let height = 80.0
 
+    var isPlaying: Bool
+    var onPlayPause: (() -> Void)
+    var onForward: (() -> Void)
+    var onBackwards: (() -> Void)
+
     var body: some View {
 
         HStack {
             Spacer()
             Button {
-
+                onBackwards()
             } label: {
                 Image(systemName: "backward.fill")
                     .resizable()
@@ -19,9 +24,9 @@ struct PlayControls: View {
                     .foregroundColor(.white)
             }
             Button {
-
+                onPlayPause()
             } label: {
-                Image(systemName: "play.fill")
+                Image(systemName: isPlaying ? "pause.fill" : "play.fill")
                     .resizable()
                     .frame(width: buttonsize, height: buttonsize)
                     .padding(EdgeInsets(top: 0,
@@ -31,7 +36,7 @@ struct PlayControls: View {
                     .foregroundColor(.white)
             }
             Button {
-
+                onForward()
             } label: {
                 Image(systemName: "forward.fill")
                     .resizable()
@@ -46,7 +51,10 @@ struct PlayControls: View {
 
 struct PlayControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayControls()
+        PlayControls(isPlaying: false,
+                     onPlayPause: { },
+                     onForward: { },
+                     onBackwards: { })
             .background(.black)
     }
 }

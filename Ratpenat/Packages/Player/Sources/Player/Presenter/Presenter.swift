@@ -4,7 +4,7 @@ import struct Entities.Lecture
 final class Presenter: ObservableObject, InteractorOutput {
 
     // View Interface
-    @Published var lecture: LectureViewModel?
+    @Published var lecture: LectureViewModel = LectureViewModel.none
     @Published var viewState: PlayerView.ViewState? = .loading
 
     let interactor: InteractorInput
@@ -43,15 +43,17 @@ final class Presenter: ObservableObject, InteractorOutput {
             //            updateViewState(.loading)
             break
 
-        case .refresh(let lecture):
-            let lectureViewModel = createViewModel(from: lecture)
+        case .refresh(let data):
+            let lectureViewModel = createViewModel(from: data)
             renderContent(lecture: lectureViewModel)
+            break
+        case .noLecture:
             break
         }
     }
 
-    private func createViewModel(from entity: Lecture) -> LectureViewModel {
+    private func createViewModel(from data: InteractorEvents.Output.LectureData) -> LectureViewModel {
 
-        LectureViewModel.build(from: entity)
+        LectureViewModel.build(from: data)
     }
 }

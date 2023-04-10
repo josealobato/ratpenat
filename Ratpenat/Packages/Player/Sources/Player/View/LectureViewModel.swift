@@ -5,19 +5,22 @@ struct LectureViewModel: Identifiable, Equatable {
 
     let id: String
     let title: String
+    let isPlaying: Bool
 
     static var none: LectureViewModel {
-        LectureViewModel(id: "00",
-                         title: "No Lecture to play")
+        LectureViewModel(id: "",
+                         title: "",
+                         isPlaying: false)
 
     }
 }
 
 extension LectureViewModel {
 
-    static func build(from lecture: Lecture) -> LectureViewModel {
+    static func build(from data: InteractorEvents.Output.LectureData) -> LectureViewModel {
 
-        LectureViewModel(id: lecture.id,
-                         title: lecture.title)
+        LectureViewModel(id: data.lecture.id,
+                         title: data.lecture.title,
+                         isPlaying: data.audio.isPlaying)
     }
 }

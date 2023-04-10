@@ -18,9 +18,21 @@ struct PlayerView: View {
 
         VStack {
             Spacer()
-            PlayerCompositeView(lecture: $presenter.lecture)
+            PlayerCompositeView(lecture: $presenter.lecture ,
+                                onPlayPause: { request(.playToggle) },
+                                onForward: { },
+                                onBackwards: { })
                 .padding()
                 .preferredColorScheme(.dark)
+        }
+    }
+
+
+    func request(_ event: InteractorEvents.Input) {
+
+        Task {
+
+            await presenter.request(event)
         }
     }
 }
@@ -29,13 +41,17 @@ struct PlayerView_Previews: PreviewProvider {
 
     struct TestContainer: View {
 
-        @State private var previewLecture: LectureViewModel? = LectureViewModel(id: "01",
-                                                                                title: "Title of One with some extra text for more space")
+        @State private var previewLecture: LectureViewModel = LectureViewModel(id: "01",
+                                                                               title: "Title of One with some extra text for more space",
+                                                                               isPlaying: false)
 
         var body: some View {
             VStack {
                 Spacer()
-                PlayerCompositeView(lecture: $previewLecture)
+                PlayerCompositeView(lecture: $previewLecture,
+                                    onPlayPause: { },
+                                    onForward: { },
+                                    onBackwards: { })
                     .padding()
                     .preferredColorScheme(.dark)
             }
