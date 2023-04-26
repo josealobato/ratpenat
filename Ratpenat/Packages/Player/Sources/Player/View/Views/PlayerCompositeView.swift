@@ -1,5 +1,3 @@
-//
-
 import SwiftUI
 
 struct PlayerCompositeView: View {
@@ -15,12 +13,11 @@ struct PlayerCompositeView: View {
     var body: some View {
         VStack {
             title
-            PlayControls(isPlaying: lecture.isPlaying,
-                         onPlayPause: onPlayPause,
-                         onForward: onForward,
-                         onBackwards: onBackwards)
+            PlayControls(isPlaying: lecture.isPlaying)
+                .onPlayPause { onPlayPause() }
+                .onForward { onForward() }
+                .onBackwards { onBackwards() }
             PositionSlider(possition: $possition, length: 100)
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
     }
 
@@ -37,10 +34,22 @@ struct PlayerCompositeView_Previews: PreviewProvider {
                                                title: "One",
                                                isPlaying: false)
     static var previews: some View {
-        PlayerCompositeView(lecture: .constant(model),
-                            onPlayPause: { },
-                            onForward: { },
-                            onBackwards: { })
-            .previewDisplayName("PlayerComposite")
+        Group {
+            PlayerCompositeView(lecture: .constant(model),
+                                onPlayPause: { },
+                                onForward: { },
+                                onBackwards: { })
+            .previewDisplayName("PlayerComposite(Dark)")
+            .preferredColorScheme(.dark)
+
+            PlayerCompositeView(lecture: .constant(model),
+                                onPlayPause: { },
+                                onForward: { },
+                                onBackwards: { })
+            .previewDisplayName("PlayerComposite(Light)")
+            .preferredColorScheme(.light)
+
+        }
+        
     }
 }

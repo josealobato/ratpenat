@@ -23,7 +23,6 @@ struct PlayerView: View {
                                 onForward: { },
                                 onBackwards: { })
                 .padding()
-                .preferredColorScheme(.dark)
         }
     }
 
@@ -53,7 +52,6 @@ struct PlayerView_Previews: PreviewProvider {
                                     onForward: { },
                                     onBackwards: { })
                     .padding()
-                    .preferredColorScheme(.dark)
             }
         }
     }

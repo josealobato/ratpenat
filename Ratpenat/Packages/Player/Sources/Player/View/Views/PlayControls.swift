@@ -2,29 +2,27 @@ import SwiftUI
 
 struct PlayControls: View {
 
-    let buttonsize =  40.0
-    let internalPadding = 60.0
-    let height = 80.0
-
     var isPlaying: Bool
-    var onPlayPause: (() -> Void)
-    var onForward: (() -> Void)
-    var onBackwards: (() -> Void)
+
+    private let buttonsize =  40.0
+    private let internalPadding = 60.0
+    private let height = 80.0
+    private let handlers: PlayControlsHandlers = .init()
 
     var body: some View {
 
         HStack {
             Spacer()
             Button {
-                onBackwards()
+                backwards()
             } label: {
                 Image(systemName: "backward.fill")
                     .resizable()
                     .frame(width: buttonsize, height: buttonsize)
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
             }
             Button {
-                onPlayPause()
+                playPause()
             } label: {
                 Image(systemName: isPlaying ? "pause.fill" : "play.fill")
                     .resizable()
@@ -33,28 +31,61 @@ struct PlayControls: View {
                                         leading: internalPadding,
                                         bottom: 0,
                                         trailing: internalPadding))
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
             }
             Button {
-                onForward()
+                forward()
             } label: {
                 Image(systemName: "forward.fill")
                     .resizable()
                     .frame(width: buttonsize, height: buttonsize)
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
             }
             Spacer()
         }
         .frame(height: height)
     }
+
+    public func onPlayPause(_ action: @escaping (() -> Void)) -> Self {
+        handlers.onPlayPause = action
+        return self
+    }
+
+    public func onForward(_ action: @escaping (() -> Void)) -> Self {
+        handlers.onForward = action
+        return self
+    }
+
+    public func onBackwards(_ action: @escaping (() -> Void)) -> Self {
+        handlers.onBackwards = action
+        return self
+    }
+}
+
+private class PlayControlsHandlers {
+
+    var onPlayPause: (() -> Void)?
+    var onBackwards: (() -> Void)?
+    var onForward: (() -> Void)?
+}
+
+private extension PlayControls {
+
+    func playPause() {
+        handlers.onPlayPause?()
+    }
+
+    func backwards() {
+        handlers.onBackwards?()
+    }
+
+    func forward() {
+        handlers.onForward?()
+    }
 }
 
 struct PlayControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayControls(isPlaying: false,
-                     onPlayPause: { },
-                     onForward: { },
-                     onBackwards: { })
-            .background(.black)
+        PlayControls(isPlaying: true)
     }
 }

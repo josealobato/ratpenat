@@ -38,7 +38,7 @@ struct PositionSlider: View {
                 ZStack {
                     // On the background the whole view (played and not played)
                     RoundedRectangle(cornerRadius: radius)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.secondary)
 
                     // The played section.
                     HStack {
@@ -79,7 +79,7 @@ struct PositionSlider: View {
                     }
                 }
             }
-            .foregroundColor(.white)
+            .foregroundColor(.secondary)
         }
         .frame(height: totalHeight)
     }
@@ -108,6 +108,5 @@ struct PositionSlider_Previews: PreviewProvider {
             FakeContainer(currentPossition: 3600, length: 3600)
             Spacer()
         }
-        .background(.black)
     }
 }

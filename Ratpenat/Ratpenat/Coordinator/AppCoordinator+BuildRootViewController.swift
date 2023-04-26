@@ -2,6 +2,7 @@ import UIKit
 import Coordinator
 import LectureCollection
 import RData
+import Player
 
 extension AppCoordinator {
 
@@ -18,6 +19,9 @@ extension AppCoordinator {
         childCoordinators.append(homeCoordinator)
         //homeCoordinator.start()
 
+        // Player
+        let playerVC = buildPlayerTabContent()
+
         // List
         let listNavigation = buildLectureListTabContent()
         let ListCoordinator = BaseFlowCoordinator(managersTypeMapping: coordinatorManagersMapping)
@@ -28,11 +32,22 @@ extension AppCoordinator {
 
         // Build the tab bar VC.
         let tabVC = UITabBarController()
-        tabVC.viewControllers = [homeNavigation, listNavigation]
+        tabVC.viewControllers = [playerVC, listNavigation]
         tabVC.selectedIndex = 0
 
         rootViewController = tabVC
         return rootViewController
+    }
+
+    private func buildPlayerTabContent() -> UIViewController {
+
+        let playerAdater = PlayerAdapter()
+        let playerVC = PlayerBuilder.build(services: playerAdater)
+
+        playerVC.tabBarItem.image = UIImage(systemName: "play")
+        playerVC.tabBarItem.title = "Player"
+
+        return playerVC
     }
 
     private func buildLectureListTabContent() -> UINavigationController {
