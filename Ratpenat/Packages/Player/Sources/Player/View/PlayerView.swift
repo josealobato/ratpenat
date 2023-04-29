@@ -24,6 +24,9 @@ struct PlayerView: View {
                                 onBackwards: { })
                 .padding()
         }
+        .onAppear {
+            request(.loadInitialData)
+        }
     }
 
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B447946C29DECD8A00A7356D /* RStorage.json in Resources */ = {isa = PBXBuildFile; fileRef = B447946B29DECD8A00A7356D /* RStorage.json */; };
+		B4695E5529FAE1F0007A9244 /* demoMP4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */; };
+		B4695E5729FAE816007A9244 /* demoMP3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4695E5629FAE816007A9244 /* demoMP3.mp3 */; };
 		B470D34F29EB0ACC005FA54B /* PlayerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */; };
 		B470D35129EB0C40005FA54B /* Player in Frameworks */ = {isa = PBXBuildFile; productRef = B470D35029EB0C40005FA54B /* Player */; };
 		B48502A729DEC998002EB1B8 /* RData in Frameworks */ = {isa = PBXBuildFile; productRef = B48502A629DEC998002EB1B8 /* RData */; };
@@ -52,6 +54,8 @@
 /* Begin PBXFileReference section */
 		B447946B29DECD8A00A7356D /* RStorage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RStorage.json; sourceTree = "<group>"; };
 		B447946D29DEDE2200A7356D /* Player */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Player; sourceTree = "<group>"; };
+		B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demoMP4.mp4; sourceTree = "<group>"; };
+		B4695E5629FAE816007A9244 /* demoMP3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demoMP3.mp3; sourceTree = "<group>"; };
 		B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAdapter.swift; sourceTree = "<group>"; };
 		B48502A929DECA74002EB1B8 /* JToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JToolKit; sourceTree = "<group>"; };
 		B48502AA29DECA96002EB1B8 /* Coordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Coordinator; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				B49C264629CF59A900EF08C5 /* ViewController.swift */,
 				B49C264B29CF59AA00EF08C5 /* Assets.xcassets */,
 				B49C264D29CF59AA00EF08C5 /* LaunchScreen.storyboard */,
+				B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */,
+				B4695E5629FAE816007A9244 /* demoMP3.mp3 */,
 				B49C265029CF59AA00EF08C5 /* Info.plist */,
 				B447946B29DECD8A00A7356D /* RStorage.json */,
 			);
@@ -351,6 +357,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4695E5729FAE816007A9244 /* demoMP3.mp3 in Resources */,
+				B4695E5529FAE1F0007A9244 /* demoMP4.mp4 in Resources */,
 				B49C264F29CF59AA00EF08C5 /* LaunchScreen.storyboard in Resources */,
 				B447946C29DECD8A00A7356D /* RStorage.json in Resources */,
 				B49C264C29CF59AA00EF08C5 /* Assets.xcassets in Resources */,

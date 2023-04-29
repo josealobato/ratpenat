@@ -23,7 +23,7 @@ final class Interactor: InteractorInput {
         case .loadInitialData:
             await loadNextLecture()
         case .playToggle:
-            currentEngine?.playToggle()
+            await onPlayPause()
         }
     }
 
@@ -45,10 +45,10 @@ final class Interactor: InteractorInput {
 
     // MARK: - Action
     
-    var currentLecture: Lecture?
-    var currentEngine: AudioEngineInterface?
+    private var currentLecture: Lecture?
+    private var currentEngine: AudioEngineInterface?
 
-    func loadNextLecture() async {
+    private func loadNextLecture() async {
 
         render(.startLoading)
 
@@ -72,7 +72,18 @@ final class Interactor: InteractorInput {
 
             renderError(error)
         }
+    }
 
+    private func onPlayPause() async {
+
+        guard let engine = currentEngine,
+              let lecture = currentLecture
+        else { return }
+
+        engine.playToggle()
+        let data = InteractorEvents.Output.LectureData(lecture: lecture,
+                                                       audio: engine.info())
+        render(.refresh(data))
     }
 }
 

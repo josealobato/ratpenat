@@ -17,8 +17,11 @@ class AudioEngine {
 
     private func configureEngine(with format: AVAudioFormat) throws {
 
-        engine.attach(player)
-        engine.prepare()
+        self.engine.attach(player)
+        self.engine.connect(player,
+                            to: engine.mainMixerNode,
+                            format: format)
+        self.engine.prepare()
         try engine.start()
     }
 }
@@ -29,6 +32,7 @@ extension AudioEngine: AudioEngineInterface {
         if player.isPlaying {
             player.pause()
         } else {
+            player.scheduleFile(audioFile, at: nil)
             player.play()
         }
     }
