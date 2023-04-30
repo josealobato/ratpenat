@@ -18,7 +18,6 @@ final class Interactor: InteractorInput {
 
     func request(_ event: InteractorEvents.Input) async {
 
-        print("jal - INTERACTOR Request (\(event))")
         switch event {
 
         case .loadInitialData:

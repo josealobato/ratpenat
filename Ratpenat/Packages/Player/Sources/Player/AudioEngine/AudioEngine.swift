@@ -161,7 +161,7 @@ extension AudioEngine: AudioEngineInterface {
         // If the new position is beyond the end, we stop here.
         // Otherwise reschedule the playback.
         if currentPosition < audioLengthFrames {
-            //          updateDisplay()
+            updateDisplay()
             needsFileScheduled = false
 
             let frameCount = AVAudioFrameCount(audioLengthFrames - seekFrame)

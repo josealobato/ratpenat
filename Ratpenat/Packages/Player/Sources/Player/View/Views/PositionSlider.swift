@@ -55,24 +55,25 @@ struct PositionSlider: View {
                             .foregroundColor(.black)
                             .frame(width: markerWidth)
                             .offset(x: relativePosition)
+                        // Disabled temporarely.
                             // The the gesture to change the value
-                            .gesture (
-                                DragGesture(minimumDistance: 0)
-                                    .onChanged { value in
-                                        let t = value.translation.width
-
-                                        if (abs(t) < 0.1) {
-                                            self.lastCoordinateValue = relativePosition
-                                        }
-                                        if t > 0 {
-                                            let nextCoordinateValue = min(maxValue, self.lastCoordinateValue + t)
-                                            self.possition = Int(((nextCoordinateValue - markerSidesOffset) / scaleFactor))
-                                        } else {
-                                            let nextCoordinateValue = max(minValue, self.lastCoordinateValue + t)
-                                            self.possition = Int(((nextCoordinateValue - markerSidesOffset) / scaleFactor))
-                                        }
-                                    }
-                            )
+//                            .gesture (
+//                                DragGesture(minimumDistance: 0)
+//                                    .onChanged { value in
+//                                        let t = value.translation.width
+//
+//                                        if (abs(t) < 0.1) {
+//                                            self.lastCoordinateValue = relativePosition
+//                                        }
+//                                        if t > 0 {
+//                                            let nextCoordinateValue = min(maxValue, self.lastCoordinateValue + t)
+//                                            self.possition = Int(((nextCoordinateValue - markerSidesOffset) / scaleFactor))
+//                                        } else {
+//                                            let nextCoordinateValue = max(minValue, self.lastCoordinateValue + t)
+//                                            self.possition = Int(((nextCoordinateValue - markerSidesOffset) / scaleFactor))
+//                                        }
+//                                    }
+//                            )
 
                         // The not played part to see the background.
                         Spacer()
