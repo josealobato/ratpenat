@@ -20,8 +20,8 @@ struct PlayerView: View {
             Spacer()
             PlayerCompositeView(lecture: $presenter.lecture ,
                                 onPlayPause: { request(.playToggle) },
-                                onForward: { },
-                                onBackwards: { })
+                                onForward: { request(.skipForward) },
+                                onBackwards: { request(.skipBackwards) })
                 .padding()
         }
         .onAppear {

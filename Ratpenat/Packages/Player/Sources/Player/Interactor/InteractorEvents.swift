@@ -8,6 +8,8 @@ enum InteractorEvents {
 
         case loadInitialData
         case playToggle
+        case skipForward
+        case skipBackwards
     }
 
     enum Output: Equatable {

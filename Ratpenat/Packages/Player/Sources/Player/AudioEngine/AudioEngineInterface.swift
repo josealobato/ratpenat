@@ -18,4 +18,5 @@ protocol AudioEngineInterface {
     func playToggle()
     func stop()
     func info() -> AudioInfo
+    func seek(to timeInSeconds: Double)
 }

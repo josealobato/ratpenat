@@ -18,12 +18,17 @@ final class Interactor: InteractorInput {
 
     func request(_ event: InteractorEvents.Input) async {
 
+        print("jal - INTERACTOR Request (\(event))")
         switch event {
 
         case .loadInitialData:
             await loadNextLecture()
         case .playToggle:
             await onPlayPause()
+        case .skipForward:
+            onSkipForwards()
+        case .skipBackwards:
+            onSkipBackwards()
         }
     }
 
@@ -96,6 +101,16 @@ final class Interactor: InteractorInput {
         let data = InteractorEvents.Output.LectureData(lecture: lecture,
                                                        audio: engine.info())
         render(.refresh(data))
+    }
+
+    private func onSkipForwards() {
+
+        currentEngine?.seek(to: 10)
+    }
+
+    private func onSkipBackwards() {
+
+        currentEngine?.seek(to: -10)
     }
 }
 

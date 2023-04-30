@@ -22,6 +22,12 @@ class AudioEngine {
     private var audioLengthFrames: AVAudioFramePosition = 0
     private var audioSampleRate: Double = 0
     private var audioLengthSeconds: Double = 0
+    // It is a flag to identify that there is a schedule going on and avoid
+    // multiple schedules.
+    private var needsFileScheduled = true
+    // The `seekFrame` is a kind of pointer to the place from the last
+    // reschedule frame. It is 0 when the playback is the complete file.
+    private var seekFrame: AVAudioFramePosition = 0
 
     // Display refresh
     private var displayLink: CADisplayLink?
@@ -72,17 +78,19 @@ extension AudioEngine {
 
     @objc private func updateDisplay() {
 
-        currentPosition = currentFrame
+        currentPosition = currentFrame + seekFrame
         currentPosition = max(currentPosition, 0)
         currentPosition = min(currentPosition, audioLengthFrames)
 
         if currentPosition >= audioLengthFrames {
 
             player.stop()
+            seekFrame = 0
             currentPosition = 0
             displayLink?.isPaused = true
         }
 
+// Just for debug
 //        let playerProgress = Double(currentPosition) / Double(audioLengthFrames)
 //        let elapsedTime = Double(currentPosition) / audioSampleRate
 //        let remainingTime = audioLengthSeconds - elapsedTime
@@ -91,8 +99,6 @@ extension AudioEngine {
         onPlaybackRefresh?(info())
     }
 }
-
-
 
 extension AudioEngine: AudioEngineInterface {
 
@@ -105,6 +111,19 @@ extension AudioEngine: AudioEngineInterface {
             player.scheduleFile(audioFile, at: nil)
             player.play()
             displayLink?.isPaused = false
+        }
+    }
+
+    private func scheduleAudioFile() {
+
+        guard needsFileScheduled else { return }
+
+        needsFileScheduled = false
+        seekFrame = 0
+
+        player.scheduleFile(audioFile, at: nil) {
+            // NOTE: this completion block is executed when the playback ends.
+            self.needsFileScheduled = true
         }
     }
 
@@ -123,5 +142,42 @@ extension AudioEngine: AudioEngineInterface {
         return AudioInfo(durationInSecons: Int(audioLengthSeconds),
                          isPlaying: player.isPlaying,
                          currentPositionInOnePercent: Double(currentPosition) / Double(audioLengthFrames))
+    }
+
+    func seek(to timeInSeconds: Double) {
+
+        // Computing the new current position.
+        let offset = AVAudioFramePosition(timeInSeconds * audioSampleRate)
+        seekFrame = currentPosition + offset
+        seekFrame = max(seekFrame, 0)
+        seekFrame = min(seekFrame, audioLengthFrames)
+        currentPosition = seekFrame
+
+        // Stopping the playback (will remove the schedule) and remembering the
+        // previous state.
+        let wasPlaying = player.isPlaying
+        player.stop()
+
+        // If the new position is beyond the end, we stop here.
+        // Otherwise reschedule the playback.
+        if currentPosition < audioLengthFrames {
+            //          updateDisplay()
+            needsFileScheduled = false
+
+            let frameCount = AVAudioFrameCount(audioLengthFrames - seekFrame)
+            player.scheduleSegment(
+                audioFile,
+                startingFrame: seekFrame,  // Frame to start from
+                frameCount: frameCount,    // Number of frames left to the end.
+                at: nil
+            ) {
+                // NOTE: this completion block is executed when the playback ends.
+                self.needsFileScheduled = true
+            }
+
+            if wasPlaying {
+                player.play()
+            }
+        }
     }
 }
