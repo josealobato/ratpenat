@@ -8,7 +8,7 @@ public struct PlayerBuilder {
     ) -> UIViewController {
 
         let interactor = Interactor(services: services,
-                                    audioEntineBuider: AudioEngineBuilder())
+                                    audioEngineBuider: AudioEngineBuilder())
 
         return makeViewController(interactor: interactor)
     }

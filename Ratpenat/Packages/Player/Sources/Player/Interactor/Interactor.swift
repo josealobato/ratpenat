@@ -8,10 +8,10 @@ final class Interactor: InteractorInput {
     let audioEngineBuider: AudioEngineInterfaceBuilder
 
     init(services: PlayerServiceInterface,
-         audioEntineBuider: AudioEngineInterfaceBuilder) {
+         audioEngineBuider: AudioEngineInterfaceBuilder) {
 
         self.services = services
-        self.audioEngineBuider = audioEntineBuider
+        self.audioEngineBuider = audioEngineBuider
     }
 
     // MARK: - Intercator input
@@ -59,7 +59,9 @@ final class Interactor: InteractorInput {
                 return
             }
 
-            let audioEngine = try audioEngineBuider.build(with: lecture.location)
+
+            let audioEngine = try audioEngineBuider.build(with: lecture.location,
+                                                          onPlaybackRefresh: enginePlaybackUpdate)
 
             let data = InteractorEvents.Output.LectureData(lecture: lecture,
                                                            audio: audioEngine.info())
@@ -72,6 +74,16 @@ final class Interactor: InteractorInput {
 
             renderError(error)
         }
+    }
+
+    func enginePlaybackUpdate(audioInfo: AudioInfo) {
+
+        guard let lecture = currentLecture
+        else { return }
+
+        let data = InteractorEvents.Output.LectureData(lecture: lecture,
+                                                       audio: audioInfo)
+        render(.refresh(data))
     }
 
     private func onPlayPause() async {

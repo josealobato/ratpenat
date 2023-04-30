@@ -45,7 +45,9 @@ struct PlayerView_Previews: PreviewProvider {
 
         @State private var previewLecture: LectureViewModel = LectureViewModel(id: "01",
                                                                                title: "Title of One with some extra text for more space",
-                                                                               isPlaying: false)
+                                                                               isPlaying: false,
+                                                                               totalLenghtInSeconds: 3600,
+                                                                               currentPossitionInSeconds: 360)
 
         var body: some View {
             VStack {

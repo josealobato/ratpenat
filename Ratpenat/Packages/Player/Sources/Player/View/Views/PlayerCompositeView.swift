@@ -17,7 +17,8 @@ struct PlayerCompositeView: View {
                 .onPlayPause { onPlayPause() }
                 .onForward { onForward() }
                 .onBackwards { onBackwards() }
-            PositionSlider(possition: $possition, length: 100)
+            PositionSlider(possition: $lecture.currentPossitionInSeconds,
+                           length: lecture.totalLenghtInSeconds)
         }
     }
 
@@ -32,7 +33,9 @@ struct PlayerCompositeView_Previews: PreviewProvider {
 
     @State static var model = LectureViewModel(id: "01",
                                                title: "One",
-                                               isPlaying: false)
+                                               isPlaying: false,
+                                               totalLenghtInSeconds: 3600,
+                                               currentPossitionInSeconds: 360)
     static var previews: some View {
         Group {
             PlayerCompositeView(lecture: .constant(model),
