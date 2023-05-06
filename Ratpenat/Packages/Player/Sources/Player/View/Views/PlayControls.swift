@@ -3,6 +3,7 @@ import SwiftUI
 struct PlayControls: View {
 
     var isPlaying: Bool
+    var isEnabled: Bool
 
     private let buttonsize =  40.0
     private let internalPadding = 60.0
@@ -86,6 +87,6 @@ private extension PlayControls {
 
 struct PlayControls_Previews: PreviewProvider {
     static var previews: some View {
-        PlayControls(isPlaying: true)
+        PlayControls(isPlaying: true, isEnabled: false)
     }
 }

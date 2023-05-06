@@ -27,12 +27,12 @@ final class Presenter: ObservableObject, InteractorOutput {
         }
     }
 
-    private func renderContent(lecture: LectureViewModel) {
+    private func renderContent(viewModel: LectureViewModel) {
 
         withAnimation {
 
             viewState = nil
-            self.lecture = lecture
+            self.lecture = viewModel
         }
     }
 
@@ -40,15 +40,17 @@ final class Presenter: ObservableObject, InteractorOutput {
 
         switch event {
         case .startLoading:
-            //            updateViewState(.loading)
+            // WARNIN: for now the initial state is no lecture.
+            renderContent(viewModel: LectureViewModel.none)
             break
 
         case .refresh(let data):
             let lectureViewModel = createViewModel(from: data)
-            renderContent(lecture: lectureViewModel)
-            break
+            renderContent(viewModel: lectureViewModel)
+
         case .noLecture:
-            break
+            renderContent(viewModel: LectureViewModel.none)
+
         }
     }
 

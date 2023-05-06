@@ -18,7 +18,7 @@ struct PlayerView: View {
 
         VStack {
             Spacer()
-            PlayerCompositeView(lecture: $presenter.lecture ,
+            PlayerCompositeView(viewModel: $presenter.lecture ,
                                 onPlayPause: { request(.playToggle) },
                                 onForward: { request(.skipForward) },
                                 onBackwards: { request(.skipBackwards) })
@@ -45,6 +45,7 @@ struct PlayerView_Previews: PreviewProvider {
 
         @State private var previewLecture: LectureViewModel = LectureViewModel(id: "01",
                                                                                title: "Title of One with some extra text for more space",
+                                                                               isEnabled: true,
                                                                                isPlaying: false,
                                                                                totalLenghtInSeconds: 3600,
                                                                                currentPossitionInSeconds: 360)
@@ -52,7 +53,7 @@ struct PlayerView_Previews: PreviewProvider {
         var body: some View {
             VStack {
                 Spacer()
-                PlayerCompositeView(lecture: $previewLecture,
+                PlayerCompositeView(viewModel: $previewLecture,
                                     onPlayPause: { },
                                     onForward: { },
                                     onBackwards: { })

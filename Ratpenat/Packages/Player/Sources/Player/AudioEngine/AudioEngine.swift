@@ -28,22 +28,33 @@ class AudioEngine {
     // The `seekFrame` is a kind of pointer to the place from the last
     // reschedule frame. It is 0 when the playback is the complete file.
     private var seekFrame: AVAudioFramePosition = 0
+    private var isSeeking = false
 
     // Display refresh
     private var displayLink: CADisplayLink?
     private var onPlaybackRefresh: ((AudioInfo) -> Void)?
+    private var onDone: (() -> Void)?
 
     // MARK: - Initialization
 
     init(fileURL: URL,
-         onPlaybackRefresh: ((AudioInfo) -> Void)? = nil) throws {
+         onPlaybackRefresh: ((AudioInfo) -> Void)? = nil,
+         onDone: (() -> Void)?) throws {
         
         self.fileURL = fileURL
         self.onPlaybackRefresh = onPlaybackRefresh
+        self.onDone = onDone
         self.audioFile = try AVAudioFile(forReading: fileURL)
         try self.configureEngine(with: audioFile.processingFormat)
         self.gatherAudioInfo()
         self.setupDisplayLink()
+    }
+
+    deinit {
+        DispatchQueue.main.async {
+
+            self.displayLink?.remove(from: .current, forMode: .default)
+        }
     }
 
     private func configureEngine(with format: AVAudioFormat) throws {
@@ -108,7 +119,9 @@ extension AudioEngine: AudioEngineInterface {
             player.pause()
             displayLink?.isPaused = true
         } else {
-            player.scheduleFile(audioFile, at: nil)
+            if needsFileScheduled {
+                scheduleAudioFile()
+            }
             player.play()
             displayLink?.isPaused = false
         }
@@ -124,6 +137,17 @@ extension AudioEngine: AudioEngineInterface {
         player.scheduleFile(audioFile, at: nil) {
             // NOTE: this completion block is executed when the playback ends.
             self.needsFileScheduled = true
+            self.notifyDoneIfNeeded()
+        }
+    }
+
+    func notifyDoneIfNeeded() {
+//        print("jal - currentPosition: \(self.currentPosition) audioLengthFrames: \(self.audioLengthFrames)")
+        let playerProgress = Double(currentPosition) / Double(audioLengthFrames)
+        let elapsedTime = Double(currentPosition) / audioSampleRate
+        let remainingTime = audioLengthSeconds - elapsedTime
+        if (remainingTime < 2) {
+            onDone?()
         }
     }
 
@@ -173,6 +197,8 @@ extension AudioEngine: AudioEngineInterface {
             ) {
                 // NOTE: this completion block is executed when the playback ends.
                 self.needsFileScheduled = true
+                self.notifyDoneIfNeeded()
+                print("jal - Playback Finished (on seek)")
             }
 
             if wasPlaying {

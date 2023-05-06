@@ -60,12 +60,14 @@ final class Interactor: InteractorInput {
             guard let lecture = try await services.nextLecture()
             else {
                 render(.noLecture)
+                currentEngine = nil
+                currentLecture = nil
                 return
             }
 
-
             let audioEngine = try audioEngineBuider.build(with: lecture.location,
-                                                          onPlaybackRefresh: enginePlaybackUpdate)
+                                                          onPlaybackRefresh: enginePlaybackUpdate,
+                                                          onDone: onPlaybackDone)
 
             let data = InteractorEvents.Output.LectureData(lecture: lecture,
                                                            audio: audioEngine.info())
@@ -88,6 +90,16 @@ final class Interactor: InteractorInput {
         let data = InteractorEvents.Output.LectureData(lecture: lecture,
                                                        audio: audioInfo)
         render(.refresh(data))
+    }
+
+    func onPlaybackDone() {
+
+        Task {
+
+            await loadNextLecture()
+            // If autoplay.
+            await onPlayPause()
+        }
     }
 
     private func onPlayPause() async {

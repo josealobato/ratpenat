@@ -10,7 +10,8 @@ struct AudioInfo: Equatable {
 protocol AudioEngineInterfaceBuilder {
 
     func build(with file: URL,
-               onPlaybackRefresh: @escaping (AudioInfo) -> Void) throws -> AudioEngineInterface
+               onPlaybackRefresh: @escaping (AudioInfo) -> Void,
+               onDone: @escaping () -> Void) throws -> AudioEngineInterface
 }
 
 protocol AudioEngineInterface {

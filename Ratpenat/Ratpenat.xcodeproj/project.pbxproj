@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B447946C29DECD8A00A7356D /* RStorage.json in Resources */ = {isa = PBXBuildFile; fileRef = B447946B29DECD8A00A7356D /* RStorage.json */; };
+		B454034B29FFFF9100850702 /* Test-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034829FFFF9100850702 /* Test-1.mp3 */; };
+		B454034C29FFFF9100850702 /* Test-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034929FFFF9100850702 /* Test-2.mp3 */; };
+		B454034D29FFFF9100850702 /* Test-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034A29FFFF9100850702 /* Test-3.mp3 */; };
 		B4695E5529FAE1F0007A9244 /* demoMP4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */; };
 		B4695E5729FAE816007A9244 /* demoMP3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4695E5629FAE816007A9244 /* demoMP3.mp3 */; };
 		B470D34F29EB0ACC005FA54B /* PlayerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */; };
@@ -54,6 +57,9 @@
 /* Begin PBXFileReference section */
 		B447946B29DECD8A00A7356D /* RStorage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RStorage.json; sourceTree = "<group>"; };
 		B447946D29DEDE2200A7356D /* Player */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Player; sourceTree = "<group>"; };
+		B454034829FFFF9100850702 /* Test-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-1.mp3"; sourceTree = "<group>"; };
+		B454034929FFFF9100850702 /* Test-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-2.mp3"; sourceTree = "<group>"; };
+		B454034A29FFFF9100850702 /* Test-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-3.mp3"; sourceTree = "<group>"; };
 		B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demoMP4.mp4; sourceTree = "<group>"; };
 		B4695E5629FAE816007A9244 /* demoMP3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demoMP3.mp3; sourceTree = "<group>"; };
 		B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAdapter.swift; sourceTree = "<group>"; };
@@ -149,6 +155,9 @@
 				B49C264D29CF59AA00EF08C5 /* LaunchScreen.storyboard */,
 				B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */,
 				B4695E5629FAE816007A9244 /* demoMP3.mp3 */,
+				B454034829FFFF9100850702 /* Test-1.mp3 */,
+				B454034929FFFF9100850702 /* Test-2.mp3 */,
+				B454034A29FFFF9100850702 /* Test-3.mp3 */,
 				B49C265029CF59AA00EF08C5 /* Info.plist */,
 				B447946B29DECD8A00A7356D /* RStorage.json */,
 			);
@@ -357,8 +366,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B454034D29FFFF9100850702 /* Test-3.mp3 in Resources */,
 				B4695E5729FAE816007A9244 /* demoMP3.mp3 in Resources */,
+				B454034C29FFFF9100850702 /* Test-2.mp3 in Resources */,
 				B4695E5529FAE1F0007A9244 /* demoMP4.mp4 in Resources */,
+				B454034B29FFFF9100850702 /* Test-1.mp3 in Resources */,
 				B49C264F29CF59AA00EF08C5 /* LaunchScreen.storyboard in Resources */,
 				B447946C29DECD8A00A7356D /* RStorage.json in Resources */,
 				B49C264C29CF59AA00EF08C5 /* Assets.xcassets in Resources */,

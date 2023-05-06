@@ -5,13 +5,15 @@ struct LectureViewModel: Identifiable, Equatable {
 
     let id: String
     let title: String
+    let isEnabled: Bool
     let isPlaying: Bool
     let totalLenghtInSeconds: Int
     var currentPossitionInSeconds: Int
 
     static var none: LectureViewModel {
-        LectureViewModel(id: "",
-                         title: "",
+        LectureViewModel(id: "None",
+                         title: LocalizationKey.noAudioMessage.localize(),
+                         isEnabled: false,
                          isPlaying: false,
                          totalLenghtInSeconds: 0,
                          currentPossitionInSeconds: 0)
@@ -26,9 +28,10 @@ extension LectureViewModel {
         let currentPosition = Int(data.audio.currentPositionInOnePercent * Double(data.audio.durationInSecons))
 
         return LectureViewModel(id: data.lecture.id,
-                         title: data.lecture.title,
-                         isPlaying: data.audio.isPlaying,
+                                title: data.lecture.title,
+                                isEnabled: true,
+                                isPlaying: data.audio.isPlaying,
                                 totalLenghtInSeconds: data.audio.durationInSecons,
-                         currentPossitionInSeconds: currentPosition)
+                                currentPossitionInSeconds: currentPosition)
     }
 }
