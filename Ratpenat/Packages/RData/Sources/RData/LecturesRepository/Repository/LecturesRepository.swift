@@ -28,6 +28,6 @@ extension LecturesRepository: LecturesRepositoryInteface {
 
     func lectures() async throws -> [LectureDataEntity] {
         
-        storage?.lectures ?? []
+        storage?.lecturesDataEntities() ?? []
     }
 }

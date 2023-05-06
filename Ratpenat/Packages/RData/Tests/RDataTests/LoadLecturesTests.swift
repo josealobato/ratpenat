@@ -1,26 +1,11 @@
 import XCTest
 @testable import RData
 
-
-//private class BundleFinder {}
-//
-//extension Foundation.Bundle {
-//    /// Since TeamworkDataTests is a unit tests, the bundle for classes within this module can be used directly.
-//    static let module = Bundle(for: BundleFinder.self)
-//}
-
-
 final class LoadLecturesTests: XCTestCase {
 
     var repoUT: LecturesRepository!
 
     override func setUp() {
-
-//        let bundle = Bundle.module
-//        let thisSourceFile = URL(fileURLWithPath: #file)
-//        let thisDirectory = thisSourceFile.deletingLastPathComponent().deletingLastPathComponent()
-//        let testStorageURL = thisDirectory.appendingPathComponent("Fixtures/Lectures.json")
-//        print(testStorageURL)
 
         let testStorageURL = Bundle.module.url(forResource: "Fixtures/LecturesTest", withExtension: "json")!
         repoUT = LecturesRepository(storageURL: testStorageURL)
@@ -37,13 +22,18 @@ final class LoadLecturesTests: XCTestCase {
         // WHEN the lectures are requested.
         let lectures = try await repoUT.lectures()
 
-        // THEN the available lectures are retuned.
-        XCTAssert(lectures.count == 2)
+        // THEN the available lectures are returned (just one tested)
+        XCTAssert(lectures.count == 3)
         XCTAssertEqual(lectures[0].id, "01")
-        XCTAssertEqual(lectures[0].title, "This is lecture one")
-        XCTAssertEqual(lectures[0].location, URL(string: "file://aFolder"))
-        XCTAssertEqual(lectures[1].id, "02")
-        XCTAssertEqual(lectures[1].title, "This is lecture two")
-        XCTAssertEqual(lectures[1].location, URL(string: "file://aFolder"))
+        XCTAssertEqual(lectures[0].title, "This is lecture one on English")
+        XCTAssertEqual(lectures[0].mediaURL, URL(string: "file://aFolder"))
+        XCTAssertNil(lectures[0].imageURL)
+
+        XCTAssertNotNil(lectures[0].category)
+        let category = lectures[0].category!
+        XCTAssertEqual(category.id, "2")
+        XCTAssertEqual(category.title, "Social Science")
+        XCTAssertNil(category.imageURL)
+        XCTAssertEqual(category.defaultImage, "map")
     }
 }

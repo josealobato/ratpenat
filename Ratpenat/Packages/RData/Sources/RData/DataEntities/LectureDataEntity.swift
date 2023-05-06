@@ -1,9 +1,34 @@
 import Foundation
 
-/// Representation of a lecture.
 public struct LectureDataEntity: Identifiable, Codable {
 
     public let id: String
     public let title: String
-    public let location: URL
+    public let category: CategoryDataEntity?
+    public let mediaURL: URL
+    public let imageURL: URL?
+}
+
+// MARK: - Storage Extensions to get the entities from data
+// This is placed here because storage should not know about data.
+// In the future Storage can be extracted to its own module.
+
+extension StorageData {
+
+    func lecturesDataEntities() -> [LectureDataEntity] {
+
+        let entities = lectures.map { lectureStorage in
+
+            let category = categories.first(where: { $0.id == lectureStorage.categoryId})
+
+            let newLecture = LectureDataEntity(id: lectureStorage.id,
+                                               title: lectureStorage.title,
+                                               category: category?.dataEntity,
+                                               mediaURL: lectureStorage.mediaURL,
+                                               imageURL: lectureStorage.imageURL)
+            return newLecture
+        }
+
+        return entities
+    }
 }

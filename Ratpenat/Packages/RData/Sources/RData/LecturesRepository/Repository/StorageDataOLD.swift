@@ -6,7 +6,7 @@ import Foundation
 /// **Rationale** At this point in the implementation a JSON
 /// will all the information suffices. When needed we could go
 /// to a more powerful storage.
-struct StorageData: Codable {
+struct StorageDataOLD: Codable {
     
     var lectures: [LectureDataEntity]
 }

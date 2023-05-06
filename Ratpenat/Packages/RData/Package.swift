@@ -23,7 +23,7 @@ let package = Package(
             name: "RData",
             dependencies: [],
             resources: [
-                .copy("Storage.json")
+                .copy("Storage/StorageData.json")
             ]),
         .testTarget(
             name: "RDataTests",
