@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B416DE572A07AC8D001D4208 /* Category+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416DE562A07AC8D001D4208 /* Category+FromDataEntity.swift */; };
 		B447946C29DECD8A00A7356D /* RStorage.json in Resources */ = {isa = PBXBuildFile; fileRef = B447946B29DECD8A00A7356D /* RStorage.json */; };
 		B454034B29FFFF9100850702 /* Test-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034829FFFF9100850702 /* Test-1.mp3 */; };
 		B454034C29FFFF9100850702 /* Test-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034929FFFF9100850702 /* Test-2.mp3 */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B416DE562A07AC8D001D4208 /* Category+FromDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+FromDataEntity.swift"; sourceTree = "<group>"; };
 		B447946B29DECD8A00A7356D /* RStorage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RStorage.json; sourceTree = "<group>"; };
 		B447946D29DEDE2200A7356D /* Player */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Player; sourceTree = "<group>"; };
 		B454034829FFFF9100850702 /* Test-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-1.mp3"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				B4B5CD7A29DDD9340094BD79 /* Lectures+FromDataEntity.swift */,
+				B416DE562A07AC8D001D4208 /* Category+FromDataEntity.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				B49C264729CF59A900EF08C5 /* ViewController.swift in Sources */,
 				B49C267529D0554700EF08C5 /* HomeVC.swift in Sources */,
 				B470D34F29EB0ACC005FA54B /* PlayerAdapter.swift in Sources */,
+				B416DE572A07AC8D001D4208 /* Category+FromDataEntity.swift in Sources */,
 				B4B5CD7B29DDD9340094BD79 /* Lectures+FromDataEntity.swift in Sources */,
 				B49C267329D0551B00EF08C5 /* HomeV.swift in Sources */,
 				B49C264329CF59A900EF08C5 /* AppDelegate.swift in Sources */,

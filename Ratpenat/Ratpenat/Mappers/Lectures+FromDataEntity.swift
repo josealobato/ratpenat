@@ -8,7 +8,9 @@ extension LectureDataEntity {
 
         Lecture(id: id,
                 title: title,
-                location: location)
+                category: category?.toCategory(),
+                mediaURL: mediaURL,
+                imageURL: imageURL)
 
     }
 }

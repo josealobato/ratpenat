@@ -1,3 +1,18 @@
-# LessonCollection
+# Lecture Collection (LC)
 
-A description of this package.
+Listing lectures
+
+## Legend:
+* [LCxxxx] requirement id.
+* [ ] requirement implemented.
+* [x] requirement implemented.
+* [T] requirement with test coverage.
+* [NT] requirement without test coverage. 
+
+
+## Specification.
+
+* [PL0010] [] [NT] 
+
+
+## Settings

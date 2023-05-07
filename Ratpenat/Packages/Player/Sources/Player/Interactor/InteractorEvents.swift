@@ -16,7 +16,17 @@ enum InteractorEvents {
 
         struct LectureData: Equatable {
 
-            let lecture: Lecture
+            static func == (lhs: InteractorEvents.Output.LectureData, rhs: InteractorEvents.Output.LectureData) -> Bool {
+
+                // Implementing Equatable in the PlayerLecture protocol complicate things,
+                // so, since the entity is small we do it here manually.
+                lhs.lecture.id == rhs.lecture.id &&
+                lhs.lecture.title == rhs.lecture.title &&
+                lhs.lecture.mediaURL == rhs.lecture.mediaURL &&
+                lhs.audio == rhs.audio
+            }
+
+            let lecture: PlayerLecture
             let audio: AudioInfo
         }
 

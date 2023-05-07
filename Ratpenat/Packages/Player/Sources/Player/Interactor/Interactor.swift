@@ -49,7 +49,7 @@ final class Interactor: InteractorInput {
 
     // MARK: - Action
     
-    private var currentLecture: Lecture?
+    private var currentLecture: PlayerLecture?
     private var currentEngine: AudioEngineInterface?
 
     private func loadNextLecture() async {
@@ -65,7 +65,7 @@ final class Interactor: InteractorInput {
                 return
             }
 
-            let audioEngine = try audioEngineBuider.build(with: lecture.location,
+            let audioEngine = try audioEngineBuider.build(with: lecture.mediaURL,
                                                           onPlaybackRefresh: enginePlaybackUpdate,
                                                           onDone: onPlaybackDone)
 
