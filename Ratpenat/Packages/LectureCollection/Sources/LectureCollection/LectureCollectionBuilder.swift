@@ -20,7 +20,8 @@ private extension LectureCollectionBuilder {
         let presenter = Presenter(interactor: interactor)
         interactor.output = presenter
 
-        let view = LectureCollectionView(presenter: presenter)
+        let view = LectureCollectionView(presenter: presenter,
+                                         interactor: interactor)
 
         return UIHostingController(rootView: view)
     }

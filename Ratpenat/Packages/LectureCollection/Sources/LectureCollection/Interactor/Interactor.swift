@@ -18,6 +18,17 @@ final class Interactor: InteractorInput {
         case .loadInitialData:
             render(.startLoading)
             await fetchData()
+        case .select(_):
+            print("Interactor select")
+        case .play(_):
+            print("Interactor play")
+            break
+        case .enqueue(_):
+            print("Interactor enqueue")
+            break
+        case .delete(_):
+            print("Interactor delete")
+            break
         }
     }
 

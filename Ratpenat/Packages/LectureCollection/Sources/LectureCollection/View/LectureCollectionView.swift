@@ -8,24 +8,30 @@ struct LectureCollectionView: View {
     }
 
     @StateObject private var presenter: Presenter
+    let interactor: InteractorInput
 
-    init(presenter: Presenter) {
+    init(presenter: Presenter,
+         interactor: InteractorInput) {
 
         self._presenter = StateObject(wrappedValue: presenter)
+        self.interactor = interactor
     }
     
     var body: some View {
-        LectureList(lectures: $presenter.lectures, onTap: { _ in })
+        LectureList(lectures: presenter.lectures, onTap: { _ in })
+            .onSelect { request(.select($0)) }
+            .onPlay {  request(.play($0)) }
+            .onEnqueue { request(.enqueue($0)) }
+            .onDelete { request(.delete($0)) }
             .navigationTitle("Lecture List")
             .onAppear { request(.loadInitialData) }
-
     }
 
     func request(_ event: InteractorEvents.Input) {
 
         Task {
 
-            await presenter.request(event)
+            await interactor.request(event)
         }
     }
 }
@@ -36,13 +42,21 @@ struct LectureCollectionView_Previews: PreviewProvider {
 
         @State private var previewLectures: [LectureViewModel] = [
             LectureViewModel(id: "01",
-                             title: "Title of One"),
+                             title: "One",
+                             subtitle: "",
+                             imageName: "book.circle"),
             LectureViewModel(id: "02",
-                             title: "Title of Two")
+                             title: "Two",
+                             subtitle: "",
+                             imageName: "book.fill"),
+            LectureViewModel(id: "03",
+                             title: "Three",
+                             subtitle: "",
+                             imageName: "bookmark"),
         ]
-
+        
         var body: some View {
-            LectureList(lectures: $previewLectures, onTap: {_ in })
+            LectureList(lectures: previewLectures, onTap: {_ in })
         }
 
     }

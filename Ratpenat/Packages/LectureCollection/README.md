@@ -12,7 +12,10 @@ Listing lectures
 
 ## Specification.
 
-* [PL0010] [] [NT] 
+* [PL0010] [] [NT] Inform the user if the lecture is already in the queue.
+
+Enqueuing is the default action of swipe left.
+
 
 
 ## Settings
