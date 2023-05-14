@@ -26,6 +26,7 @@ struct LectureList: View {
 
         }
         .listStyle(.plain)
+        .navigationTitle(LocalizationKey.lectures.localize())
     }
 
     // MARK: - Actions
@@ -95,10 +96,12 @@ struct SwiftUIView_Previews: PreviewProvider {
                          imageName: "bookmark"),
     ]
     static var previews: some View {
-        LectureList(lectures: models,
-                    onTap: { _ in })
-        .previewDisplayName("Lecture Collection")
-//                .preferredColorScheme(.dark)
+        NavigationView {
+            LectureList(lectures: models,
+                        onTap: { _ in })
+            .previewDisplayName("Lecture Collection")
+            //                .preferredColorScheme(.dark)
+        }
 
     }
 }

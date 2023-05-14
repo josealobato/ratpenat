@@ -28,34 +28,40 @@ struct LectureRow: View {
         }
         .swipeActions(edge: .trailing) {
             Button { enqueue() } label: {
-                Label("Queue", systemImage: "play.square.stack")
+                Label(LocalizationKey.enqueue.localize(),
+                      systemImage: "play.square.stack")
             }
             .tint(.green)
         }
         .swipeActions(edge: .trailing) {
             Button { play() } label: {
-                Label("Play", systemImage: "play")
+                Label(LocalizationKey.play.localize(),
+                      systemImage: "play")
             }
             .tint(.blue)
         }
         .swipeActions(edge: .leading) {
             Button { delete() } label: {
-                Label("Delete", systemImage: "trash")
+                Label(LocalizationKey.delete.localize(),
+                      systemImage: "trash")
             }
             .tint(.red)
         }
         .contextMenu {
 
             Button { enqueue() } label: {
-                Label("Queue", systemImage: "play.square.stack")
+                Label(LocalizationKey.enqueue.localize(),
+                      systemImage: "play.square.stack")
             }
             Button { play() } label: {
-                Label("Play", systemImage: "play")
+                Label(LocalizationKey.play.localize(),
+                      systemImage: "play")
             }
 
             Divider()
             Button(role: .destructive) { delete() } label: {
-                Label("Delete", systemImage: "trash")
+                Label(LocalizationKey.delete.localize(),
+                      systemImage: "trash")
             }
         }
     }
