@@ -5,6 +5,7 @@ struct LectureRow: View {
     var title: String
     var subTitle: String
     var imageName: String
+    var isStacked: Bool
 
     private let handlers: ActionHandlers = .init()
 
@@ -24,14 +25,29 @@ struct LectureRow: View {
                         .lineLimit(4)
                 }
 
+
+            }
+            Spacer()
+            HStack {
+                if isStacked {
+                    Image(systemName: "play.square.stack")
+                }
             }
         }
         .swipeActions(edge: .trailing) {
-            Button { enqueue() } label: {
-                Label(LocalizationKey.enqueue.localize(),
-                      systemImage: "play.square.stack")
+            if isStacked {
+                Button { dequeue() } label: {
+                    Label(LocalizationKey.dequeue.localize(),
+                          systemImage: "rectangle.stack.badge.minus")
+                }
+                .tint(.red)
+            } else {
+                Button { enqueue() } label: {
+                    Label(LocalizationKey.enqueue.localize(),
+                          systemImage: "rectangle.stack.badge.plus")
+                }
+                .tint(.green)
             }
-            .tint(.green)
         }
         .swipeActions(edge: .trailing) {
             Button { play() } label: {
@@ -49,9 +65,16 @@ struct LectureRow: View {
         }
         .contextMenu {
 
-            Button { enqueue() } label: {
-                Label(LocalizationKey.enqueue.localize(),
-                      systemImage: "play.square.stack")
+            if isStacked {
+                Button { dequeue() } label: {
+                    Label(LocalizationKey.dequeue.localize(),
+                          systemImage: "rectangle.stack.badge.minus")
+                }
+            } else {
+                Button { enqueue() } label: {
+                    Label(LocalizationKey.enqueue.localize(),
+                          systemImage: "rectangle.stack.badge.plus")
+                }
             }
             Button { play() } label: {
                 Label(LocalizationKey.play.localize(),
@@ -78,6 +101,11 @@ struct LectureRow: View {
         return self
     }
 
+    public func onDequeue(_ action: @escaping (() -> Void)) -> Self {
+        handlers.onDequeue = action
+        return self
+    }
+
     public func onDelete(_ action: @escaping (() -> Void)) -> Self {
         handlers.onDelete = action
         return self
@@ -88,6 +116,7 @@ private class ActionHandlers {
 
     var onPlay: (() -> Void)?
     var onEnqueue: (() -> Void)?
+    var onDequeue: (() -> Void)?
     var onDelete: (() -> Void)?
 }
 
@@ -101,6 +130,10 @@ private extension LectureRow {
         handlers.onEnqueue?()
     }
 
+    func dequeue() {
+        handlers.onDequeue?()
+    }
+
     func delete() {
         handlers.onDelete?()
     }
@@ -110,17 +143,20 @@ struct LectureRow_Previews: PreviewProvider {
     static var previews: some View {
         let basicRow1 = LectureRow(title: "Egypt rivers",
                                    subTitle: "In all their glory",
-                                   imageName: "pin")
+                                   imageName: "pin",
+                                   isStacked: true)
             .onPlay { print("onPlay") }
             .onDelete { print("onDelete") }
             .onEnqueue { print("onEnqueue") }
         let basicRow2 = LectureRow(title: "The best book ever written",
                                    subTitle: "It is about love of course",
-                                   imageName: "book.closed")
+                                   imageName: "book.closed",
+                                   isStacked: false)
 
         let basicRow3 = LectureRow(title: "The best book ever written",
                                    subTitle: "",
-                                   imageName: "book.closed")
+                                   imageName: "book.closed",
+                                   isStacked: true)
         Group {
             List {
                 basicRow1
@@ -131,6 +167,8 @@ struct LectureRow_Previews: PreviewProvider {
                 basicRow3
                     .previewDisplayName("No Subtitle")
             }
+            .listStyle(.plain)
+            
 //            .preferredColorScheme(.dark)
         }
     }

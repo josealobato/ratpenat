@@ -16,9 +16,11 @@ struct LectureList: View {
             ForEach(lectures) { lecture in
                 LectureRow(title: lecture.title,
                            subTitle: lecture.subtitle,
-                           imageName: lecture.imageName)
+                           imageName: lecture.imageName,
+                           isStacked: lecture.isStacked)
                 .onPlay { play(id: lecture.id) }
                 .onEnqueue { enqueue(id: lecture.id) }
+                .onDequeue { dequeue(id: lecture.id) }
                 .onDelete { delete(id: lecture.id) }
                 .onTapGesture { select(id: lecture.id) }
             }
@@ -46,6 +48,11 @@ struct LectureList: View {
         return self
     }
 
+    public func onDequeue(_ action: @escaping ((String) -> Void)) -> Self {
+        handlers.onDequeue = action
+        return self
+    }
+
     public func onDelete(_ action: @escaping ((String) -> Void)) -> Self {
         handlers.onDelete = action
         return self
@@ -57,6 +64,7 @@ private class ActionHandlers {
     var onSelect: ((String) -> Void)?
     var onPlay: ((String) -> Void)?
     var onEnqueue: ((String) -> Void)?
+    var onDequeue: ((String) -> Void)?
     var onDelete: ((String) -> Void)?
 }
 
@@ -74,6 +82,10 @@ private extension LectureList {
         handlers.onEnqueue?(id)
     }
 
+    func dequeue(id: String) {
+        handlers.onDequeue?(id)
+    }
+
     func delete(id: String) {
         handlers.onDelete?(id)
     }
@@ -85,15 +97,18 @@ struct SwiftUIView_Previews: PreviewProvider {
         LectureViewModel(id: "01",
                          title: "This a normal title",
                          subtitle: "",
-                         imageName: "book.circle"),
+                         imageName: "book.circle",
+                         isStacked: true),
         LectureViewModel(id: "02",
                          title: "This is a somehow very long title to see how it behaves",
                          subtitle: "This is a somehow very long title to see how it behaves This is a somehow very long title to see how it behaves This is a somehow very long title to see how it behaves",
-                         imageName: "book.fill"),
+                         imageName: "book.fill",
+                         isStacked: false),
         LectureViewModel(id: "03",
                          title: "Three",
                          subtitle: "",
-                         imageName: "bookmark"),
+                         imageName: "bookmark",
+                         isStacked: true),
     ]
     static var previews: some View {
         NavigationView {

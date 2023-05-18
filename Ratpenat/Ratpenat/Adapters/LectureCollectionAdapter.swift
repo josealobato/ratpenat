@@ -18,4 +18,14 @@ class LectureCollectionAdapter: LectureCollectionServiceInterface {
 
         try await repository.lectures().map { $0.toLecture()}
     }
+
+    func enqueueLecture(id: String) async throws {
+
+        try await repository.enqueueLecture(withId: id)
+    }
+
+    func dequeueLecture(id: String) async throws {
+
+        try await repository.dequeueLecture(withId: id)
+    }
 }

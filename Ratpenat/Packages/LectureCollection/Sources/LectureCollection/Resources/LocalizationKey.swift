@@ -7,6 +7,7 @@ enum LocalizationKey: String {
     // Actions
     case play
     case enqueue
+    case dequeue
     case delete
 
     func localize() -> String {

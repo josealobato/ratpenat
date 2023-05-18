@@ -7,6 +7,7 @@ public struct LectureDataEntity: Identifiable, Codable {
     public let category: CategoryDataEntity?
     public let mediaURL: URL
     public let imageURL: URL?
+    public let queued: Bool
 }
 
 // MARK: - Storage Extensions to get the entities from data
@@ -25,7 +26,30 @@ extension StorageData {
                                                title: lectureStorage.title,
                                                category: category?.dataEntity,
                                                mediaURL: lectureStorage.mediaURL,
-                                               imageURL: lectureStorage.imageURL)
+                                               imageURL: lectureStorage.imageURL,
+                                               queued: lectureStorage.queued)
+            return newLecture
+        }
+
+        return entities
+    }
+}
+
+// Temporary solution to have a mutable data store
+extension MutableStorageData {
+
+    func lecturesDataEntities() -> [LectureDataEntity] {
+
+        let entities = lectures.map { lectureStorage in
+
+            let category = categories.first(where: { $0.id == lectureStorage.categoryId})
+
+            let newLecture = LectureDataEntity(id: lectureStorage.id,
+                                               title: lectureStorage.title,
+                                               category: category?.dataEntity,
+                                               mediaURL: lectureStorage.mediaURL,
+                                               imageURL: lectureStorage.imageURL,
+                                               queued: lectureStorage.queued)
             return newLecture
         }
 

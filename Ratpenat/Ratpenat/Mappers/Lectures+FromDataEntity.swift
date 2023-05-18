@@ -10,7 +10,8 @@ extension LectureDataEntity {
                 title: title,
                 category: category?.toCategory(),
                 mediaURL: mediaURL,
-                imageURL: imageURL)
+                imageURL: imageURL,
+                isStacked: queued)
 
     }
 }

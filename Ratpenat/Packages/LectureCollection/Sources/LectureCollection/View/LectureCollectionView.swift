@@ -22,6 +22,7 @@ struct LectureCollectionView: View {
             .onSelect { request(.select($0)) }
             .onPlay {  request(.play($0)) }
             .onEnqueue { request(.enqueue($0)) }
+            .onDequeue { request(.dequeue($0)) }
             .onDelete { request(.delete($0)) }
             .navigationTitle("Lecture List")
             .onAppear { request(.loadInitialData) }
@@ -44,15 +45,18 @@ struct LectureCollectionView_Previews: PreviewProvider {
             LectureViewModel(id: "01",
                              title: "One",
                              subtitle: "",
-                             imageName: "book.circle"),
+                             imageName: "book.circle",
+                            isStacked: true),
             LectureViewModel(id: "02",
                              title: "Two",
                              subtitle: "",
-                             imageName: "book.fill"),
+                             imageName: "book.fill",
+                             isStacked: true),
             LectureViewModel(id: "03",
                              title: "Three",
                              subtitle: "",
-                             imageName: "bookmark"),
+                             imageName: "bookmark",
+                             isStacked: false),
         ]
         
         var body: some View {

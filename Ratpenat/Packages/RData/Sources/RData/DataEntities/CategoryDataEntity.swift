@@ -27,3 +27,18 @@ extension CategoryStorage {
     }
 
 }
+
+// Temporary solution to have a mutable data store
+
+extension MutableCategoryStorage {
+
+    var dataEntity: CategoryDataEntity {
+
+        CategoryDataEntity(id: id,
+                           title: title,
+                           imageURL: imageURL,
+                           defaultImage: defaultImage)
+
+    }
+
+}

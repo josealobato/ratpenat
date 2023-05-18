@@ -7,6 +7,7 @@ struct LectureViewModel: Identifiable, Equatable {
     let title: String
     let subtitle: String
     let imageName: String
+    let isStacked: Bool
 }
 
 extension LectureViewModel {
@@ -16,6 +17,7 @@ extension LectureViewModel {
         LectureViewModel(id: lecture.id,
                          title: lecture.title,
                          subtitle: lecture.category?.title ?? "",
-                         imageName: lecture.defaultImageName)
+                         imageName: lecture.defaultImageName,
+                         isStacked: lecture.isStacked)
     }
 }

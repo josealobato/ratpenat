@@ -10,6 +10,7 @@ enum InteractorEvents {
         case select(String)
         case play(String)
         case enqueue(String)
+        case dequeue(String)
         case delete(String)
     }
 
