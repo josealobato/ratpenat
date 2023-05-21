@@ -1,6 +1,7 @@
 import UIKit
 import Coordinator
 import LectureCollection
+import QueueCollection
 import RData
 import Player
 
@@ -22,17 +23,23 @@ extension AppCoordinator {
         // Player
         let playerVC = buildPlayerTabContent()
 
+        // Queue Collection
+        let queueNavigation = buildQueueListTabContent()
+        let queueCoordinator = BaseFlowCoordinator(managersTypeMapping: coordinatorManagersMapping)
+        queueCoordinator.navigationController = queueNavigation
+        queueCoordinator.parentCoordinator = self
+        childCoordinators.append(queueCoordinator)
+
         // List
         let listNavigation = buildLectureListTabContent()
-        let ListCoordinator = BaseFlowCoordinator(managersTypeMapping: coordinatorManagersMapping)
-        ListCoordinator.navigationController = listNavigation
-        ListCoordinator.parentCoordinator = self
-        childCoordinators.append(ListCoordinator)
-        //homeCoordinator.start()
+        let listCoordinator = BaseFlowCoordinator(managersTypeMapping: coordinatorManagersMapping)
+        listCoordinator.navigationController = listNavigation
+        listCoordinator.parentCoordinator = self
+        childCoordinators.append(listCoordinator)
 
         // Build the tab bar VC.
         let tabVC = UITabBarController()
-        tabVC.viewControllers = [playerVC, listNavigation]
+        tabVC.viewControllers = [playerVC, queueNavigation, listNavigation]
         tabVC.selectedIndex = 0
 
         rootViewController = tabVC
@@ -54,12 +61,26 @@ extension AppCoordinator {
 
         let listNavigation = UINavigationController()
 
-        let listRepository = LecturesRepositoryBuilder.build()
-        let listAdapter = LectureCollectionAdapter(repository: listRepository)
+        let listAdapter = LectureCollectionAdapter(repository: sharedDataRepository)
         let listVC = LectureCollectionBuilder.build(services: listAdapter)
 
         listVC.tabBarItem.image = UIImage(systemName: "books.vertical")
         listVC.tabBarItem.title = "Library"
+
+        listNavigation.pushViewController(listVC, animated: false)
+
+        return listNavigation
+    }
+
+    private func buildQueueListTabContent() -> UINavigationController {
+
+        let listNavigation = UINavigationController()
+
+        let listAdapter = QueueCollectionAdapter(repository: sharedDataRepository)
+        let listVC = QueueCollectionBuilder.build(services: listAdapter)
+
+        listVC.tabBarItem.image = UIImage(systemName: "rectangle.stack")
+        listVC.tabBarItem.title = "Queue"
 
         listNavigation.pushViewController(listVC, animated: false)
 

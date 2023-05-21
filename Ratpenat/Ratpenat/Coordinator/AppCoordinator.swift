@@ -2,6 +2,7 @@ import UIKit
 import JToolKit
 //import TeamworkUI
 import Coordinator
+import RData
 
 private typealias ConcurrencyTask = _Concurrency.Task
 
@@ -16,7 +17,8 @@ class AppCoordinator: BaseFlowCoordinator {
     // DevNote: This will be handle by the AppCoordinator in the future.
     static var shared = AppCoordinator()
 
-
+    // single data repository
+    let sharedDataRepository = LecturesRepositoryBuilder.build()
 
     // When we receive a Local notification the login coordinator is not yet alive since
     // we still do not know if the user is logged in or not. In that case we hold this static

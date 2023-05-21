@@ -31,6 +31,12 @@ extension LecturesRepository: LecturesRepositoryInteface {
         storage?.lecturesDataEntities() ?? []
     }
 
+
+    func queuedLectures() async throws -> [LectureDataEntity] {
+
+        try await lectures().filter { $0.queued }
+    }
+
     func enqueueLecture(withId id: String) async throws {
 
         if let lecture = storage?.lectures.first(where: { $0.id == id }) {

@@ -17,6 +17,8 @@
 		B470D34F29EB0ACC005FA54B /* PlayerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */; };
 		B470D35129EB0C40005FA54B /* Player in Frameworks */ = {isa = PBXBuildFile; productRef = B470D35029EB0C40005FA54B /* Player */; };
 		B48502A729DEC998002EB1B8 /* RData in Frameworks */ = {isa = PBXBuildFile; productRef = B48502A629DEC998002EB1B8 /* RData */; };
+		B48B17D22A1A858300BAF69A /* QueueCollection in Frameworks */ = {isa = PBXBuildFile; productRef = B48B17D12A1A858300BAF69A /* QueueCollection */; };
+		B48B17D42A1A869100BAF69A /* QueueCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B17D32A1A869100BAF69A /* QueueCollectionAdapter.swift */; };
 		B49C264329CF59A900EF08C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C264229CF59A900EF08C5 /* AppDelegate.swift */; };
 		B49C264529CF59A900EF08C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C264429CF59A900EF08C5 /* SceneDelegate.swift */; };
 		B49C264729CF59A900EF08C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49C264629CF59A900EF08C5 /* ViewController.swift */; };
@@ -69,6 +71,8 @@
 		B48502AA29DECA96002EB1B8 /* Coordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Coordinator; sourceTree = "<group>"; };
 		B48502AB29DECAA9002EB1B8 /* LectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LectureCollection; sourceTree = "<group>"; };
 		B48502AC29DECB14002EB1B8 /* Entities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Entities; sourceTree = "<group>"; };
+		B48B17D02A1A818800BAF69A /* QueueCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = QueueCollection; sourceTree = "<group>"; };
+		B48B17D32A1A869100BAF69A /* QueueCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueCollectionAdapter.swift; sourceTree = "<group>"; };
 		B49C263F29CF59A900EF08C5 /* Ratpenat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ratpenat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49C264229CF59A900EF08C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B49C264429CF59A900EF08C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B48B17D22A1A858300BAF69A /* QueueCollection in Frameworks */,
 				B470D35129EB0C40005FA54B /* Player in Frameworks */,
 				B49C268429D05EB800EF08C5 /* JToolKit in Frameworks */,
 				B4B5CD7529DDD7060094BD79 /* LectureCollection in Frameworks */,
@@ -186,6 +191,7 @@
 		B49C267A29D05A7E00EF08C5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				B48B17D02A1A818800BAF69A /* QueueCollection */,
 				B4B5CD7C29DEC9460094BD79 /* RData */,
 				B48502A929DECA74002EB1B8 /* JToolKit */,
 				B48502AA29DECA96002EB1B8 /* Coordinator */,
@@ -245,6 +251,7 @@
 			children = (
 				B4B5CD7729DDD7910094BD79 /* LectureCollectionAdapter.swift */,
 				B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */,
+				B48B17D32A1A869100BAF69A /* QueueCollectionAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -280,6 +287,7 @@
 				B4B5CD7429DDD7060094BD79 /* LectureCollection */,
 				B48502A629DEC998002EB1B8 /* RData */,
 				B470D35029EB0C40005FA54B /* Player */,
+				B48B17D12A1A858300BAF69A /* QueueCollection */,
 			);
 			productName = Ratpenat;
 			productReference = B49C263F29CF59A900EF08C5 /* Ratpenat.app */;
@@ -414,6 +422,7 @@
 				B49C264529CF59A900EF08C5 /* SceneDelegate.swift in Sources */,
 				B4B5CD7829DDD7910094BD79 /* LectureCollectionAdapter.swift in Sources */,
 				B4ADB40129D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift in Sources */,
+				B48B17D42A1A869100BAF69A /* QueueCollectionAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +759,10 @@
 		B48502A629DEC998002EB1B8 /* RData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RData;
+		};
+		B48B17D12A1A858300BAF69A /* QueueCollection */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QueueCollection;
 		};
 		B49C267F29D05EB000EF08C5 /* Coordinator */ = {
 			isa = XCSwiftPackageProductDependency;

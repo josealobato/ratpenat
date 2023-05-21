@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LectureCollectionView: View {
+struct QueueCollectionView: View {
 
     enum ViewState {
 
@@ -21,7 +21,6 @@ struct LectureCollectionView: View {
         LectureList(lectures: presenter.lectures, onTap: { _ in })
             .onSelect { request(.select($0)) }
             .onPlay {  request(.play($0)) }
-            .onEnqueue { request(.enqueue($0)) }
             .onDequeue { request(.dequeue($0)) }
             .onDelete { request(.delete($0)) }
             .navigationTitle("Lecture List")
@@ -38,7 +37,7 @@ struct LectureCollectionView: View {
     }
 }
 
-struct LectureCollectionView_Previews: PreviewProvider {
+struct QueueCollectionView_Previews: PreviewProvider {
 
     struct TestContainer: View {
 
@@ -46,18 +45,15 @@ struct LectureCollectionView_Previews: PreviewProvider {
             LectureViewModel(id: "01",
                              title: "One",
                              subtitle: "",
-                             imageName: "book.circle",
-                            isStacked: true),
+                             imageName: "book.circle"),
             LectureViewModel(id: "02",
                              title: "Two",
                              subtitle: "",
-                             imageName: "book.fill",
-                             isStacked: true),
+                             imageName: "book.fill"),
             LectureViewModel(id: "03",
                              title: "Three",
                              subtitle: "",
-                             imageName: "bookmark",
-                             isStacked: false),
+                             imageName: "bookmark"),
         ]
         
         var body: some View {

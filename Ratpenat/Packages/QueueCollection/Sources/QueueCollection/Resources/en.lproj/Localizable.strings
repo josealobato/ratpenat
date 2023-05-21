@@ -1,0 +1,10 @@
+// Navigation Title
+"lectures" = "Lectures";
+
+// Actions
+"play" = "Play";
+"enqueue" = "Add to queue";
+"dequeue" = "Remove from queue";
+"delete" = "Delete";
+
+// Errors
