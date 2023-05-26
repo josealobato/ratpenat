@@ -38,6 +38,7 @@
 		B4B5CD7529DDD7060094BD79 /* LectureCollection in Frameworks */ = {isa = PBXBuildFile; productRef = B4B5CD7429DDD7060094BD79 /* LectureCollection */; };
 		B4B5CD7829DDD7910094BD79 /* LectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B5CD7729DDD7910094BD79 /* LectureCollectionAdapter.swift */; };
 		B4B5CD7B29DDD9340094BD79 /* Lectures+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B5CD7A29DDD9340094BD79 /* Lectures+FromDataEntity.swift */; };
+		B4C74FCA2A1E67FC00D57714 /* QueueManagementService in Frameworks */ = {isa = PBXBuildFile; productRef = B4C74FC92A1E67FC00D57714 /* QueueManagementService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		B4B5CD7729DDD7910094BD79 /* LectureCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCollectionAdapter.swift; sourceTree = "<group>"; };
 		B4B5CD7A29DDD9340094BD79 /* Lectures+FromDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lectures+FromDataEntity.swift"; sourceTree = "<group>"; };
 		B4B5CD7C29DEC9460094BD79 /* RData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RData; sourceTree = "<group>"; };
+		B4C74FC82A1E674F00D57714 /* QueueManagementService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = QueueManagementService; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			files = (
 				B48B17D22A1A858300BAF69A /* QueueCollection in Frameworks */,
 				B470D35129EB0C40005FA54B /* Player in Frameworks */,
+				B4C74FCA2A1E67FC00D57714 /* QueueManagementService in Frameworks */,
 				B49C268429D05EB800EF08C5 /* JToolKit in Frameworks */,
 				B4B5CD7529DDD7060094BD79 /* LectureCollection in Frameworks */,
 				B49C268029D05EB000EF08C5 /* Coordinator in Frameworks */,
@@ -191,6 +194,7 @@
 		B49C267A29D05A7E00EF08C5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				B4C74FC82A1E674F00D57714 /* QueueManagementService */,
 				B48B17D02A1A818800BAF69A /* QueueCollection */,
 				B4B5CD7C29DEC9460094BD79 /* RData */,
 				B48502A929DECA74002EB1B8 /* JToolKit */,
@@ -288,6 +292,7 @@
 				B48502A629DEC998002EB1B8 /* RData */,
 				B470D35029EB0C40005FA54B /* Player */,
 				B48B17D12A1A858300BAF69A /* QueueCollection */,
+				B4C74FC92A1E67FC00D57714 /* QueueManagementService */,
 			);
 			productName = Ratpenat;
 			productReference = B49C263F29CF59A900EF08C5 /* Ratpenat.app */;
@@ -775,6 +780,10 @@
 		B4B5CD7429DDD7060094BD79 /* LectureCollection */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LectureCollection;
+		};
+		B4C74FC92A1E67FC00D57714 /* QueueManagementService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QueueManagementService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

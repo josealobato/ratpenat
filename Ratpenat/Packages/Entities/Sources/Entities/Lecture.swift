@@ -7,7 +7,8 @@ public struct Lecture: Identifiable, Equatable {
     public var category: Category?
     public var mediaURL: URL
     public let imageURL: URL?
-    public let isStacked: Bool
+    public var queuePosition: Int?
+    public var playPosition: Int?
 
     public let defaultImageName: String = "book.closed"
 
@@ -16,15 +17,20 @@ public struct Lecture: Identifiable, Equatable {
                 category: Category?,
                 mediaURL: URL,
                 imageURL: URL?,
-                isStacked: Bool = false
+                queuePosition: Int? = nil,
+                playPosition: Int? = nil
     ) {
         self.id = id
         self.title = title
         self.category = category
         self.mediaURL = mediaURL
         self.imageURL = imageURL
-        self.isStacked = isStacked
+        self.queuePosition = queuePosition
+        self.playPosition = playPosition
     }
+
+    public var isStacked: Bool { queuePosition != nil }
+    public var isPlaying: Bool { playPosition != nil }
 }
 
 // MARK: - Image
