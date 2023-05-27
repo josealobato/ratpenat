@@ -18,7 +18,8 @@ public struct LectureStorage: Identifiable, Codable {
     public let categoryId: String
     public let mediaURL: URL
     public let imageURL: URL?
-    public var queued: Bool
+    public var queuePosition: Int?
+    public var playPosition: Int?
 }
 
 struct StorageData: Codable {

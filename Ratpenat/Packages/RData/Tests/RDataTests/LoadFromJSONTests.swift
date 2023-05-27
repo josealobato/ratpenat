@@ -1,14 +1,28 @@
 import XCTest
 @testable import RData
 
-final class LoadLecturesTests: XCTestCase {
+/// In this test we just try to test de decoding from a JSON File
+final class LoadFromJSONTests: XCTestCase {
 
-    var repoUT: LecturesRepository!
+    var repo_ut: LecturesRepository!
 
     override func setUp() {
 
-        let testStorageURL = Bundle.module.url(forResource: "Fixtures/LecturesTest", withExtension: "json")!
-        repoUT = LecturesRepository(storageURL: testStorageURL)
+        repo_ut = LecturesRepository(storage: loadStorage())
+    }
+
+    private func loadStorage() -> MutableStorageData {
+
+        // For now we are loading a local file in the package bundle.
+        let storageURL = Bundle.module.url(forResource: "Fixtures/LecturesTest", withExtension: "json")!
+        do {
+            let data = try Data(contentsOf: storageURL)
+            let decoder = JSONDecoder()
+            return try decoder.decode(MutableStorageData.self, from: data)
+        } catch {
+            print("Error!! Unable to parse \(storageURL.lastPathComponent)")
+            return MutableStorageData(lectures: [], categories: [])
+        }
     }
 
     override func tearDown() {
@@ -20,7 +34,7 @@ final class LoadLecturesTests: XCTestCase {
         // GIVEN a repository with a JSON file as storage (on setup).
 
         // WHEN the lectures are requested.
-        let lectures = try await repoUT.lectures()
+        let lectures = try await repo_ut.lectures()
 
         // THEN the available lectures are returned (just one tested)
         XCTAssert(lectures.count == 3)

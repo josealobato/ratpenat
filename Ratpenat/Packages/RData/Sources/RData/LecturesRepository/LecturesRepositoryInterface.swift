@@ -27,7 +27,7 @@ public protocol LecturesRepositoryIntefaceCRUD: AutoMockable {
 
     // Read
     func lectures() async throws -> [LectureDataEntity]
-    func lecture(withId id: String) async throws -> LectureDataEntity
+    func lecture(withId id: String) async throws -> LectureDataEntity?
 
     // Update
     func update(lecture: LectureDataEntity) async throws

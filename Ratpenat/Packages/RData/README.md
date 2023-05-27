@@ -12,7 +12,7 @@ A description of this package.
 ## General design
 
 * [DT0010] [x] [NT] Every repository has a public interface and builder. The rest of the implementation is private.
-* [DT0020] [x] [NT] The Data interface is composed by: Data entitiles, repository protocol and repository builder. The rest is private.
+* [DT0020] [x] [NT] The Data interface is composed by: Data entitiles, repository protocol and repository builder.
 
 ```
 ┌────────────────────────────────────┐                                          

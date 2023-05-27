@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CategoryDataEntity: Identifiable, Codable {
+public struct CategoryDataEntity: Identifiable {
 
     public let id: String
     public let title: String

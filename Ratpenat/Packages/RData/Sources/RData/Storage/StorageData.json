@@ -6,7 +6,8 @@
             "categoryId": "2",
             "mediaURL": "file://aFolder",
             "imageURL": null,
-            "queued": true
+            "queuePosition": null,
+            "playPosition": null
         },
         {
             "id": "02",
@@ -14,7 +15,8 @@
             "categoryId": "3",
             "mediaURL": "file://aFolder",
             "imageURL": null,
-            "queued": true
+            "queuePosition": null,
+            "playPosition": null
         },
         {
             "id": "03",
@@ -22,7 +24,8 @@
             "categoryId": "3",
             "mediaURL": "file://aFolder",
             "imageURL": null,
-            "queued": false
+            "queuePosition": null,
+            "playPosition": null
         }
     ],
     "categories": [

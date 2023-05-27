@@ -5,21 +5,27 @@
             "title": "This is lecture one on English",
             "categoryId": "2",
             "mediaURL": "file://aFolder",
-            "imageURL": null
+            "imageURL": null,
+            "queuePosition": null,
+            "playPosition": null
         },
         {
             "id": "02",
             "title": "This is lecture two on Social Science",
             "categoryId": "3",
             "mediaURL": "file://aFolder",
-            "imageURL": null
+            "imageURL": null,
+            "queuePosition": null,
+            "playPosition": null
         },
         {
             "id": "03",
             "title": "This is lecture three on geography",
             "categoryId": "3",
             "mediaURL": "file://aFolder",
-            "imageURL": null
+            "imageURL": null,
+            "queuePosition": null,
+            "playPosition": null
         }
     ],
     "categories": [

@@ -1,14 +1,50 @@
 import Foundation
 
-public struct LectureDataEntity: Identifiable, Codable {
+public struct LectureDataEntity: Identifiable {
 
     public let id: String
-    public let title: String
-    public let category: CategoryDataEntity?
-    public let mediaURL: URL
-    public let imageURL: URL?
-    public let queued: Bool
+    public var title: String
+    public var category: CategoryDataEntity?
+    public var mediaURL: URL
+    public var imageURL: URL?
+    public var queuePosition: Int?
+    public var playPosition: Int?
+
+    init(id: String,
+         title: String,
+         category: CategoryDataEntity? = nil,
+         mediaURL: URL, imageURL: URL? = nil,
+         queuePosition: Int? = nil,
+         playPosition: Int? = nil) {
+        
+        self.id = id
+        self.title = title
+        self.category = category
+        self.mediaURL = mediaURL
+        self.imageURL = imageURL
+        self.queuePosition = queuePosition
+        self.playPosition = playPosition
+    }
 }
+
+// MARK: - Extensions to convert to
+// This is placed here because storage should not know about data.
+// In the future Storage can be extracted to its own module.
+
+extension LectureDataEntity {
+
+    func storedData() ->  MutableLectureStorage {
+
+        MutableLectureStorage(id: self.id,
+                              title: self.title,
+                              categoryId: self.category?.id,
+                              mediaURL: self.mediaURL,
+                              imageURL: self.imageURL,
+                              queuePosition: self.queuePosition,
+                              playPosition: self.playPosition)
+    }
+}
+
 
 // MARK: - Storage Extensions to get the entities from data
 // This is placed here because storage should not know about data.
@@ -27,7 +63,8 @@ extension StorageData {
                                                category: category?.dataEntity,
                                                mediaURL: lectureStorage.mediaURL,
                                                imageURL: lectureStorage.imageURL,
-                                               queued: lectureStorage.queued)
+                                               queuePosition: lectureStorage.queuePosition,
+                                               playPosition: lectureStorage.playPosition)
             return newLecture
         }
 
@@ -49,7 +86,8 @@ extension MutableStorageData {
                                                category: category?.dataEntity,
                                                mediaURL: lectureStorage.mediaURL,
                                                imageURL: lectureStorage.imageURL,
-                                               queued: lectureStorage.queued)
+                                               queuePosition: lectureStorage.queuePosition,
+                                               playPosition: lectureStorage.playPosition)
             return newLecture
         }
 
