@@ -1,4 +1,5 @@
 import Foundation
+import JToolKit
 
 public protocol LecturesRepositoryInteface {
 
@@ -19,7 +20,7 @@ public protocol LecturesRepositoryInteface {
     func dequeueLecture(withId id: String) async throws
 }
 
-public protocol LecturesRepositoryIntefaceCRUD {
+public protocol LecturesRepositoryIntefaceCRUD: AutoMockable {
 
     // Create
     func add(lecture: LectureDataEntity) async throws
