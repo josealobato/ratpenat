@@ -9,6 +9,17 @@ public struct CategoryDataEntity: Identifiable {
     // This is the FS symbol associated with every.
     // one like `text.book.closed` can be set by default.
     public let defaultImage: String
+
+    init(id: String,
+         title: String,
+         imageURL: URL?,
+         defaultImage: String) {
+        
+        self.id = id
+        self.title = title
+        self.imageURL = imageURL
+        self.defaultImage = defaultImage
+    }
 }
 
 // MARK: - Storage Extensions to get the entities from data

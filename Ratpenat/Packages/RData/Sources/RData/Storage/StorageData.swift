@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CategoryStorage: Identifiable, Codable {
+ struct CategoryStorage: Identifiable, Codable {
 
     public let id: String
     public let title: String
@@ -11,7 +11,7 @@ public struct CategoryStorage: Identifiable, Codable {
     public let defaultImage: String
 }
 
-public struct LectureStorage: Identifiable, Codable {
+struct LectureStorage: Identifiable, Codable {
 
     public let id: String
     public let title: String

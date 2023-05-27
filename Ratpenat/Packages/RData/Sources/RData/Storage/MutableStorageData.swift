@@ -2,7 +2,7 @@ import Foundation
 
 // Temporary solution to have a mutable data store
 
-public class MutableCategoryStorage: Identifiable, Codable {
+class MutableCategoryStorage: Identifiable, Codable {
 
     public let id: String
     public var title: String
@@ -13,7 +13,7 @@ public class MutableCategoryStorage: Identifiable, Codable {
     public var defaultImage: String
 }
 
-public class MutableLectureStorage: Identifiable, Codable {
+class MutableLectureStorage: Identifiable, Codable {
 
     public let id: String
     public var title: String
