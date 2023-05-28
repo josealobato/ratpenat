@@ -31,10 +31,6 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Adding and Removing
 
-    private func isLectureInQueue(id: String) -> Bool {
-        queue.first(where: { $0.id == id }) != nil
-    }
-
     public func addToQueueOnTop(id: String) { Task { addToQueueOnTop(id: id) } }
 
     func addToQueueOnTop(id: String) async {
@@ -50,7 +46,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
             // adjust the indexes.
             consolidateIndexInQueue()
-            await saveQueue()
+            await persistQueue()
         }
     }
 
@@ -69,7 +65,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
             // adjust the indexes and store
             consolidateIndexInQueue()
-            await saveQueue()
+            await persistQueue()
         }
     }
 
@@ -87,23 +83,20 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
             // adjust the indexes and store
             consolidateIndexInQueue()
-            await saveQueue()
+            await persistQueue()
         }
     }
 
     // MARK: - Sorting
 
     public func changeOrder(id: String, from origin: Int, to destination: Int) {
-
-        Task {
-            await changeOrder(id: id, from: origin, to: destination)
-        }
+        Task { await changeOrder(id: id, from: origin, to: destination) }
     }
 
     func changeOrder(id: String, from origin: Int, to destination: Int) async {
 
         // Index should be valid
-        guard isIndexValid(index: origin) && isIndexValid(index: destination)
+        guard isIndexInRange(index: origin) && isIndexInRange(index: destination)
           else { return }
 
         // ... and different.
@@ -124,9 +117,11 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
 
         consolidateIndexInQueue()
-        await saveQueue()
+        await persistQueue()
     }
 
+    /// Update the Queue possition of the current state of the queue,
+    /// making sure that they represent the current possition on the queue.
     private func consolidateIndexInQueue() {
 
         for i in 0..<queue.count {
@@ -135,7 +130,8 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    private func saveQueue() async {
+    /// Persiste the current state of the queue to the storage.
+    private func persistQueue() async {
 
         do {
             for lecture in queue {
@@ -146,10 +142,20 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    private func isIndexValid(index: Int) -> Bool {
+    /// Verifies that the given index is inside the boudaries of the queue
+    /// - Parameter index: The index to test.
+    /// - Returns: True when it is a valid index (in range)
+    private func isIndexInRange(index: Int) -> Bool {
 
         let range = 0 ..< queue.count
         return range.contains(index)
+    }
+
+    /// Check if exist in the queue a lecture with the given id.
+    /// - Parameter id: the id to look for.
+    /// - Returns: true if there exist a lecture with the given id.
+    private func isLectureInQueue(id: String) -> Bool {
+        queue.first(where: { $0.id == id }) != nil
     }
 }
 
