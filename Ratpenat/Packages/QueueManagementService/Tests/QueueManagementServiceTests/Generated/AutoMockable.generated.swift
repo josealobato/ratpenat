@@ -76,10 +76,10 @@ final class LecturesRepositoryIntefaceCRUDMock: LecturesRepositoryIntefaceCRUD {
     }
     var lectureWithIdReceivedId: String?
     var lectureWithIdReceivedInvocations: [String] = []
-    var lectureWithIdReturnValue: LectureDataEntity!
-    var lectureWithIdClosure: ((String) throws -> LectureDataEntity)?
+    var lectureWithIdReturnValue: LectureDataEntity?
+    var lectureWithIdClosure: ((String) throws -> LectureDataEntity?)?
 
-    func lecture(withId id: String) async throws -> LectureDataEntity {
+    func lecture(withId id: String) async throws -> LectureDataEntity? {
         if let error = lectureWithIdThrowableError {
             throw error
         }
@@ -146,6 +146,88 @@ final class QueueManagementServiceProtocolMock: QueueManagementServiceProtocol {
     func getQueue() -> [Lecture] {
         getQueueCallsCount += 1
         return getQueueClosure.map({ $0() }) ?? getQueueReturnValue
+    }
+
+    //MARK: - getNext
+
+    var getNextCallsCount = 0
+    var getNextCalled: Bool {
+        return getNextCallsCount > 0
+    }
+    var getNextReturnValue: Lecture?
+    var getNextClosure: (() -> Lecture?)?
+
+    func getNext() -> Lecture? {
+        getNextCallsCount += 1
+        return getNextClosure.map({ $0() }) ?? getNextReturnValue
+    }
+
+    //MARK: - addToQueueOnTop
+
+    var addToQueueOnTopIdCallsCount = 0
+    var addToQueueOnTopIdCalled: Bool {
+        return addToQueueOnTopIdCallsCount > 0
+    }
+    var addToQueueOnTopIdReceivedId: String?
+    var addToQueueOnTopIdReceivedInvocations: [String] = []
+    var addToQueueOnTopIdClosure: ((String) -> Void)?
+
+    func addToQueueOnTop(id: String) {
+        addToQueueOnTopIdCallsCount += 1
+        addToQueueOnTopIdReceivedId = id
+        addToQueueOnTopIdReceivedInvocations.append(id)
+        addToQueueOnTopIdClosure?(id)
+    }
+
+    //MARK: - addToQueueAtBottom
+
+    var addToQueueAtBottomIdCallsCount = 0
+    var addToQueueAtBottomIdCalled: Bool {
+        return addToQueueAtBottomIdCallsCount > 0
+    }
+    var addToQueueAtBottomIdReceivedId: String?
+    var addToQueueAtBottomIdReceivedInvocations: [String] = []
+    var addToQueueAtBottomIdClosure: ((String) -> Void)?
+
+    func addToQueueAtBottom(id: String) {
+        addToQueueAtBottomIdCallsCount += 1
+        addToQueueAtBottomIdReceivedId = id
+        addToQueueAtBottomIdReceivedInvocations.append(id)
+        addToQueueAtBottomIdClosure?(id)
+    }
+
+    //MARK: - removeFromQueue
+
+    var removeFromQueueIdCallsCount = 0
+    var removeFromQueueIdCalled: Bool {
+        return removeFromQueueIdCallsCount > 0
+    }
+    var removeFromQueueIdReceivedId: String?
+    var removeFromQueueIdReceivedInvocations: [String] = []
+    var removeFromQueueIdClosure: ((String) -> Void)?
+
+    func removeFromQueue(id: String) {
+        removeFromQueueIdCallsCount += 1
+        removeFromQueueIdReceivedId = id
+        removeFromQueueIdReceivedInvocations.append(id)
+        removeFromQueueIdClosure?(id)
+    }
+
+    //MARK: - changeOrder
+
+    var changeOrderIdFromToCallsCount = 0
+    var changeOrderIdFromToCalled: Bool {
+        return changeOrderIdFromToCallsCount > 0
+    }
+    var changeOrderIdFromToReceivedArguments: (id: String, origin: Int, destination: Int)?
+    var changeOrderIdFromToReceivedInvocations: [(id: String, origin: Int, destination: Int)] = []
+    var changeOrderIdFromToClosure: ((String, Int, Int) -> Void)?
+
+    func changeOrder(id: String, from origin: Int, to destination: Int) {
+        changeOrderIdFromToCallsCount += 1
+        changeOrderIdFromToReceivedArguments = (id: id, origin: origin, destination: destination)
+        changeOrderIdFromToReceivedInvocations.append((id: id, origin: origin, destination: destination))
+        changeOrderIdFromToClosure?(id, origin, destination)
     }
 
 }

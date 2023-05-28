@@ -3,7 +3,7 @@ import Entities
 import RData
 @testable import QueueManagementService
 
-final class QMS_AsServiceTests: XCTestCase {
+final class QMS_getNextTests: XCTestCase {
 
     var qms_ut: QueueManagementService!
     var storageMock: LecturesRepositoryIntefaceCRUDMock!
@@ -11,32 +11,41 @@ final class QMS_AsServiceTests: XCTestCase {
     override func setUp() async throws {
 
         storageMock = LecturesRepositoryIntefaceCRUDMock()
+    }
+
+    func testGetNextWithNoValuesLecture_QMS0060() async throws {
+
+        // GIVEN a QMS started with no lectures
         qms_ut = QueueManagementService(storage: storageMock)
-    }
-
-    func testStartingAQueue_QMS0010() async throws {
-
-        // GIVEN a QMS and a store with some lectures
-        storageMock.lecturesReturnValue = lecturesWithTwoOnList
-        // WHEN the QMS service is started
+        //       prepare storage:
+        storageMock.lecturesReturnValue = []
+        //       start the service:
         await qms_ut.start()
-        // THEN it will get lectures and build the queue
-        let result = qms_ut.getQueue()
-        XCTAssert(result.count == 3)
+
+        // WHEN requesting the first lecture
+        let lecture = qms_ut.getNext()
+
+        // THEN the lecture at the top will be requested.
+        XCTAssertNil(lecture)
     }
+    
+    func testGetNextWithSomeValuesLecture_QMS0060() async throws {
 
-    func testStartingASortedQueue_QMS0010() async throws {
-
-        // GIVEN a QMS and a store with some lectures
+        // GIVEN a QMS started with some lectures
+        qms_ut = QueueManagementService(storage: storageMock)
+        //       prepare storage:
         storageMock.lecturesReturnValue = lecturesWithTwoOnList
-        // WHEN the QMS service is started
+        //       start the service:
         await qms_ut.start()
-        // THEN it will get lectures and build the sorted queue
-        let result = qms_ut.getQueue()
-        XCTAssert(result[0].id == "3")
-        XCTAssert(result[1].id == "4")
-        XCTAssert(result[2].id == "2")
+
+        // WHEN requesting the first lecture
+        let lecture = qms_ut.getNext()
+
+        // THEN the lecture at the top will be requested.
+        XCTAssert(lecture!.id == "3")
     }
+
+    // MARK: - Testing assets
 
     private var lecturesWithTwoOnList: [LectureDataEntity] {
         [

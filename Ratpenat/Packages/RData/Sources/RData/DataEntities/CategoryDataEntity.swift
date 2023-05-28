@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CategoryDataEntity: Identifiable {
+public struct CategoryDataEntity: Identifiable, Equatable {
 
     public let id: String
     public let title: String
@@ -10,7 +10,7 @@ public struct CategoryDataEntity: Identifiable {
     // one like `text.book.closed` can be set by default.
     public let defaultImage: String
 
-    init(id: String,
+    public init(id: String,
          title: String,
          imageURL: URL?,
          defaultImage: String) {

@@ -4,9 +4,15 @@ import JToolKit
 
 public protocol QueueManagementServiceProtocol: AutoMockable {
 
-    // MARK: - Getting
+    // MARK: - Getting lectures from the queue.
+
+    /// Get the sorted queue.
+    /// - Returns: Sorted queue of lectures.
     func getQueue() -> [Lecture]
-//    func getNext() -> Lecture
+
+    /// Get current lecture at the top
+    /// - Returns: Current lecture at the top or nil if the queue is empty.
+    func getNext() -> Lecture?
 
 //    // MARK: - Playing
 //    func startPlayingLecture(id: String, in second: Int)
@@ -17,13 +23,28 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
 //    // MARK: - Play Control
 //    func playLecture(id: String)
 //
-//    // MARK: - Adding and Removing
-//    func addToQueueOnTop(id: String)
-//    func addToQueueAtBottom(id: String)
-//    func removeFromQueue(id: String)
-//
-//    // MARK: - Sorting
-//    func changeOrder(Id: String, from origin: Int, to destinatio: Int)
+    // MARK: - Adding and Removing
+
+    /// Add a lecture to the top of the queue (first to next)
+    /// - Parameter id: the id of the lecture to add.
+    func addToQueueOnTop(id: String)
+
+    /// Add a lecture at the bottom of the queue (last to next)
+    /// - Parameter id: the id of the lecture to add.
+    func addToQueueAtBottom(id: String)
+
+    /// Remove a lecture from the queue
+    /// - Parameter id: the id of the lecture to remove.
+    func removeFromQueue(id: String)
+
+    // MARK: - Sorting
+
+    /// Change the position of a Lecture in the Queue
+    /// - Parameters:
+    ///   - id: Id of the lecture to change
+    ///   - origin: Initial Possition.
+    ///   - destination: Final Position.
+    func changeOrder(id: String, from origin: Int, to destination: Int)
 }
 
 

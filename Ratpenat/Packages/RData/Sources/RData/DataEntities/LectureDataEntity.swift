@@ -1,7 +1,7 @@
 import Foundation
 
-public struct LectureDataEntity: Identifiable {
-
+public struct LectureDataEntity: Identifiable, Equatable {
+    
     public let id: String
     public var title: String
     public var category: CategoryDataEntity?
@@ -10,12 +10,12 @@ public struct LectureDataEntity: Identifiable {
     public var queuePosition: Int?
     public var playPosition: Int?
 
-    init(id: String,
-         title: String,
-         category: CategoryDataEntity? = nil,
-         mediaURL: URL, imageURL: URL? = nil,
-         queuePosition: Int? = nil,
-         playPosition: Int? = nil) {
+    public init(id: String,
+                title: String,
+                category: CategoryDataEntity? = nil,
+                mediaURL: URL, imageURL: URL? = nil,
+                queuePosition: Int? = nil,
+                playPosition: Int? = nil) {
         
         self.id = id
         self.title = title

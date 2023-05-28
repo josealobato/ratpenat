@@ -18,15 +18,16 @@ let package = Package(
         .package(name: "JToolKit", path: "../JToolKit"),
         .package(name: "Entities", path: "../Entities"),
         .package(name: "RData", path: "../RData"),
+        .package(name: "Coordinator", path: "../Coordinator")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "QueueManagementService",
-            dependencies: ["JToolKit", "Entities", "RData"]),
+            dependencies: ["JToolKit", "Entities", "RData", "Coordinator"]),
         .testTarget(
             name: "QueueManagementServiceTests",
-            dependencies: ["QueueManagementService", "Entities", "RData"]),
+            dependencies: ["QueueManagementService", "Entities", "RData", "Coordinator"]),
     ]
 )

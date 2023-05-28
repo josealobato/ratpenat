@@ -14,9 +14,9 @@ public struct Lecture: Identifiable, Equatable {
 
     public init(id: String,
                 title: String,
-                category: Category?,
+                category: Category? = nil,
                 mediaURL: URL,
-                imageURL: URL?,
+                imageURL: URL? = nil,
                 queuePosition: Int? = nil,
                 playPosition: Int? = nil
     ) {
