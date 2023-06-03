@@ -213,6 +213,23 @@ final class QueueManagementServiceProtocolMock: QueueManagementServiceProtocol {
         skippedLectureIdClosure?(id)
     }
 
+    //MARK: - donePlayingLecture
+
+    var donePlayingLectureIdCallsCount = 0
+    var donePlayingLectureIdCalled: Bool {
+        return donePlayingLectureIdCallsCount > 0
+    }
+    var donePlayingLectureIdReceivedId: String?
+    var donePlayingLectureIdReceivedInvocations: [String] = []
+    var donePlayingLectureIdClosure: ((String) -> Void)?
+
+    func donePlayingLecture(id: String) {
+        donePlayingLectureIdCallsCount += 1
+        donePlayingLectureIdReceivedId = id
+        donePlayingLectureIdReceivedInvocations.append(id)
+        donePlayingLectureIdClosure?(id)
+    }
+
     //MARK: - addToQueueOnTop
 
     var addToQueueOnTopIdCallsCount = 0

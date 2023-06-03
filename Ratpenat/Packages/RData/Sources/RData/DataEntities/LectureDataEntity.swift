@@ -9,13 +9,15 @@ public struct LectureDataEntity: Identifiable, Equatable {
     public var imageURL: URL?
     public var queuePosition: Int?
     public var playPosition: Int?
+    public var played: [Date]
 
     public init(id: String,
                 title: String,
                 category: CategoryDataEntity? = nil,
                 mediaURL: URL, imageURL: URL? = nil,
                 queuePosition: Int? = nil,
-                playPosition: Int? = nil) {
+                playPosition: Int? = nil,
+                played: [Date] = []) {
         
         self.id = id
         self.title = title
@@ -24,6 +26,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
         self.imageURL = imageURL
         self.queuePosition = queuePosition
         self.playPosition = playPosition
+        self.played = played
     }
 }
 

@@ -15,7 +15,8 @@ extension LectureDataEntity {
                 mediaURL: self.mediaURL,
                 imageURL: self.imageURL,
                 queuePosition: self.queuePosition,
-                playPosition: self.playPosition)
+                playPosition: self.playPosition,
+                played: self.played)
     }
 }
 
@@ -39,7 +40,8 @@ extension Lecture {
                           category: self.category?.dataEntity(),
                           mediaURL: self.mediaURL,
                           queuePosition: self.queuePosition,
-                          playPosition: self.playPosition)
+                          playPosition: self.playPosition,
+                          played: self.played)
     }
 }
 

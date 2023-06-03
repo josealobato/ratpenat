@@ -27,14 +27,14 @@ final class QMS_skippedTests: XCTestCase {
         // WHEN informing about skiping a lecture not in the list
         await qms_ut.skippedLecture(id: "66")
 
-        // THEN No lecture is playing (nothing happen)
+        // THEN nothing happen
         let lectures = qms_ut.getQueue()
         XCTAssertEqual(lectures, initialUnchangedLectures)
     }
 
     // MARK: - Lesson in queue
 
-    func testSkippingWhenInQueue_QMS0110() async throws {
+    func testSkippingWhenInQueue_QMS0101() async throws {
 
         // GIVEN a QMS started with an queue:
         qms_ut = QueueManagementService(storage: storageMock)

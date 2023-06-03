@@ -33,11 +33,14 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
     ///   - id: id of the lecture to skip
     func skippedLecture(id: String)
 
-//    func donePlayingLecture(id: String)
-//
-//    // MARK: - Play Request
-//    func playLecture(id: String)
-//
+    /// Finished playing a lecture
+    /// - Parameter id: the id of the lecture.
+    func donePlayingLecture(id: String)
+
+    // MARK: - Play Request
+
+    //    func playLecture(id: String)
+
     // MARK: - Adding and Removing
 
     /// Add a lecture to the top of the queue (first to next)

@@ -6,13 +6,21 @@ import protocol RData.LecturesRepositoryIntefaceCRUD
 public class QueueManagementService {
 
     private let storage: LecturesRepositoryIntefaceCRUD
+    private var timeProvider: TimeProvider
 
     private var queue: [Lecture] = []
 
     public weak var coordinator: CoordinationRequestProtocol?
 
-    public init(storage: LecturesRepositoryIntefaceCRUD) {
+    convenience public init(storage: LecturesRepositoryIntefaceCRUD) {
+        self.init(storage: storage, timeProvider: LocalTimeProvider())
+    }
+
+    init(storage: LecturesRepositoryIntefaceCRUD, timeProvider: TimeProvider) {
+        /// Dev Note: The designated initializer is of package internal use so that
+        /// we can instantiate the time provider for proper testing.
         self.storage = storage
+        self.timeProvider = timeProvider
     }
 }
 
@@ -100,6 +108,37 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
         // Move it to the end.
         await changeOrder(id: id, from: index, to: queue.count - 1)
+    }
+
+    public func donePlayingLecture(id: String) {
+        Task { donePlayingLecture(id:id) }
+    }
+
+    func donePlayingLecture(id: String) async {
+
+        // if the object is not in the queue do nothing:
+        guard let index = indexInQueue(id: id) else { return }
+
+        // Get the lecture and remove it for the queue:
+        var playedLecture = queue[index]
+        queue.remove(at: index)
+
+        // Set the time stamp, done playing, and clean queue possition:
+        playedLecture.played.append(timeProvider.now)
+        playedLecture.playPosition = nil
+        playedLecture.queuePosition = nil
+
+        do {
+            // Save it:
+            try await storage.update(lecture: playedLecture.dataEntity())
+
+            // Adjust the indexes and save.
+            consolidateIndexInQueue()
+            await persistQueue()
+        } catch {
+            // TODO: log this error.
+        }
+
     }
 
     // MARK: - Adding and Removing

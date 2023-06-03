@@ -43,8 +43,15 @@ We can also say that it not playing when the play possition is nil.
 * When the user informs that a lesson is skiped.
     Dev. Note: Skipped do no set it to done.
     * [QMS0100] [x] [T] It will do nothing if the lesson is not in the queue.
-    * [QMS0110] [x] [T] It move it to the end of the queue
-    * [QMS0120] [ ] [ ] It will cleand and persist the play possition.
+    * [QMS0101] [x] [T] It move it to the end of the queue
+    * [QMS0102] [ ] [ ] It will cleand and persist the play possition.
+    * [QMS0103] [ ] [ ] If skiping happen when only x seconds (config) are left, it is considered done.
+    
+* When the user informs that a lesson is Done.
+    * [QMS0110] [x] [T] It will do nothing if the lesson is not in the queue.
+    * [QMS0111] [x] [T] It will marked as done (set time stamp)
+    * [QMS0112] [x] [T] It will remove it from the queue (not playing and not queue position).
+
     
 * When the user request to play a lesson,
 

@@ -9,6 +9,7 @@ public struct Lecture: Identifiable, Equatable {
     public let imageURL: URL?
     public var queuePosition: Int?
     public var playPosition: Int?
+    public var played: [Date]
 
     public let defaultImageName: String = "book.closed"
 
@@ -18,7 +19,8 @@ public struct Lecture: Identifiable, Equatable {
                 mediaURL: URL,
                 imageURL: URL? = nil,
                 queuePosition: Int? = nil,
-                playPosition: Int? = nil
+                playPosition: Int? = nil,
+                played: [Date] = []
     ) {
         self.id = id
         self.title = title
@@ -27,10 +29,12 @@ public struct Lecture: Identifiable, Equatable {
         self.imageURL = imageURL
         self.queuePosition = queuePosition
         self.playPosition = playPosition
+        self.played = []
     }
 
     public var isStacked: Bool { queuePosition != nil }
     public var isPlaying: Bool { playPosition != nil }
+    public var numberOfPlays: Int { played.count }
 }
 
 // MARK: - Image
