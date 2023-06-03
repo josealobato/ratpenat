@@ -16,9 +16,19 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
 
     // MARK: - Playing information
 
+    /// Inform the Manager that a lecture started to play.
+    ///  - Parameters:
+    ///   - id: The id of the lecture
+    ///   - second: the play possition in seconds when it started.
     func startedPlayingLecture(id: String, in second: Int)
-//    func pausedLecture(id: String, in second: Int)
-//    func skipedLecture(id: String, in second: Int)
+
+    /// Inform the Manager that a lecture was paused.
+    ///  - Parameters:
+    ///   - id: The id of the lecture
+    ///   - second: the play possition in seconds when it paused.
+    func pausedLecture(id: String, in second: Int)
+
+    //    func skipedLecture(id: String, in second: Int)
 //    func donePlayingLecture(id: String)
 //
 //    // MARK: - Play Request

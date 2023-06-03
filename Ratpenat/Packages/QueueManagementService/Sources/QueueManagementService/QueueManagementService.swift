@@ -31,7 +31,9 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Playing
 
-    public func startedPlayingLecture(id: String, in second: Int) { Task { startedPlayingLecture(id:id, in:second) } }
+    public func startedPlayingLecture(id: String, in second: Int) {
+        Task { startedPlayingLecture(id:id, in:second) }
+    }
 
     func startedPlayingLecture(id: String, in second: Int) async {
 
@@ -55,6 +57,30 @@ extension QueueManagementService: QueueManagementServiceProtocol {
             // Persist
             try await storage.update(lecture: queue[0].dataEntity())
             
+        } catch {
+            // TODO: log this error.
+        }
+    }
+
+    public func pausedLecture(id: String, in second: Int) {
+        Task { pausedLecture(id:id, in:second) }
+    }
+
+    func pausedLecture(id: String, in second: Int) async {
+
+        // if the object is not in the queue do nothing.
+        guard let index = indexInQueue(id: id) else { return }
+
+        do {
+
+            // Set the play position.
+            queue[index].playPosition = second
+
+            // TODO: Notify externally about new playing lecture
+
+            // Persist
+            try await storage.update(lecture: queue[index].dataEntity())
+
         } catch {
             // TODO: log this error.
         }
@@ -186,7 +212,14 @@ extension QueueManagementService: QueueManagementServiceProtocol {
     /// - Parameter id: the id to look for.
     /// - Returns: true if there exist a lecture with the given id.
     private func isLectureInQueue(id: String) -> Bool {
-        queue.first(where: { $0.id == id }) != nil
+        indexInQueue(id: id) != nil
+    }
+
+    /// Get the index of a lecture in the queue if any
+    /// - Parameter id: Id of the lecture
+    /// - Returns: Index if any.
+    private func indexInQueue(id: String) -> Int? {
+        queue.firstIndex(where: { $0.id == id })
     }
 }
 

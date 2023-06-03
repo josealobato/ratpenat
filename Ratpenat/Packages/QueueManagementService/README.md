@@ -21,13 +21,24 @@ Listing lectures
 * [QMS0060] [x] [T] The User will be able to get the next item to play (top of the queue) 
 * [QMS0070] [x] [T] The User will be able to remove any element in the queue.
 
+IMPORTANT: A lecture is playing when it has a playing possition but it can be paused or playing in the player.
+We can also say that it not playing when the play possition is nil.
+
 * When the user informs that a lesson started playing providing a time stamp.
     * [QMS0080] [x] [T] It will do nothing if the lesson is not in the queue.
         Dev. Note: We do not want to throw an exception becase the upper levels can do nothing
         with that information. Anyway that shouldnt happen and we will log a warning message for debug.
     * [QMS0081] [x] [T] It will move the lesson at the top of the queue if not already there.
     * [QMS0082] [x] [T] It will set and persist the new play possition for that lecture.
-    * [QMS0083] [ ] [ ] It will broadcast that the given lesson is playing.  
+    * [QMS0083] [ ] [ ] It will broadcast that the given lesson is playing. 
+    
+* When the user informs that a lesson paused playing providing a time stamp.
+    Dev. Pausing will mostly update the playing position for that lecture.
+    * [QMS0090] [x] [T] It will do nothing if the lesson is not in the queue.
+        Dev. Note: We do not want to throw an exception becase the upper levels can do nothing
+        with that information. Anyway that shouldnt happen and we will log a warning message for debug.
+    * [QMS0091] [x] [T] It will set and persist the new play possition for that lecture.
+    * [QMS0093] [ ] [ ] It will broadcast that the given lesson is paused. 
     
 * When the user request to play a lesson,
 
