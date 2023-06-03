@@ -162,6 +162,23 @@ final class QueueManagementServiceProtocolMock: QueueManagementServiceProtocol {
         return getNextClosure.map({ $0() }) ?? getNextReturnValue
     }
 
+    //MARK: - startedPlayingLecture
+
+    var startedPlayingLectureIdInCallsCount = 0
+    var startedPlayingLectureIdInCalled: Bool {
+        return startedPlayingLectureIdInCallsCount > 0
+    }
+    var startedPlayingLectureIdInReceivedArguments: (id: String, second: Int)?
+    var startedPlayingLectureIdInReceivedInvocations: [(id: String, second: Int)] = []
+    var startedPlayingLectureIdInClosure: ((String, Int) -> Void)?
+
+    func startedPlayingLecture(id: String, in second: Int) {
+        startedPlayingLectureIdInCallsCount += 1
+        startedPlayingLectureIdInReceivedArguments = (id: id, second: second)
+        startedPlayingLectureIdInReceivedInvocations.append((id: id, second: second))
+        startedPlayingLectureIdInClosure?(id, second)
+    }
+
     //MARK: - addToQueueOnTop
 
     var addToQueueOnTopIdCallsCount = 0

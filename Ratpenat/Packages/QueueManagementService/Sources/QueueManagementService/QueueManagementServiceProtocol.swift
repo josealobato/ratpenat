@@ -14,13 +14,14 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
     /// - Returns: Current lecture at the top or nil if the queue is empty.
     func getNext() -> Lecture?
 
-//    // MARK: - Playing
-//    func startPlayingLecture(id: String, in second: Int)
-//    func pauseLecture(id: String, in second: Int)
-//    func skipLecture(id: String, in second: Int)
+    // MARK: - Playing information
+
+    func startedPlayingLecture(id: String, in second: Int)
+//    func pausedLecture(id: String, in second: Int)
+//    func skipedLecture(id: String, in second: Int)
 //    func donePlayingLecture(id: String)
 //
-//    // MARK: - Play Control
+//    // MARK: - Play Request
 //    func playLecture(id: String)
 //
     // MARK: - Adding and Removing

@@ -29,6 +29,37 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         return queue.count > 0 ? queue[0] : nil
     }
 
+    // MARK: - Playing
+
+    public func startedPlayingLecture(id: String, in second: Int) { Task { startedPlayingLecture(id:id, in:second) } }
+
+    func startedPlayingLecture(id: String, in second: Int) async {
+
+        // if the object is not in the queue do nothing.
+        guard isLectureInQueue(id: id) else { return }
+
+        do {
+
+            // if the lecture is not the first we sort it first.
+            if let playingIndex = queue.firstIndex(where: { $0.id == id }) {
+                if playingIndex != 0 {
+                    await changeOrder(id: id, from: playingIndex, to: 0)
+                }
+            }
+
+            // Set the play position.
+            queue[0].playPosition = second
+
+            // TODO: Notify externally about new playing lecture
+
+            // Persist
+            try await storage.update(lecture: queue[0].dataEntity())
+            
+        } catch {
+            // TODO: log this error.
+        }
+    }
+
     // MARK: - Adding and Removing
 
     public func addToQueueOnTop(id: String) { Task { addToQueueOnTop(id: id) } }
@@ -138,7 +169,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
                 try await storage.update(lecture: lecture.dataEntity())
             }
         } catch {
-            // TODO log error
+            // TODO: log error
         }
     }
 
