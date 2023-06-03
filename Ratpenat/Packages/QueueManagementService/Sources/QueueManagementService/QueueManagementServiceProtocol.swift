@@ -28,7 +28,11 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
     ///   - second: the play possition in seconds when it paused.
     func pausedLecture(id: String, in second: Int)
 
-    //    func skipedLecture(id: String, in second: Int)
+    /// Skip a lecture.
+    /// - Parameters:
+    ///   - id: id of the lecture to skip
+    func skippedLecture(id: String)
+
 //    func donePlayingLecture(id: String)
 //
 //    // MARK: - Play Request
@@ -50,11 +54,19 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
 
     // MARK: - Sorting
 
-    /// Change the position of a Lecture in the Queue
+    /// Change the position of a Lecture in the Queue.
+    /// Index starts at 0.
+    /// e.g:
+    ///     [a, b(1), c, d, e]
+    ///
+    ///     ChangeOrder(b, 1, 4)
+    ///
+    ///     will result in [a, c, d, b(4), e]
+    ///
     /// - Parameters:
     ///   - id: Id of the lecture to change
-    ///   - origin: Initial Possition.
-    ///   - destination: Final Position.
+    ///   - origin: Initial Possition before moving it.
+    ///   - destination: Final Position when the movement is done.
     func changeOrder(id: String, from origin: Int, to destination: Int)
 }
 

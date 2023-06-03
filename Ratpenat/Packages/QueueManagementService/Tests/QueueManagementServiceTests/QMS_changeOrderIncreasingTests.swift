@@ -23,7 +23,7 @@ final class QMS_changeOrderIncreasingTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to sort a lecture to forward position
-        await qms_ut.changeOrder(id: "2", from: 2, to: 5)
+        await qms_ut.changeOrder(id: "2", from: 2, to: 4)
 
         // THEN the new possitions should match the request
         let lectures = qms_ut.getQueue()
@@ -41,7 +41,7 @@ final class QMS_changeOrderIncreasingTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to sort a lecture to forward position
-        await qms_ut.changeOrder(id: "2", from: 2, to: 5)
+        await qms_ut.changeOrder(id: "2", from: 2, to: 4)
 
         // THEN the queue position are adjusted to be the same
         let lectures = qms_ut.getQueue()
@@ -59,7 +59,7 @@ final class QMS_changeOrderIncreasingTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to sort a lecture to forward position
-        await qms_ut.changeOrder(id: "2", from: 2, to: 5)
+        await qms_ut.changeOrder(id: "2", from: 2, to: 4)
 
         // THEN the new order is saved in the store
         let storeInvocations = storageMock.updateLectureReceivedInvocations

@@ -33,12 +33,18 @@ We can also say that it not playing when the play possition is nil.
     * [QMS0083] [ ] [ ] It will broadcast that the given lesson is playing. 
     
 * When the user informs that a lesson paused playing providing a time stamp.
-    Dev. Pausing will mostly update the playing position for that lecture.
+    Dev. Note: Pausing will mostly update the playing position for that lecture.
     * [QMS0090] [x] [T] It will do nothing if the lesson is not in the queue.
         Dev. Note: We do not want to throw an exception becase the upper levels can do nothing
         with that information. Anyway that shouldnt happen and we will log a warning message for debug.
     * [QMS0091] [x] [T] It will set and persist the new play possition for that lecture.
     * [QMS0093] [ ] [ ] It will broadcast that the given lesson is paused. 
+    
+* When the user informs that a lesson is skiped.
+    Dev. Note: Skipped do no set it to done.
+    * [QMS0100] [x] [T] It will do nothing if the lesson is not in the queue.
+    * [QMS0110] [x] [T] It move it to the end of the queue
+    * [QMS0120] [ ] [ ] It will cleand and persist the play possition.
     
 * When the user request to play a lesson,
 
@@ -49,7 +55,8 @@ Actions
 * [QMS0210] [ ] [NT] 
 
 ## Settings
-* [QMS0910] [ ] [NT] End offset to consider a lecture done when paused/skiped (defaul 5s) 
+* [QMS0910] [ ] [NT] End offset to consider a lecture done when paused/skiped (defaul 5s)
+* [QMS0920] [ ] [NT] Skipping a lecture will: send to the end of the queue (default) / send to play next (second possition) 
 
 ## Design:
 

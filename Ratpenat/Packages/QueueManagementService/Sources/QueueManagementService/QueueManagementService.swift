@@ -86,6 +86,22 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
+    public func skippedLecture(id: String) {
+        Task { skippedLecture(id:id) }
+    }
+
+    func skippedLecture(id: String) async {
+
+        // if the object is not in the queue do nothing.
+        guard let index = indexInQueue(id: id) else { return }
+
+        // Removed play possition.
+        queue[index].playPosition = nil
+
+        // Move it to the end.
+        await changeOrder(id: id, from: index, to: queue.count - 1)
+    }
+
     // MARK: - Adding and Removing
 
     public func addToQueueOnTop(id: String) { Task { addToQueueOnTop(id: id) } }
@@ -164,7 +180,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
             let lecture = queue[origin]
             queue.remove(at: origin)
-            queue.insert(lecture, at: destination - 1)
+            queue.insert(lecture, at: destination)
 
         } else {
 
