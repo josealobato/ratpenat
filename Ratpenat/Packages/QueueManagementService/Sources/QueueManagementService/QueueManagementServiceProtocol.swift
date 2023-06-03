@@ -14,7 +14,7 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
     /// - Returns: Current lecture at the top or nil if the queue is empty.
     func getNext() -> Lecture?
 
-    // MARK: - Playing information
+    // MARK: - Playing information from lectures in the Queue
 
     /// Inform the Manager that a lecture started to play.
     ///  - Parameters:
@@ -37,9 +37,12 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
     /// - Parameter id: the id of the lecture.
     func donePlayingLecture(id: String)
 
-    // MARK: - Play Request
+    // MARK: - Play Request for any lecture
 
-    //    func playLecture(id: String)
+    /// Request to play a lecture that might or not be in the queue.
+    /// It will be added to the queue and set to play next
+    /// - Parameter id: <#id description#>
+    func playLecture(id: String)
 
     // MARK: - Adding and Removing
 

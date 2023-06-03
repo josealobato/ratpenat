@@ -1,6 +1,12 @@
 # QueueManagementService (QMS)
 
-Listing lectures
+The Queue Management Service (QMS) holds the queue of lectures to play. Its main jobs are:
+
+* Load the queue from Storage
+* Accept and manage requests to add, remove and sort the queue.
+* Offer the full queue as well as the next lecture to play.
+* Accept and manage requests to change the queue's state like  start playing, pause, skip and done playing.
+* Broadcast events on the queue for other modules to react.
 
 ## Legend:
 * [LCxxxx] requirement id.
@@ -30,6 +36,7 @@ We can also say that it not playing when the play possition is nil.
         with that information. Anyway that shouldnt happen and we will log a warning message for debug.
     * [QMS0081] [x] [T] It will move the lesson at the top of the queue if not already there.
     * [QMS0082] [x] [T] It will set and persist the new play possition for that lecture.
+    * [QMS0082] [ ] [ ] It will clean the play possition of any other lecture in the queue.
     * [QMS0083] [ ] [ ] It will broadcast that the given lesson is playing. 
     
 * When the user informs that a lesson paused playing providing a time stamp.
@@ -44,7 +51,7 @@ We can also say that it not playing when the play possition is nil.
     Dev. Note: Skipped do no set it to done.
     * [QMS0100] [x] [T] It will do nothing if the lesson is not in the queue.
     * [QMS0101] [x] [T] It move it to the end of the queue
-    * [QMS0102] [ ] [ ] It will cleand and persist the play possition.
+    * [QMS0102] [x] [T] It will cleand and persist the play possition.
     * [QMS0103] [ ] [ ] If skiping happen when only x seconds (config) are left, it is considered done.
     
 * When the user informs that a lesson is Done.
@@ -52,8 +59,10 @@ We can also say that it not playing when the play possition is nil.
     * [QMS0111] [x] [T] It will marked as done (set time stamp)
     * [QMS0112] [x] [T] It will remove it from the queue (not playing and not queue position).
 
-    
-* When the user request to play a lesson,
+* When the user request to play a lesson that might or not be in the queue.
+    * [QMS0120] [x] [T] If it is not in the queue it will be fetch added to the queue.
+    * [QMS0121] [x] [T] Once in the lecture is in the queue it will be set at the top of the queue.
+    * [QMS0122] [ ] [ ] It will broadcast a request to play the next lecture (the one at the top).
 
 View
 * [QMS0110] [x] [NT] 

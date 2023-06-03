@@ -138,7 +138,40 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         } catch {
             // TODO: log this error.
         }
+    }
 
+    // MARK: - Play Request for any lecture
+
+    public func playLecture(id: String) {
+        Task { playLecture(id:id) }
+    }
+
+    func playLecture(id: String) async {
+
+        do {
+            if !isLectureInQueue(id: id) {
+
+                // Get the new lecture and if does not exist get out.
+                guard let newDataLecture = try await storage.lecture(withId: id) else { return }
+
+                // Insert it at top
+                queue.insert(newDataLecture.entity(), at: 0)
+            }
+
+            guard let index = indexInQueue(id: id) else { return }
+
+            // Move it to top if needed.
+            if index != 0 {
+                await changeOrder(id: id, from: index, to: 0)
+            }
+
+            // Adjust the indexes and save.
+            consolidateIndexInQueue()
+            await persistQueue()
+
+        } catch {
+            // TODO: log this error.
+        }
     }
 
     // MARK: - Adding and Removing
