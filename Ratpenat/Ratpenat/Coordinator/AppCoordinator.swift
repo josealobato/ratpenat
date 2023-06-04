@@ -1,8 +1,8 @@
 import UIKit
 import JToolKit
-//import TeamworkUI
 import Coordinator
 import RData
+import QueueManagementService
 
 private typealias ConcurrencyTask = _Concurrency.Task
 
@@ -11,6 +11,7 @@ class AppCoordinator: BaseFlowCoordinator {
 
     /// Defining the default services that the `LoggedInCoordinator` will be started with.
     private static let appServices: [CoordinatorServiceProtocol] = [
+        AppQueueManagementService.shared
     ]
 
     // Access to the only instance of this coordinator.

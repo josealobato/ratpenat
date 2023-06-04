@@ -2,6 +2,12 @@ import Foundation
 
 public struct LecturesRepositoryBuilder {
 
+    private static var repo: LecturesRepositoryIntefaceCRUD = LecturesRepository(storage: loadStorage())
+
+    // TODO: notice that this builder is not returning a `LecturesRepositoryBuilder` but a `LecturesRepositoryIntefaceCRUD`
+    // and that is not correct.
+    public static var shared: LecturesRepositoryIntefaceCRUD { return repo }
+
     public static func build() -> LecturesRepositoryInteface {
 
         return LecturesRepository(storage: loadStorage())
