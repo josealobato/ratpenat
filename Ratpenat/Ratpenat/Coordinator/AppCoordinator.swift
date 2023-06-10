@@ -3,6 +3,7 @@ import JToolKit
 import Coordinator
 import RData
 import QueueManagementService
+import MediaFileSystem
 
 private typealias ConcurrencyTask = _Concurrency.Task
 
@@ -11,7 +12,8 @@ class AppCoordinator: BaseFlowCoordinator {
 
     /// Defining the default services that the `LoggedInCoordinator` will be started with.
     private static let appServices: [CoordinatorServiceProtocol] = [
-        AppQueueManagementService.shared
+        AppQueueManagementService.shared,
+        AppMediaManagementService(fileSystem: MediaFileSystemBuilder.shared)
     ]
 
     // Access to the only instance of this coordinator.
@@ -20,6 +22,9 @@ class AppCoordinator: BaseFlowCoordinator {
 
     // single data repository
     let sharedDataRepository = LecturesRepositoryBuilder.build()
+
+    // Single file system
+    let mediaFileSystem = MediaFileSystemBuilder.shared
 
     // When we receive a Local notification the login coordinator is not yet alive since
     // we still do not know if the user is logged in or not. In that case we hold this static

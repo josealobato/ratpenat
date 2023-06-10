@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		B416DE572A07AC8D001D4208 /* Category+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416DE562A07AC8D001D4208 /* Category+FromDataEntity.swift */; };
 		B41B36432A2CEB2500B0911A /* AppQueueManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B36422A2CEB2500B0911A /* AppQueueManagementService.swift */; };
+		B440B1F52A34C71D00F2A37D /* MediaFileSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B440B1F42A34C71D00F2A37D /* MediaFileSystem */; };
 		B447946C29DECD8A00A7356D /* RStorage.json in Resources */ = {isa = PBXBuildFile; fileRef = B447946B29DECD8A00A7356D /* RStorage.json */; };
 		B454034B29FFFF9100850702 /* Test-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034829FFFF9100850702 /* Test-1.mp3 */; };
 		B454034C29FFFF9100850702 /* Test-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034929FFFF9100850702 /* Test-2.mp3 */; };
 		B454034D29FFFF9100850702 /* Test-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034A29FFFF9100850702 /* Test-3.mp3 */; };
+		B45D9B232A30F867002BA491 /* AppMediaManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45D9B222A30F867002BA491 /* AppMediaManagementService.swift */; };
+		B45D9B252A30F944002BA491 /* MediaManagementService in Frameworks */ = {isa = PBXBuildFile; productRef = B45D9B242A30F944002BA491 /* MediaManagementService */; };
 		B4695E5529FAE1F0007A9244 /* demoMP4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */; };
 		B4695E5729FAE816007A9244 /* demoMP3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4695E5629FAE816007A9244 /* demoMP3.mp3 */; };
 		B470D34F29EB0ACC005FA54B /* PlayerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */; };
@@ -67,6 +70,9 @@
 		B454034829FFFF9100850702 /* Test-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-1.mp3"; sourceTree = "<group>"; };
 		B454034929FFFF9100850702 /* Test-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-2.mp3"; sourceTree = "<group>"; };
 		B454034A29FFFF9100850702 /* Test-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-3.mp3"; sourceTree = "<group>"; };
+		B45D9B202A30F104002BA491 /* MediaFileSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MediaFileSystem; sourceTree = "<group>"; };
+		B45D9B212A30F16A002BA491 /* MediaManagementService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MediaManagementService; sourceTree = "<group>"; };
+		B45D9B222A30F867002BA491 /* AppMediaManagementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMediaManagementService.swift; sourceTree = "<group>"; };
 		B4695E5429FAE1CA007A9244 /* demoMP4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demoMP4.mp4; sourceTree = "<group>"; };
 		B4695E5629FAE816007A9244 /* demoMP3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demoMP3.mp3; sourceTree = "<group>"; };
 		B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAdapter.swift; sourceTree = "<group>"; };
@@ -107,8 +113,10 @@
 			files = (
 				B48B17D22A1A858300BAF69A /* QueueCollection in Frameworks */,
 				B470D35129EB0C40005FA54B /* Player in Frameworks */,
+				B440B1F52A34C71D00F2A37D /* MediaFileSystem in Frameworks */,
 				B4C74FCA2A1E67FC00D57714 /* QueueManagementService in Frameworks */,
 				B49C268429D05EB800EF08C5 /* JToolKit in Frameworks */,
+				B45D9B252A30F944002BA491 /* MediaManagementService in Frameworks */,
 				B4B5CD7529DDD7060094BD79 /* LectureCollection in Frameworks */,
 				B49C268029D05EB000EF08C5 /* Coordinator in Frameworks */,
 				B48502A729DEC998002EB1B8 /* RData in Frameworks */,
@@ -196,6 +204,8 @@
 		B49C267A29D05A7E00EF08C5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				B45D9B212A30F16A002BA491 /* MediaManagementService */,
+				B45D9B202A30F104002BA491 /* MediaFileSystem */,
 				B4C74FC82A1E674F00D57714 /* QueueManagementService */,
 				B48B17D02A1A818800BAF69A /* QueueCollection */,
 				B4B5CD7C29DEC9460094BD79 /* RData */,
@@ -249,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				B41B36422A2CEB2500B0911A /* AppQueueManagementService.swift */,
+				B45D9B222A30F867002BA491 /* AppMediaManagementService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -296,6 +307,8 @@
 				B470D35029EB0C40005FA54B /* Player */,
 				B48B17D12A1A858300BAF69A /* QueueCollection */,
 				B4C74FC92A1E67FC00D57714 /* QueueManagementService */,
+				B45D9B242A30F944002BA491 /* MediaManagementService */,
+				B440B1F42A34C71D00F2A37D /* MediaFileSystem */,
 			);
 			productName = Ratpenat;
 			productReference = B49C263F29CF59A900EF08C5 /* Ratpenat.app */;
@@ -422,6 +435,7 @@
 				B49C264729CF59A900EF08C5 /* ViewController.swift in Sources */,
 				B49C267529D0554700EF08C5 /* HomeVC.swift in Sources */,
 				B470D34F29EB0ACC005FA54B /* PlayerAdapter.swift in Sources */,
+				B45D9B232A30F867002BA491 /* AppMediaManagementService.swift in Sources */,
 				B416DE572A07AC8D001D4208 /* Category+FromDataEntity.swift in Sources */,
 				B4B5CD7B29DDD9340094BD79 /* Lectures+FromDataEntity.swift in Sources */,
 				B49C267329D0551B00EF08C5 /* HomeV.swift in Sources */,
@@ -761,6 +775,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B440B1F42A34C71D00F2A37D /* MediaFileSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MediaFileSystem;
+		};
+		B45D9B242A30F944002BA491 /* MediaManagementService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MediaManagementService;
+		};
 		B470D35029EB0C40005FA54B /* Player */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Player;
