@@ -16,7 +16,6 @@ extension MediaManagementService: MediaManagementServiceInterface {
     func startManaging() {
 
         Task {
-            await fileSystem.setUpIfNeeded()
             // Only after the file system is ready we can start processing files.
             await checkUnmanaged()
         }
