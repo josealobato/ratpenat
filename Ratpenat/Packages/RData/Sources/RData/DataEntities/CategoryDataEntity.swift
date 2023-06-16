@@ -26,6 +26,8 @@ public struct CategoryDataEntity: Identifiable, Equatable {
 // This is placed here because storage should not know about data.
 // In the future Storage can be extracted to its own module.
 
+// Temporary solution to have a mutable data store
+
 extension CategoryStorage {
 
     var dataEntity: CategoryDataEntity {
@@ -36,20 +38,4 @@ extension CategoryStorage {
                            defaultImage: defaultImage)
 
     }
-
-}
-
-// Temporary solution to have a mutable data store
-
-extension MutableCategoryStorage {
-
-    var dataEntity: CategoryDataEntity {
-
-        CategoryDataEntity(id: id,
-                           title: title,
-                           imageURL: imageURL,
-                           defaultImage: defaultImage)
-
-    }
-
 }

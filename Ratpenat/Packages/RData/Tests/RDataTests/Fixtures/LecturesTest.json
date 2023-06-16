@@ -7,7 +7,8 @@
             "mediaURL": "file://aFolder",
             "imageURL": null,
             "queuePosition": null,
-            "playPosition": null
+            "playPosition": null,
+            "state": "archived"
         },
         {
             "id": "02",
@@ -16,7 +17,8 @@
             "mediaURL": "file://aFolder",
             "imageURL": null,
             "queuePosition": null,
-            "playPosition": null
+            "playPosition": null,
+            "state": "new"
         },
         {
             "id": "03",
@@ -25,7 +27,8 @@
             "mediaURL": "file://aFolder",
             "imageURL": null,
             "queuePosition": null,
-            "playPosition": null
+            "playPosition": null,
+            "state": "new"
         }
     ],
     "categories": [

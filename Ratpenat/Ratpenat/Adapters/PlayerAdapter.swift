@@ -45,7 +45,7 @@ class PlayerAdapter: PlayerServiceInterface {
 
     func nextLecture() async throws -> PlayerLecture? {
 
-        var lectures = useShorts ? shortTestLectures : longTestLectures
+        let lectures = useShorts ? shortTestLectures : longTestLectures
 
         if index >= lectures.count {
             return nil

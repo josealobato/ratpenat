@@ -16,11 +16,12 @@ class QueueCollectionAdapter: QueueCollectionServiceInterface {
 
     func queuedLectures() async throws -> [Lecture] {
 
-        try await repository.queuedLectures().map { $0.toLecture()}
+//        try await repository.queuedLectures().map { $0.toLecture()}
+        []
     }
 
     func dequeueLecture(id: String) async throws {
 
-        try await repository.dequeueLecture(withId: id)
+//        try await repository.dequeueLecture(withId: id)
     }
 }

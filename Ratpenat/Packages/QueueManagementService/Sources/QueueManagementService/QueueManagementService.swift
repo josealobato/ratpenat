@@ -1,22 +1,22 @@
 import Entities
 import Coordinator
 import RData
-import protocol RData.LecturesRepositoryIntefaceCRUD
+import protocol RData.LecturesRepositoryInteface
 
 public class QueueManagementService {
 
-    private let storage: LecturesRepositoryIntefaceCRUD
+    private let storage: LecturesRepositoryInteface
     private var timeProvider: TimeProvider
 
     private var queue: [Lecture] = []
 
     public weak var coordinator: CoordinationRequestProtocol?
 
-    convenience public init(storage: LecturesRepositoryIntefaceCRUD) {
+    convenience public init(storage: LecturesRepositoryInteface) {
         self.init(storage: storage, timeProvider: LocalTimeProvider())
     }
 
-    init(storage: LecturesRepositoryIntefaceCRUD, timeProvider: TimeProvider) {
+    init(storage: LecturesRepositoryInteface, timeProvider: TimeProvider) {
         /// Dev Note: The designated initializer is of package internal use so that
         /// we can instantiate the time provider for proper testing.
         self.storage = storage

@@ -21,7 +21,7 @@ class AppCoordinator: BaseFlowCoordinator {
     static var shared = AppCoordinator()
 
     // single data repository
-    let sharedDataRepository = LecturesRepositoryBuilder.build()
+    let sharedDataRepository = LecturesRepositoryBuilder.shared
 
     // Single file system
     let mediaFileSystem = MediaFileSystemBuilder.shared
