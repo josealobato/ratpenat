@@ -2,10 +2,16 @@ import Foundation
 
 class LecturesRepository {
 
-    var storage: StorageData
+    // This is the inteface to act upon the storage.
+    // Mostly save and load.
+    var storage: StorageInterface
 
-    init(storage: StorageData) {
+    // This is the local copy of the storage.
+    var storageData: StorageData
+
+    init(storage: StorageInterface) {
 
         self.storage = storage
+        self.storageData = storage.data()
     }
 }

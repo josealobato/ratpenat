@@ -1,6 +1,10 @@
 # RData or Ratpenat Data (DT) 
 
-A description of this package.
+Data Layer for Ratpenat application.
+
+## Single Responsibility
+
+Act as single source of truth for the data including persisting that data.
 
 ## Legend:
 * [DTxxxx] requirement id.
@@ -58,3 +62,21 @@ The `Builder` is public and return an object of type `Interface` that handles `D
 
 The `Repository` implements the interface and do the work by accesing the `StorageData`
 
+
+### Test
+
+You can test this with something like this:
+
+```
+let storage = LecturesRepositoryBuilder.shared
+Task {
+    do {
+        var lectures = try await storage.lectures()
+        lectures[0].queuePosition = 1
+        try await storage.update(lecture: lectures[0])
+    } catch {
+        print("error")
+    }
+}
+print("Done")
+```
