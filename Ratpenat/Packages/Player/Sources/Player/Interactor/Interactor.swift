@@ -21,7 +21,9 @@ final class Interactor: InteractorInput {
         switch event {
 
         case .loadInitialData:
-            await loadNextLecture()
+            if currentLecture == nil {
+                await loadNextLecture()
+            }
         case .playToggle:
             await onPlayPause()
         case .skipForward:
@@ -67,7 +69,7 @@ final class Interactor: InteractorInput {
 
             let audioEngine = try audioEngineBuider.build(with: lecture.mediaURL,
                                                           onPlaybackRefresh: enginePlaybackUpdate,
-                                                          onDone: onPlaybackDone)
+                                                          onDone: engineDone)
 
             let data = InteractorEvents.Output.LectureData(lecture: lecture,
                                                            audio: audioEngine.info())
@@ -92,13 +94,24 @@ final class Interactor: InteractorInput {
         render(.refresh(data))
     }
 
-    func onPlaybackDone() {
-
+    func engineDone() {
         Task {
+            await onPlaybackDone()
+        }
+    }
 
+    func onPlaybackDone() async {
+
+        guard let lecture = currentLecture
+        else { return }
+
+        do {
+            try await services.donePlaying(id: lecture.id)
             await loadNextLecture()
             // If autoplay.
             await onPlayPause()
+        } catch {
+            // TODO: show error to the user.
         }
     }
 
@@ -109,9 +122,16 @@ final class Interactor: InteractorInput {
         else { return }
 
         engine.playToggle()
+        let info = engine.info()
         let data = InteractorEvents.Output.LectureData(lecture: lecture,
-                                                       audio: engine.info())
+                                                       audio: info)
         render(.refresh(data))
+
+        if info.isPlaying {
+            await services.playing(id: lecture.id, in: info.currentPositionInSeconds)
+        } else {
+            await services.paused(id: lecture.id, in: info.currentPositionInSeconds)
+        }
     }
 
     private func onSkipForwards() {

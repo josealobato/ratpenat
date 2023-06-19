@@ -2,58 +2,40 @@ import Foundation
 import Player
 import Entities
 import Foundation
+import QueueManagementService
 
 extension Lecture: PlayerLecture { }
 
 class PlayerAdapter: PlayerServiceInterface {
 
-    let useShorts = true
+    let queueManagement: QueueManagementServiceProtocol
 
-    // This is not yet connected to the Data so we provide demo data here.
-    var shortTestLectures = [
-        Lecture(id: "1",
-                title: "Test 1",
-                category: nil,
-                mediaURL: Bundle.main.url(forResource: "Test-1", withExtension: "mp3")!,
-                imageURL: nil),
-        Lecture(id: "1",
-                title: "Test 2",
-                category: nil,
-                mediaURL: Bundle.main.url(forResource: "Test-2", withExtension: "mp3")!,
-                imageURL: nil),
-        Lecture(id: "1",
-                title: "Test 3",
-                category: nil,
-                mediaURL: Bundle.main.url(forResource: "Test-3", withExtension: "mp3")!,
-                imageURL: nil)
-    ]
+    init(queueManagement: QueueManagementServiceProtocol) {
 
-    var longTestLectures = [
-        Lecture(id: "1",
-                title: "Test long mp3",
-                category: nil,
-                mediaURL: Bundle.main.url(forResource: "demoMP3", withExtension: "mp3")!,
-                imageURL: nil),
-        Lecture(id: "1",
-                title: "Test long mp4",
-                category: nil,
-                mediaURL: Bundle.main.url(forResource: "demoMP4", withExtension: "mp4")!,
-                imageURL: nil)
-    ]
-
-    var index = 0
+        self.queueManagement = queueManagement
+    }
 
     func nextLecture() async throws -> PlayerLecture? {
 
-        let lectures = useShorts ? shortTestLectures : longTestLectures
+        queueManagement.getNext()
+    }
 
-        if index >= lectures.count {
-            return nil
+    func playing(id: String, in second: Int) async {
 
-        } else {
-            let lecture = lectures[index]
-            index += 1
-            return lecture
-        }
+        await queueManagement.startedPlayingLecture(id: id, in: second)
+    }
+
+    func paused(id: String, in second: Int) async {
+
+        await queueManagement.pausedLecture(id: id, in: second)
+    }
+
+    func skipped(id: String, in second: Int) async {
+        // TODO: why not seconds here?
+        await queueManagement.skippedLecture(id: id)
+    }
+
+    func donePlaying(id: String) async throws {
+        await queueManagement.donePlayingLecture(id: id)
     }
 }

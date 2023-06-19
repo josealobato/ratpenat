@@ -49,7 +49,9 @@ extension AppCoordinator {
 
     private func buildPlayerTabContent() -> UIViewController {
 
-        let playerAdater = PlayerAdapter()
+        let queueManagement = AppQueueManagementService.sharedService as QueueManagementServiceProtocol
+
+        let playerAdater = PlayerAdapter(queueManagement: queueManagement)
         let playerVC = PlayerBuilder.build(services: playerAdater)
 
         playerVC.tabBarItem.image = UIImage(systemName: "play")

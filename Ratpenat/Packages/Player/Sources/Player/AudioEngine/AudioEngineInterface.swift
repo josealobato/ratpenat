@@ -5,6 +5,9 @@ struct AudioInfo: Equatable {
     let durationInSecons: Int
     let isPlaying: Bool
     let currentPositionInOnePercent: Double
+    var currentPositionInSeconds: Int {
+        Int(Double(durationInSecons) * currentPositionInOnePercent)
+    }
 }
 
 protocol AudioEngineInterfaceBuilder {
