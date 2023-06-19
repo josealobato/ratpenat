@@ -42,18 +42,18 @@ final class QMS_getNextTests: XCTestCase {
         let lecture = qms_ut.getNext()
 
         // THEN the lecture at the top will be requested.
-        XCTAssert(lecture!.id == "3")
+        XCTAssert(lecture!.id == uuidString("3"))
     }
 
     // MARK: - Testing assets
 
     private var lecturesWithTwoOnList: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: nil),
-            LectureDataEntity(id: "2", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3),
-            LectureDataEntity(id: "3", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: "4", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            LectureDataEntity(id: "5", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: nil)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: nil),
+            LectureDataEntity(id: uuid("2"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3),
+            LectureDataEntity(id: uuid("3"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("4"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
+            LectureDataEntity(id: uuid("5"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: nil)
         ]
     }
 }

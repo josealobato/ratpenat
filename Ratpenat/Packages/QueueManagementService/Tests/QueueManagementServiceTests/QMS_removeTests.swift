@@ -25,7 +25,7 @@ final class QMS_removeTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to remove a lecture
-        await qms_ut.removeFromQueue(id: "1")
+        await qms_ut.removeFromQueue(id: uuidString("1"))
 
         // THEN the queue will stay the same
         let lectures = qms_ut.getQueue()
@@ -42,12 +42,14 @@ final class QMS_removeTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to remove a lecture
-        await qms_ut.removeFromQueue(id: "66")
+        await qms_ut.removeFromQueue(id: uuidString("6"))
 
         // THEN the queue will stay the same
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["1", "2", "3"])
+        XCTAssertEqual(resultingIds, [uuidString("1"),
+                                      uuidString("2"),
+                                      uuidString("3")])
         let resultingPositions = lectures.map { $0.queuePosition }
         XCTAssertEqual(resultingPositions, [1, 2, 3])
     }
@@ -62,12 +64,13 @@ final class QMS_removeTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to remove a lecture
-        await qms_ut.removeFromQueue(id: "2")
+        await qms_ut.removeFromQueue(id: uuidString("2"))
 
         // THEN the queue will stay the same
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["1", "3"])
+        XCTAssertEqual(resultingIds, [uuidString("1"),
+                                      uuidString("3")])
         let resultingPositions = lectures.map { $0.queuePosition }
         XCTAssertEqual(resultingPositions, [1, 2])
     }
@@ -82,7 +85,7 @@ final class QMS_removeTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to remove a lecture
-        await qms_ut.removeFromQueue(id: "2")
+        await qms_ut.removeFromQueue(id: uuidString("2"))
 
         // THEN the resulting queue is saved on store
         let storeInvocations = storageMock.updateLectureReceivedInvocations
@@ -96,16 +99,16 @@ final class QMS_removeTests: XCTestCase {
 
     private var initialLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            LectureDataEntity(id: "3", title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3)
         ]
     }
 
     private var storageUpdatedLecturesWhenRemove: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: "3", title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
         ]
     }
 }

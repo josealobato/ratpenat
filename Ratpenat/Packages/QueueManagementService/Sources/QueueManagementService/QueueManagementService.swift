@@ -39,11 +39,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Playing
 
-    public func startedPlayingLecture(id: String, in second: Int) {
-        Task { startedPlayingLecture(id:id, in:second) }
-    }
-
-    func startedPlayingLecture(id: String, in second: Int) async {
+    public func startedPlayingLecture(id: String, in second: Int) async {
 
         // if the object is not in the queue do nothing.
         guard isLectureInQueue(id: id) else { return }
@@ -70,11 +66,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func pausedLecture(id: String, in second: Int) {
-        Task { pausedLecture(id:id, in:second) }
-    }
-
-    func pausedLecture(id: String, in second: Int) async {
+    public func pausedLecture(id: String, in second: Int) async {
 
         // if the object is not in the queue do nothing.
         guard let index = indexInQueue(id: id) else { return }
@@ -94,11 +86,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func skippedLecture(id: String) {
-        Task { skippedLecture(id:id) }
-    }
-
-    func skippedLecture(id: String) async {
+    public func skippedLecture(id: String) async {
 
         // if the object is not in the queue do nothing.
         guard let index = indexInQueue(id: id) else { return }
@@ -110,11 +98,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         await changeOrder(id: id, from: index, to: queue.count - 1)
     }
 
-    public func donePlayingLecture(id: String) {
-        Task { donePlayingLecture(id:id) }
-    }
-
-    func donePlayingLecture(id: String) async {
+    public func donePlayingLecture(id: String) async {
 
         // if the object is not in the queue do nothing:
         guard let index = indexInQueue(id: id) else { return }
@@ -142,11 +126,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Play Request for any lecture
 
-    public func playLecture(id: String) {
-        Task { playLecture(id:id) }
-    }
-
-    func playLecture(id: String) async {
+    public func playLecture(id: String) async {
 
         do {
             if !isLectureInQueue(id: id) {
@@ -176,9 +156,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Adding and Removing
 
-    public func addToQueueOnTop(id: String) { Task { addToQueueOnTop(id: id) } }
-
-    func addToQueueOnTop(id: String) async {
+    public func addToQueueOnTop(id: String) async {
 
         // if the object is already there do nothing.
         guard !isLectureInQueue(id: id) else { return }
@@ -195,9 +173,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func addToQueueAtBottom(id: String)  { Task { addToQueueOnTop(id: id) } }
-
-    func addToQueueAtBottom(id: String) async {
+    public func addToQueueAtBottom(id: String) async {
 
         // if the object is already there do nothing.
         guard !isLectureInQueue(id: id) else { return }
@@ -214,9 +190,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func removeFromQueue(id: String)  { Task { removeFromQueue(id: id) } }
-
-    func removeFromQueue(id: String) async {
+    public func removeFromQueue(id: String) async {
 
         // if the object is not in queue do nothing.
         guard isLectureInQueue(id: id) else { return }
@@ -234,11 +208,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Sorting
 
-    public func changeOrder(id: String, from origin: Int, to destination: Int) {
-        Task { await changeOrder(id: id, from: origin, to: destination) }
-    }
-
-    func changeOrder(id: String, from origin: Int, to destination: Int) async {
+    public func changeOrder(id: String, from origin: Int, to destination: Int) async {
 
         // Index should be valid
         guard isIndexInRange(index: origin) && isIndexInRange(index: destination)
@@ -340,7 +310,6 @@ extension QueueManagementService: CoordinatorServiceLifeCycleProtocol {
             // TODO: Log error
             print(error)
         }
-
     }
 
     public func stop() { /* Nothing to do */ }

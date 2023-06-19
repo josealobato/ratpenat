@@ -25,7 +25,7 @@ final class QMS_pausedTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about pause a lecture not in the list
-        await qms_ut.pausedLecture(id: "66", in: 10)
+        await qms_ut.pausedLecture(id: uuidString("6"), in: 10)
 
         // THEN No lecture is playing (nothing happen)
         let lectures = qms_ut.getQueue()
@@ -45,7 +45,7 @@ final class QMS_pausedTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about playing a lecture at the top of the list
-        await qms_ut.pausedLecture(id: "1", in: 60)
+        await qms_ut.pausedLecture(id: uuidString("1"), in: 60)
 
         // THEN The lecture at the top will get a new playPossition
         let lectures = qms_ut.getQueue()
@@ -68,7 +68,7 @@ final class QMS_pausedTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about playing a lecture at the top of the list
-        await qms_ut.pausedLecture(id: "1", in: 60)
+        await qms_ut.pausedLecture(id: uuidString("1"), in: 60)
 
         // THEN The lecture at the top will get a new playPossition
         let lectures = qms_ut.getQueue()
@@ -96,7 +96,7 @@ final class QMS_pausedTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about playing a lecture at the top of the list
-        await qms_ut.pausedLecture(id: "2", in: 60)
+        await qms_ut.pausedLecture(id: uuidString("2"), in: 60)
 
         // THEN The lecture at the top will get a new playPossition
         let lectures = qms_ut.getQueue()
@@ -119,7 +119,7 @@ final class QMS_pausedTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about playing a lecture at the top of the list
-        await qms_ut.pausedLecture(id: "2", in: 60)
+        await qms_ut.pausedLecture(id: uuidString("2"), in: 60)
 
         // THEN The lecture at the top will get a new playPossition
         let lectures = qms_ut.getQueue()
@@ -136,15 +136,15 @@ final class QMS_pausedTests: XCTestCase {
 
     private var initialLecturesNonePlaying: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: nil),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: nil),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil)
         ]
     }
 
     private var initialLecturesOnePlaying: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil)
         ]
     }
 }

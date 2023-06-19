@@ -25,7 +25,7 @@ final class QMS_startedPlayingTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about playing a lecture not in the list
-        await qms_ut.startedPlayingLecture(id: "66", in: 10)
+        await qms_ut.startedPlayingLecture(id: uuidString("6"), in: 10)
 
         // THEN No lecture is playing
         let lectures = qms_ut.getQueue()
@@ -45,13 +45,13 @@ final class QMS_startedPlayingTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about playing a lecture at the top of the list
-        await qms_ut.startedPlayingLecture(id: "1", in: 10)
+        await qms_ut.startedPlayingLecture(id: uuidString("1"), in: 10)
 
         // THEN The lecture at the top will start playing...
         let lectures = qms_ut.getQueue()
-        XCTAssertTrue(lectures[0].id == "1")
+        XCTAssertTrue(lectures[0].id == uuidString("1"))
         XCTAssertTrue(lectures[0].isPlaying)
-        XCTAssertTrue(lectures[1].id == "2")
+        XCTAssertTrue(lectures[1].id == uuidString("2"))
         XCTAssertFalse(lectures[1].isPlaying)
         // ...and persisted the modified lecture
         let storeInvocations = storageMock.updateLectureReceivedInvocations
@@ -70,14 +70,14 @@ final class QMS_startedPlayingTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about playing a lecture at is not at the top of the list
-        await qms_ut.startedPlayingLecture(id: "2", in: 20)
+        await qms_ut.startedPlayingLecture(id: uuidString("2"), in: 20)
 
         // THEN The lecture will be move at the top, start playing,...
         let lectures = qms_ut.getQueue()
-        XCTAssertTrue(lectures[0].id == "2")
+        XCTAssertTrue(lectures[0].id == uuidString("2"))
         XCTAssertTrue(lectures[0].isPlaying)
         XCTAssertTrue(lectures[0].isPlaying)
-        XCTAssertTrue(lectures[1].id == "1")
+        XCTAssertTrue(lectures[1].id == uuidString("1"))
         XCTAssertFalse(lectures[1].isPlaying)
         // ...and persisted all changed lectures (notice the possition in the queue has changed)
         let storeInvocations = storageMock.updateLectureReceivedInvocations
@@ -90,8 +90,8 @@ final class QMS_startedPlayingTests: XCTestCase {
 
     private var initialLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
         ]
     }
 }

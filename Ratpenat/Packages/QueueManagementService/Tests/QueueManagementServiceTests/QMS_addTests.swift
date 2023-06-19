@@ -27,12 +27,12 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add alecture on top
-        await qms_ut.addToQueueOnTop(id: "9")
+        await qms_ut.addToQueueOnTop(id: uuidString("9"))
 
         // THEN that will be the single lecture
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["9"])
+        XCTAssertEqual(resultingIds, [uuidString("9")])
         XCTAssertEqual(lectures[0].queuePosition!, 1)
     }
 
@@ -48,12 +48,12 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add alecture on top
-        await qms_ut.addToQueueOnTop(id: "9")
+        await qms_ut.addToQueueOnTop(id: uuidString("9"))
 
         // THEN it will be added at possition 1 with queue position 1
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["9", "1", "2"])
+        XCTAssertEqual(resultingIds, [uuidString("9"), uuidString("1"), uuidString("2")])
         let resultingPositions = lectures.map { $0.queuePosition }
         XCTAssertEqual(resultingPositions, [1, 2, 3])
     }
@@ -70,7 +70,7 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add alecture on top
-        await qms_ut.addToQueueOnTop(id: "9")
+        await qms_ut.addToQueueOnTop(id: uuidString("9"))
 
         // THEN the result will be updated in the store
         let storeInvocations = storageMock.updateLectureReceivedInvocations
@@ -94,12 +94,12 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add alecture at bottom
-        await qms_ut.addToQueueAtBottom(id: "9")
+        await qms_ut.addToQueueAtBottom(id: uuidString("9"))
 
         // THEN that will be the single lecture
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["9"])
+        XCTAssertEqual(resultingIds, [uuidString("9")])
         XCTAssertEqual(lectures[0].queuePosition!, 1)
     }
 
@@ -115,12 +115,12 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add alecture at bottom
-        await qms_ut.addToQueueAtBottom(id: "9")
+        await qms_ut.addToQueueAtBottom(id: uuidString("9"))
 
         // THEN it will be added at the end
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["1", "2", "9"])
+        XCTAssertEqual(resultingIds, [uuidString("1"), uuidString("2"), uuidString("9")])
         let resultingPositions = lectures.map { $0.queuePosition }
         XCTAssertEqual(resultingPositions, [1, 2, 3])
     }
@@ -137,7 +137,7 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add a lecture at bottom
-        await qms_ut.addToQueueAtBottom(id: "9")
+        await qms_ut.addToQueueAtBottom(id: uuidString("9"))
 
         // THEN the result will be updated in the store
         let storeInvocations = storageMock.updateLectureReceivedInvocations
@@ -161,12 +161,12 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add an existing lecture on top
-        await qms_ut.addToQueueOnTop(id: "1")
+        await qms_ut.addToQueueOnTop(id: uuidString("1"))
 
         // THEN the queue estays the same
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["1", "2"])
+        XCTAssertEqual(resultingIds, [uuidString("1"), uuidString("2")])
     }
 
     func testAddExistingLectureAtBottom_QMS0030() async throws {
@@ -181,38 +181,38 @@ final class QMS_addTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN requesting to add an existing lecture at bottom.
-        await qms_ut.addToQueueAtBottom(id: "1")
+        await qms_ut.addToQueueAtBottom(id: uuidString("1"))
 
         // THEN the queue estays the same
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
-        XCTAssertEqual(resultingIds, ["1", "2"])
+        XCTAssertEqual(resultingIds, [uuidString("1"), uuidString("2")])
     }
 
     // MARK: - Testing assets
 
     private var initialLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
         ]
     }
 
     private var storageUpdatedLecturesWhenAddOnTop: [LectureDataEntity] { // Order not important since it is for update
         [
-            LectureDataEntity(id: "9", title: "title 09", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3)
+            LectureDataEntity(id: uuid("9"), title: "title 09", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3)
         ]
     }
 
     private var storageUpdatedLecturesWhenAddAtBottom: [LectureDataEntity] { // Order not important since it is for update
         [
-            LectureDataEntity(id: "9", title: "title 09", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3),
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
+            LectureDataEntity(id: uuid("9"), title: "title 09", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3),
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
         ]
     }
 
-    private var addedLecture = LectureDataEntity(id: "9", title: "title 09", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: nil)
+    private var addedLecture = LectureDataEntity(id: uuid("9"), title: "title 09", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: nil)
 }

@@ -26,7 +26,7 @@ import AppKit
 
 
 
-final class LecturesRepositoryIntefaceCRUDMock: LecturesRepositoryIntefaceCRUD {
+final class LecturesRepositoryIntefaceCRUDMock: LecturesRepositoryInteface {
 
     //MARK: - add
 

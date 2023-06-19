@@ -44,7 +44,7 @@ final class QMS_skippedTests: XCTestCase {
         await qms_ut.start()
 
         // WHEN informing about skipped in list
-        await qms_ut.skippedLecture(id: "1")
+        await qms_ut.skippedLecture(id: uuidString("1"))
 
         // THEN The lecture is sent to the end and play possition removed.
         let lectures = qms_ut.getQueue()
@@ -61,33 +61,33 @@ final class QMS_skippedTests: XCTestCase {
 
     private var initialDataLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil),
-            LectureDataEntity(id: "3", title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil)
         ]
     }
 
     private var initialUnchangedLectures: [Lecture] {
         [
-            Lecture(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
-            Lecture(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            Lecture(id: "3", title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3)
+            Lecture(id: uuidString("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
+            Lecture(id: uuidString("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
+            Lecture(id: uuidString("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3)
         ]
     }
 
     private var finalChangedLectures: [Lecture] {
         [
-            Lecture(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            Lecture(id: "3", title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            Lecture(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil),
+            Lecture(id: uuidString("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
+            Lecture(id: uuidString("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
+            Lecture(id: uuidString("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil),
         ]
     }
 
     private var finalDataLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: "2", title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: nil),
-            LectureDataEntity(id: "3", title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil),
-            LectureDataEntity(id: "1", title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil)
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: nil),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil),
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil)
         ]
     }
 }

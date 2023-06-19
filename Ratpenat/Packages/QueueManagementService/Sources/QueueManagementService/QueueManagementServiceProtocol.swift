@@ -20,43 +20,43 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
     ///  - Parameters:
     ///   - id: The id of the lecture
     ///   - second: the play possition in seconds when it started.
-    func startedPlayingLecture(id: String, in second: Int)
+    func startedPlayingLecture(id: String, in second: Int) async
 
     /// Inform the Manager that a lecture was paused.
     ///  - Parameters:
     ///   - id: The id of the lecture
     ///   - second: the play possition in seconds when it paused.
-    func pausedLecture(id: String, in second: Int)
+    func pausedLecture(id: String, in second: Int) async
 
     /// Skip a lecture.
     /// - Parameters:
     ///   - id: id of the lecture to skip
-    func skippedLecture(id: String)
+    func skippedLecture(id: String) async
 
     /// Finished playing a lecture
     /// - Parameter id: the id of the lecture.
-    func donePlayingLecture(id: String)
+    func donePlayingLecture(id: String) async
 
     // MARK: - Play Request for any lecture
 
     /// Request to play a lecture that might or not be in the queue.
     /// It will be added to the queue and set to play next
     /// - Parameter id: <#id description#>
-    func playLecture(id: String)
+    func playLecture(id: String) async
 
     // MARK: - Adding and Removing
 
     /// Add a lecture to the top of the queue (first to next)
     /// - Parameter id: the id of the lecture to add.
-    func addToQueueOnTop(id: String)
+    func addToQueueOnTop(id: String) async
 
     /// Add a lecture at the bottom of the queue (last to next)
     /// - Parameter id: the id of the lecture to add.
-    func addToQueueAtBottom(id: String)
+    func addToQueueAtBottom(id: String) async
 
     /// Remove a lecture from the queue
     /// - Parameter id: the id of the lecture to remove.
-    func removeFromQueue(id: String)
+    func removeFromQueue(id: String) async
 
     // MARK: - Sorting
 
@@ -73,7 +73,5 @@ public protocol QueueManagementServiceProtocol: AutoMockable {
     ///   - id: Id of the lecture to change
     ///   - origin: Initial Possition before moving it.
     ///   - destination: Final Position when the movement is done.
-    func changeOrder(id: String, from origin: Int, to destination: Int)
+    func changeOrder(id: String, from origin: Int, to destination: Int) async
 }
-
-
