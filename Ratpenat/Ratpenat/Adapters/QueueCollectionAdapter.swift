@@ -2,26 +2,26 @@ import Foundation
 import QueueCollection
 import Entities
 import RData
+import QueueManagementService
 
 class QueueCollectionAdapter: QueueCollectionServiceInterface {
 
-    let repository: LecturesRepositoryInteface
+    let queueManagement: QueueManagementServiceProtocol
 
-    init(repository: LecturesRepositoryInteface) {
+    init(queueManagement: QueueManagementServiceProtocol) {
 
-        self.repository = repository
+        self.queueManagement = queueManagement
     }
 
     // MARK: - LectureCollectionServiceInterface
 
     func queuedLectures() async throws -> [Lecture] {
 
-//        try await repository.queuedLectures().map { $0.toLecture()}
-        []
+        queueManagement.getQueue()
     }
 
     func dequeueLecture(id: String) async throws {
 
-//        try await repository.dequeueLecture(withId: id)
+        await queueManagement.removeFromQueue(id: id)
     }
 }

@@ -1,4 +1,5 @@
 import UIKit
+import QueueManagementService
 import Coordinator
 import LectureCollection
 import QueueCollection
@@ -61,7 +62,10 @@ extension AppCoordinator {
 
         let listNavigation = UINavigationController()
 
-        let listAdapter = LectureCollectionAdapter(repository: sharedDataRepository)
+        let queueManagement = AppQueueManagementService.sharedService as QueueManagementServiceProtocol
+
+        let listAdapter = LectureCollectionAdapter(repository: sharedDataRepository,
+                                                   queueManagement: queueManagement)
         let listVC = LectureCollectionBuilder.build(services: listAdapter)
 
         listVC.tabBarItem.image = UIImage(systemName: "books.vertical")
@@ -76,7 +80,9 @@ extension AppCoordinator {
 
         let listNavigation = UINavigationController()
 
-        let listAdapter = QueueCollectionAdapter(repository: sharedDataRepository)
+        let queueManagement = AppQueueManagementService.sharedService as QueueManagementServiceProtocol
+
+        let listAdapter = QueueCollectionAdapter(queueManagement: queueManagement)
         let listVC = QueueCollectionBuilder.build(services: listAdapter)
 
         listVC.tabBarItem.image = UIImage(systemName: "rectangle.stack")

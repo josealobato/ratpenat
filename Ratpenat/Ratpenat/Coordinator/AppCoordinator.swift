@@ -12,7 +12,7 @@ class AppCoordinator: BaseFlowCoordinator {
 
     /// Defining the default services that the `LoggedInCoordinator` will be started with.
     private static let appServices: [CoordinatorServiceProtocol] = [
-        AppQueueManagementService.shared,
+        AppQueueManagementService.sharedService,
         AppMediaManagementService(fileSystem: MediaFileSystemBuilder.shared)
     ]
 

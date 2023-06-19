@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Ratpenat
-//
-//  Created by Jose Lobato on 25/3/23.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
