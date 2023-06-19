@@ -53,15 +53,19 @@ Act as single source of truth for the data including persisting that data.
 ### Storage 
 
 Holds the data and it is in charge of decoding and coding.
+Storage do not have URL's saved at this level but relative paths to the media and images. But, 
+it offers URLs as computed vars relative to the base folder (shared with Media File System).
+The complete content of storage is internal to the package.
 
 ### Interface
 
 The `Builder` is public and return an object of type `Interface` that handles `DataIdentities`.
+There is two interfaces with almost the same functionality but one differentce. The `Bulk` inteface 
+does not write to disk on every single action but the regular does. 
 
 ### Repository
 
 The `Repository` implements the interface and do the work by accesing the `StorageData`
-
 
 ### Test
 

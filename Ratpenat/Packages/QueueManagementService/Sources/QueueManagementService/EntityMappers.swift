@@ -9,7 +9,7 @@ extension LectureDataEntity {
 
     func entity() -> Lecture {
 
-        Lecture(id: self.id,
+        Lecture(id: self.id.uuidString,
                 title: self.title,
                 category: self.category?.entity(),
                 mediaURL: self.mediaURL,
@@ -24,7 +24,7 @@ extension CategoryDataEntity {
 
     func entity() -> Entities.Category {
 
-        Category(id: self.id,
+        Category(id: self.id.uuidString,
                  title: self.title,
                  imageURL: self.imageURL,
                  defaultImage: self.defaultImage)
@@ -35,7 +35,7 @@ extension Lecture {
 
     func dataEntity() -> LectureDataEntity {
 
-        LectureDataEntity(id: self.id,
+        LectureDataEntity(id: UUID(uuidString: self.id) ?? UUID(),
                           title: self.title,
                           category: self.category?.dataEntity(),
                           mediaURL: self.mediaURL,
@@ -49,7 +49,7 @@ extension Entities.Category {
 
     func dataEntity() -> CategoryDataEntity {
 
-        CategoryDataEntity(id: self.id,
+        CategoryDataEntity(id: UUID(uuidString: self.id) ?? UUID(),
                            title: self.title,
                            imageURL: self.imageURL,
                            defaultImage: self.defaultImage)

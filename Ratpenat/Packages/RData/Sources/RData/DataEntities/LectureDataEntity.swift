@@ -2,7 +2,7 @@ import Foundation
 
 public struct LectureDataEntity: Identifiable, Equatable {
     
-    public let id: String
+    public let id: UUID
     public var title: String
     public var category: CategoryDataEntity?
     public var mediaURL: URL
@@ -18,7 +18,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
     }
     public var state: State
 
-    public init(id: String,
+    public init(id: UUID,
                 title: String,
                 category: CategoryDataEntity? = nil,
                 mediaURL: URL, imageURL: URL? = nil,
@@ -47,11 +47,16 @@ extension LectureDataEntity {
 
     func storedData() ->  LectureStorage {
 
-        LectureStorage(id: self.id,
+        var imagePath: String? = nil
+        if let imageURL = self.imageURL {
+            imagePath = pathFromAbsoluteURL(url:imageURL)
+        }
+
+        return LectureStorage(id: self.id,
                               title: self.title,
-                              categoryId: self.category?.id,
-                              mediaURL: self.mediaURL,
-                              imageURL: self.imageURL,
+                              categoryId: self.category?.id.uuidString,
+                              mediaPath: pathFromAbsoluteURL(url:self.mediaURL),
+                              imagePath: imagePath,
                               queuePosition: self.queuePosition,
                               playPosition: self.playPosition,
                               state: LectureStorage.State(rawValue: self.state.rawValue) ?? .new)
@@ -68,14 +73,16 @@ extension StorageData {
 
     func lecturesDataEntities() -> [LectureDataEntity] {
 
-        let entities = lectures.map { lectureStorage in
+        let entities = lectures.compactMap { lectureStorage -> LectureDataEntity?  in
 
-            let category = categories.first(where: { $0.id == lectureStorage.categoryId})
+            let category = categories.first(where: { $0.id.uuidString == lectureStorage.categoryId})
+
+            guard let mediaURL = lectureStorage.mediaURL else { return nil }
 
             let newLecture = LectureDataEntity(id: lectureStorage.id,
                                                title: lectureStorage.title,
                                                category: category?.dataEntity,
-                                               mediaURL: lectureStorage.mediaURL,
+                                               mediaURL: mediaURL,
                                                imageURL: lectureStorage.imageURL,
                                                queuePosition: lectureStorage.queuePosition,
                                                playPosition: lectureStorage.playPosition,

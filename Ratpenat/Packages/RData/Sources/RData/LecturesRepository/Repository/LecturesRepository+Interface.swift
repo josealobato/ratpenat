@@ -15,7 +15,7 @@ extension LecturesRepository: LecturesRepositoryInteface {
 
     func lecture(withId id: String) async throws -> LectureDataEntity? {
 
-        storageData.lecturesDataEntities().first(where: { $0.id == id })
+        storageData.lecturesDataEntities().first(where: { $0.id.uuidString == id })
     }
 
     func update(lecture: LectureDataEntity) async throws {
@@ -32,7 +32,7 @@ extension LecturesRepository: LecturesRepositoryInteface {
 
     func delete(withId id: String) async throws {
 
-        if let index = storageData.lecturesDataEntities().firstIndex(where: { $0.id == id }) {
+        if let index = storageData.lecturesDataEntities().firstIndex(where: { $0.id.uuidString == id }) {
 
             storageData.lectures.remove(at: index)
         }

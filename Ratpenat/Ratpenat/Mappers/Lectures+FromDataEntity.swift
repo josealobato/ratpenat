@@ -6,7 +6,7 @@ extension LectureDataEntity {
 
     func toLecture() -> Lecture {
 
-        Lecture(id: id,
+        Lecture(id: id.uuidString,
                 title: title,
                 category: category?.toCategory(),
                 mediaURL: mediaURL,

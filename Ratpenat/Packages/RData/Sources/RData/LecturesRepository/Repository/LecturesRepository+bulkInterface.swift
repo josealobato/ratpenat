@@ -21,7 +21,7 @@ extension LecturesRepository: LecturesRepositoryBulkInteface {
 
     func shallowDelete(withId id: String) async throws {
 
-        if let index = storageData.lecturesDataEntities().firstIndex(where: { $0.id == id }) {
+        if let index = storageData.lecturesDataEntities().firstIndex(where: { $0.id.uuidString == id }) {
 
             storageData.lectures.remove(at: index)
         }

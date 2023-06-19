@@ -2,7 +2,7 @@ import Foundation
 
 public struct CategoryDataEntity: Identifiable, Equatable {
 
-    public let id: String
+    public let id: UUID
     public let title: String
     public let imageURL: URL?
 
@@ -10,7 +10,7 @@ public struct CategoryDataEntity: Identifiable, Equatable {
     // one like `text.book.closed` can be set by default.
     public let defaultImage: String
 
-    public init(id: String,
+    public init(id: UUID,
          title: String,
          imageURL: URL?,
          defaultImage: String) {

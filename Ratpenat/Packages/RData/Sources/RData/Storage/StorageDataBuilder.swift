@@ -51,7 +51,9 @@ class StorageDataBuilder: StorageInterface {
 
             let data = try Data(contentsOf: storageURL)
             let decoder = JSONDecoder()
-            return try decoder.decode(StorageData.self, from: data)
+            let decoded =  try decoder.decode(StorageData.self, from: data)
+            print(decoded)
+            return decoded
         } catch {
             print("Error!! Unable to parse the storage")
             return StorageData(lectures: [], categories: [])

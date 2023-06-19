@@ -1,31 +1,31 @@
 {
     "lectures": [
         {
-            "id": "01",
-            "title": "This is lecture one on English",
+            "id": "E32246E7-E60B-42E6-A12A-ED9E10745A4E",
+            "title": "1-Introduction to Ratpenat 1",
             "categoryId": "2",
-            "mediaURL": "file://aFolder",
-            "imageURL": null,
+            "mediaPath": "managed/1-Introduction to Ratpenat 1.mp3",
+            "imagePath": null,
             "queuePosition": null,
             "playPosition": null,
             "state": "new"
         },
         {
-            "id": "02",
-            "title": "This is lecture two on Social Science",
+            "id": "84F6CBC4-2EEF-48A3-9363-21B3663907A2",
+            "title": "2-Introduction to Ratpenat 2",
             "categoryId": "3",
-            "mediaURL": "file://aFolder",
-            "imageURL": null,
+            "mediaPath": "managed/2-Introduction to Ratpenat 2.mp3",
+            "imagePath": null,
             "queuePosition": null,
             "playPosition": null,
             "state": "new"
         },
         {
-            "id": "03",
-            "title": "This is lecture three on geography",
+            "id": "46D6F08B-D0D4-49ED-B7D2-4B7192750504",
+            "title": "3-Introduction to Ratpenat 3",
             "categoryId": "3",
-            "mediaURL": "file://aFolder",
-            "imageURL": null,
+            "mediaPath": "managed/3-Introduction to Ratpenat 3.mp3",
+            "imagePath": null,
             "queuePosition": null,
             "playPosition": null,
             "state": "new"
@@ -33,21 +33,27 @@
     ],
     "categories": [
         {
-            "id": "1",
-            "title": "English",
-            "imageURL": null,
+            "id": "0F358717-1971-4801-875F-8227B3EA048B",
+            "title": "Tutorial",
+            "imagePath": null,
             "defaultImage": "text.book.closed"
         },
         {
-            "id": "2",
+            "id": "735C1357-2F40-4C17-A06E-A6011543BC49",
+            "title": "English",
+            "imagePath": null,
+            "defaultImage": "text.book.closed"
+        },
+        {
+            "id": "328C88B0-F83A-4408-AD68-FBFE1D6CF95B",
             "title": "Social Science",
-            "imageURL": null,
+            "imagePath": null,
             "defaultImage": "map"
         },
         {
-            "id": "3",
+            "id": "5EBCBCA9-7F42-435B-BB2B-6FD5459D0142",
             "title": "Geography",
-            "imageURL": null,
+            "imagePath": null,
             "defaultImage": "globe.europe.africa"
         }
     ]
