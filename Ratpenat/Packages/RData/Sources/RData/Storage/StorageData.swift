@@ -46,6 +46,7 @@ class LectureStorage: Identifiable, Codable {
     public var imagePath: String?
     public var queuePosition: Int?
     public var playPosition: Int?
+    public var played: [Date]
 
     public enum State: String, Codable {
         case new
@@ -61,6 +62,7 @@ class LectureStorage: Identifiable, Codable {
          imagePath: String? = nil,
          queuePosition: Int? = nil,
          playPosition: Int? = nil,
+         played: [Date] = [],
          state: State = State.new) {
 
         self.id = id
@@ -70,6 +72,7 @@ class LectureStorage: Identifiable, Codable {
         self.imagePath = imagePath
         self.queuePosition = queuePosition
         self.playPosition = playPosition
+        self.played = played
         self.state = state
     }
 }

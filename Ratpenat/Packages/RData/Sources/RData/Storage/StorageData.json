@@ -8,6 +8,7 @@
             "imagePath": null,
             "queuePosition": null,
             "playPosition": null,
+            "played": [ ],
             "state": "new"
         },
         {
@@ -18,6 +19,7 @@
             "imagePath": null,
             "queuePosition": null,
             "playPosition": null,
+            "played": [ ],
             "state": "new"
         },
         {
@@ -28,6 +30,7 @@
             "imagePath": null,
             "queuePosition": null,
             "playPosition": null,
+            "played": [ ],
             "state": "new"
         }
     ],

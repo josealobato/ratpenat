@@ -17,7 +17,8 @@ struct LectureList: View {
                 LectureRow(title: lecture.title,
                            subTitle: lecture.subtitle,
                            imageName: lecture.imageName,
-                           isStacked: lecture.isStacked)
+                           isStacked: lecture.isStacked,
+                           timesPlayed: lecture.timesPlayed)
                 .onPlay { play(id: lecture.id) }
                 .onEnqueue { enqueue(id: lecture.id) }
                 .onDequeue { dequeue(id: lecture.id) }
@@ -97,16 +98,19 @@ struct SwiftUIView_Previews: PreviewProvider {
         LectureViewModel(id: "01",
                          title: "This a normal title",
                          subtitle: "",
+                         timesPlayed: 25,
                          imageName: "book.circle",
                          isStacked: true),
         LectureViewModel(id: "02",
                          title: "This is a somehow very long title to see how it behaves",
                          subtitle: "This is a somehow very long title to see how it behaves This is a somehow very long title to see how it behaves This is a somehow very long title to see how it behaves",
+                         timesPlayed: 0,
                          imageName: "book.fill",
                          isStacked: false),
         LectureViewModel(id: "03",
                          title: "Three",
                          subtitle: "",
+                         timesPlayed: 0,
                          imageName: "bookmark",
                          isStacked: true),
     ]

@@ -87,6 +87,29 @@ final class QMS_donePlayingTests: XCTestCase {
         XCTAssert(storeInvocations.contains(savedLecture))
     }
 
+    func testDoneLectureWithPlayedTimeGetAddedNewTime_QMS0111_QMS0112() async throws {
+
+        // GIVEN a QMS started with an queue:
+        qms_ut = QueueManagementService(storage: storageMock, timeProvider: timeProviderMock)
+        //       prepare storage for inital lectures with played time
+        storageMock.lecturesReturnValue = initialDataLecturesWithPlayedTime
+        //       start the service:
+        await qms_ut.start()
+
+        // WHEN informing about lecture in queue done
+        await qms_ut.donePlayingLecture(id: uuidString("1"))
+
+        // THEN The lecture marked as played, not playing, not in queue and saved.
+        let savedLecture = LectureDataEntity(id: uuid("1"),
+                                             title: "title 01",
+                                             mediaURL: URL(string: "https://whatsup.com")!,
+                                             queuePosition: nil,
+                                             playPosition: nil,
+                                             played:  [timeProviderMock.now, timeProviderMock.now])
+        let storeInvocations = storageMock.updateLectureReceivedInvocations
+        XCTAssert(storeInvocations.contains(savedLecture))
+    }
+
     func testDoneLectureInQueueMarkedAsDoneNewQueIsPersisted_QMS0112() async throws {
 
         // GIVEN a QMS started with an queue:
@@ -114,6 +137,12 @@ final class QMS_donePlayingTests: XCTestCase {
             LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
             LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil),
             LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil)
+        ]
+    }
+
+    private var initialDataLecturesWithPlayedTime: [LectureDataEntity] {
+        [
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10, played: [timeProviderMock.now]),
         ]
     }
 

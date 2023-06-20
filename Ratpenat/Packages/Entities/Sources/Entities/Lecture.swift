@@ -29,7 +29,7 @@ public struct Lecture: Identifiable, Equatable {
         self.imageURL = imageURL
         self.queuePosition = queuePosition
         self.playPosition = playPosition
-        self.played = []
+        self.played = played
     }
 
     public var isStacked: Bool { queuePosition != nil }

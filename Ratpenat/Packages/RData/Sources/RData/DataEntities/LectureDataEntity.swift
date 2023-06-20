@@ -59,6 +59,7 @@ extension LectureDataEntity {
                               imagePath: imagePath,
                               queuePosition: self.queuePosition,
                               playPosition: self.playPosition,
+                              played: self.played,
                               state: LectureStorage.State(rawValue: self.state.rawValue) ?? .new)
     }
 }
@@ -86,6 +87,7 @@ extension StorageData {
                                                imageURL: lectureStorage.imageURL,
                                                queuePosition: lectureStorage.queuePosition,
                                                playPosition: lectureStorage.playPosition,
+                                               played: lectureStorage.played,
                                                state: LectureDataEntity.State(rawValue: lectureStorage.state.rawValue) ?? .new)
             return newLecture
         }

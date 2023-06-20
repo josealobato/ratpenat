@@ -11,7 +11,8 @@ extension LectureDataEntity {
                 category: category?.toCategory(),
                 mediaURL: mediaURL,
                 imageURL: imageURL,
-                queuePosition: queuePosition)
+                queuePosition: queuePosition,
+                played: played)
 
     }
 }

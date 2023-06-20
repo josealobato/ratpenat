@@ -6,8 +6,11 @@ struct LectureRow: View {
     var subTitle: String
     var imageName: String
     var isStacked: Bool
+    var timesPlayed: Int
 
     private let handlers: ActionHandlers = .init()
+
+    let font = Font.system(size: 14)
 
     var body: some View {
         HStack {
@@ -28,9 +31,16 @@ struct LectureRow: View {
 
             }
             Spacer()
-            HStack {
+            VStack {
                 if isStacked {
                     Image(systemName: "play.square.stack")
+                }
+                if timesPlayed > 0 {
+                    HStack(spacing: 2) {
+                        Image(systemName: "play.fill").font(font)
+                        Text("\(timesPlayed)").font(font)
+                    }
+                    .padding(.top, 4)
                 }
             }
         }
@@ -144,19 +154,22 @@ struct LectureRow_Previews: PreviewProvider {
         let basicRow1 = LectureRow(title: "Egypt rivers",
                                    subTitle: "In all their glory",
                                    imageName: "pin",
-                                   isStacked: true)
+                                   isStacked: false,
+                                   timesPlayed: 3)
             .onPlay { print("onPlay") }
             .onDelete { print("onDelete") }
             .onEnqueue { print("onEnqueue") }
         let basicRow2 = LectureRow(title: "The best book ever written",
                                    subTitle: "It is about love of course",
                                    imageName: "book.closed",
-                                   isStacked: false)
+                                   isStacked: false,
+                                   timesPlayed: 34)
 
         let basicRow3 = LectureRow(title: "The best book ever written",
                                    subTitle: "",
                                    imageName: "book.closed",
-                                   isStacked: true)
+                                   isStacked: false,
+                                   timesPlayed: 25)
         Group {
             List {
                 basicRow1
