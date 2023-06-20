@@ -198,7 +198,15 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         if let index = queue.firstIndex(where: { $0.id == id }) {
 
             // Remove the object
-            queue.remove(at: index)
+            var removedLecture = queue.remove(at: index)
+
+            // Save the removed object out of the queue
+            removedLecture.queuePosition = nil
+            do {
+                try await storage.update(lecture: removedLecture.dataEntity())
+            } catch {
+                // TODO: log error
+            }
 
             // adjust the indexes and store
             consolidateIndexInQueue()

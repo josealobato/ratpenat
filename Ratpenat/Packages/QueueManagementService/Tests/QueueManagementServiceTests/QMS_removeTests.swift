@@ -66,7 +66,7 @@ final class QMS_removeTests: XCTestCase {
         // WHEN requesting to remove a lecture
         await qms_ut.removeFromQueue(id: uuidString("2"))
 
-        // THEN the queue will stay the same
+        // THEN it will remove the requested object
         let lectures = qms_ut.getQueue()
         let resultingIds = lectures.map { $0.id }
         XCTAssertEqual(resultingIds, [uuidString("1"),
@@ -75,7 +75,7 @@ final class QMS_removeTests: XCTestCase {
         XCTAssertEqual(resultingPositions, [1, 2])
     }
 
-    func testRemoveAQueuedObjectSavesToStore_QMS0070() async throws {
+    func testRemoveAQueuedObjectSavesTheQueueAndTheObjectToStore_QMS0070() async throws {
 
         // GIVEN a QMS started with an empty queue
         qms_ut = QueueManagementService(storage: storageMock)
@@ -89,7 +89,7 @@ final class QMS_removeTests: XCTestCase {
 
         // THEN the resulting queue is saved on store
         let storeInvocations = storageMock.updateLectureReceivedInvocations
-        XCTAssert(storeInvocations.count == 2)
+        XCTAssert(storeInvocations.count == 3)
         for dataLecture in storeInvocations {
             XCTAssert(storageUpdatedLecturesWhenRemove.contains(dataLecture))
         }
@@ -108,7 +108,8 @@ final class QMS_removeTests: XCTestCase {
     private var storageUpdatedLecturesWhenRemove: [LectureDataEntity] {
         [
             LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: nil),
         ]
     }
 }
