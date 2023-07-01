@@ -7,7 +7,7 @@ public enum Coordinated: String, Equatable {
     /// Modules
     /// This case list is potentially lengthy,
     /// so please keep it sorted alphabetically.
-    case NONE
+    case lectureCollection
 
     /// Services
     /// This case list is potentially lengthy,

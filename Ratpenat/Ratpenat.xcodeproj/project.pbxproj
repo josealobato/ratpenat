@@ -11,6 +11,11 @@
 		B41B36432A2CEB2500B0911A /* AppQueueManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B36422A2CEB2500B0911A /* AppQueueManagementService.swift */; };
 		B440B1F52A34C71D00F2A37D /* MediaFileSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B440B1F42A34C71D00F2A37D /* MediaFileSystem */; };
 		B447946C29DECD8A00A7356D /* RStorage.json in Resources */ = {isa = PBXBuildFile; fileRef = B447946B29DECD8A00A7356D /* RStorage.json */; };
+		B45053582A481EC0002D6339 /* LectureDetailsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45053572A481EC0002D6339 /* LectureDetailsAdapter.swift */; };
+		B450535A2A481FE0002D6339 /* Lecture+ToDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45053592A481FE0002D6339 /* Lecture+ToDataEntity.swift */; };
+		B450535C2A487B11002D6339 /* Category+ToDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B450535B2A487B11002D6339 /* Category+ToDataEntity.swift */; };
+		B450535E2A487EAF002D6339 /* LectureDetails in Frameworks */ = {isa = PBXBuildFile; productRef = B450535D2A487EAF002D6339 /* LectureDetails */; };
+		B45053602A4883F9002D6339 /* LectureDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B450535F2A4883F9002D6339 /* LectureDetailsManager.swift */; };
 		B454034B29FFFF9100850702 /* Test-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034829FFFF9100850702 /* Test-1.mp3 */; };
 		B454034C29FFFF9100850702 /* Test-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034929FFFF9100850702 /* Test-2.mp3 */; };
 		B454034D29FFFF9100850702 /* Test-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B454034A29FFFF9100850702 /* Test-3.mp3 */; };
@@ -41,7 +46,7 @@
 		B4ADB40129D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADB40029D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift */; };
 		B4B5CD7529DDD7060094BD79 /* LectureCollection in Frameworks */ = {isa = PBXBuildFile; productRef = B4B5CD7429DDD7060094BD79 /* LectureCollection */; };
 		B4B5CD7829DDD7910094BD79 /* LectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B5CD7729DDD7910094BD79 /* LectureCollectionAdapter.swift */; };
-		B4B5CD7B29DDD9340094BD79 /* Lectures+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B5CD7A29DDD9340094BD79 /* Lectures+FromDataEntity.swift */; };
+		B4B5CD7B29DDD9340094BD79 /* Lecture+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B5CD7A29DDD9340094BD79 /* Lecture+FromDataEntity.swift */; };
 		B4C74FCA2A1E67FC00D57714 /* QueueManagementService in Frameworks */ = {isa = PBXBuildFile; productRef = B4C74FC92A1E67FC00D57714 /* QueueManagementService */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +72,11 @@
 		B41B36422A2CEB2500B0911A /* AppQueueManagementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQueueManagementService.swift; sourceTree = "<group>"; };
 		B447946B29DECD8A00A7356D /* RStorage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RStorage.json; sourceTree = "<group>"; };
 		B447946D29DEDE2200A7356D /* Player */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Player; sourceTree = "<group>"; };
+		B45053562A4740E5002D6339 /* LectureDetails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LectureDetails; sourceTree = "<group>"; };
+		B45053572A481EC0002D6339 /* LectureDetailsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailsAdapter.swift; sourceTree = "<group>"; };
+		B45053592A481FE0002D6339 /* Lecture+ToDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lecture+ToDataEntity.swift"; sourceTree = "<group>"; };
+		B450535B2A487B11002D6339 /* Category+ToDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+ToDataEntity.swift"; sourceTree = "<group>"; };
+		B450535F2A4883F9002D6339 /* LectureDetailsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailsManager.swift; sourceTree = "<group>"; };
 		B454034829FFFF9100850702 /* Test-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-1.mp3"; sourceTree = "<group>"; };
 		B454034929FFFF9100850702 /* Test-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-2.mp3"; sourceTree = "<group>"; };
 		B454034A29FFFF9100850702 /* Test-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Test-3.mp3"; sourceTree = "<group>"; };
@@ -101,7 +111,7 @@
 		B49C268D29D0645C00EF08C5 /* DismissManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissManager.swift; sourceTree = "<group>"; };
 		B4ADB40029D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoordinator+BuildRootViewController.swift"; sourceTree = "<group>"; };
 		B4B5CD7729DDD7910094BD79 /* LectureCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCollectionAdapter.swift; sourceTree = "<group>"; };
-		B4B5CD7A29DDD9340094BD79 /* Lectures+FromDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lectures+FromDataEntity.swift"; sourceTree = "<group>"; };
+		B4B5CD7A29DDD9340094BD79 /* Lecture+FromDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lecture+FromDataEntity.swift"; sourceTree = "<group>"; };
 		B4B5CD7C29DEC9460094BD79 /* RData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RData; sourceTree = "<group>"; };
 		B4C74FC82A1E674F00D57714 /* QueueManagementService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = QueueManagementService; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +125,7 @@
 				B470D35129EB0C40005FA54B /* Player in Frameworks */,
 				B440B1F52A34C71D00F2A37D /* MediaFileSystem in Frameworks */,
 				B4C74FCA2A1E67FC00D57714 /* QueueManagementService in Frameworks */,
+				B450535E2A487EAF002D6339 /* LectureDetails in Frameworks */,
 				B49C268429D05EB800EF08C5 /* JToolKit in Frameworks */,
 				B45D9B252A30F944002BA491 /* MediaManagementService in Frameworks */,
 				B4B5CD7529DDD7060094BD79 /* LectureCollection in Frameworks */,
@@ -204,6 +215,7 @@
 		B49C267A29D05A7E00EF08C5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				B45053562A4740E5002D6339 /* LectureDetails */,
 				B45D9B212A30F16A002BA491 /* MediaManagementService */,
 				B45D9B202A30F104002BA491 /* MediaFileSystem */,
 				B4C74FC82A1E674F00D57714 /* QueueManagementService */,
@@ -251,6 +263,7 @@
 			children = (
 				B49C268B29D0641600EF08C5 /* ManagersMapping.swift */,
 				B49C268D29D0645C00EF08C5 /* DismissManager.swift */,
+				B450535F2A4883F9002D6339 /* LectureDetailsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -270,6 +283,7 @@
 				B4B5CD7729DDD7910094BD79 /* LectureCollectionAdapter.swift */,
 				B470D34E29EB0ACC005FA54B /* PlayerAdapter.swift */,
 				B48B17D32A1A869100BAF69A /* QueueCollectionAdapter.swift */,
+				B45053572A481EC0002D6339 /* LectureDetailsAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -277,8 +291,10 @@
 		B4B5CD7929DDD9090094BD79 /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
-				B4B5CD7A29DDD9340094BD79 /* Lectures+FromDataEntity.swift */,
+				B4B5CD7A29DDD9340094BD79 /* Lecture+FromDataEntity.swift */,
 				B416DE562A07AC8D001D4208 /* Category+FromDataEntity.swift */,
+				B45053592A481FE0002D6339 /* Lecture+ToDataEntity.swift */,
+				B450535B2A487B11002D6339 /* Category+ToDataEntity.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -309,6 +325,7 @@
 				B4C74FC92A1E67FC00D57714 /* QueueManagementService */,
 				B45D9B242A30F944002BA491 /* MediaManagementService */,
 				B440B1F42A34C71D00F2A37D /* MediaFileSystem */,
+				B450535D2A487EAF002D6339 /* LectureDetails */,
 			);
 			productName = Ratpenat;
 			productReference = B49C263F29CF59A900EF08C5 /* Ratpenat.app */;
@@ -430,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B450535A2A481FE0002D6339 /* Lecture+ToDataEntity.swift in Sources */,
 				B49C268C29D0641600EF08C5 /* ManagersMapping.swift in Sources */,
 				B49C268629D0622900EF08C5 /* AppCoordinator.swift in Sources */,
 				B49C264729CF59A900EF08C5 /* ViewController.swift in Sources */,
@@ -437,15 +455,18 @@
 				B470D34F29EB0ACC005FA54B /* PlayerAdapter.swift in Sources */,
 				B45D9B232A30F867002BA491 /* AppMediaManagementService.swift in Sources */,
 				B416DE572A07AC8D001D4208 /* Category+FromDataEntity.swift in Sources */,
-				B4B5CD7B29DDD9340094BD79 /* Lectures+FromDataEntity.swift in Sources */,
+				B4B5CD7B29DDD9340094BD79 /* Lecture+FromDataEntity.swift in Sources */,
 				B49C267329D0551B00EF08C5 /* HomeV.swift in Sources */,
 				B41B36432A2CEB2500B0911A /* AppQueueManagementService.swift in Sources */,
+				B45053602A4883F9002D6339 /* LectureDetailsManager.swift in Sources */,
 				B49C264329CF59A900EF08C5 /* AppDelegate.swift in Sources */,
 				B49C268E29D0645C00EF08C5 /* DismissManager.swift in Sources */,
 				B49C264529CF59A900EF08C5 /* SceneDelegate.swift in Sources */,
 				B4B5CD7829DDD7910094BD79 /* LectureCollectionAdapter.swift in Sources */,
+				B450535C2A487B11002D6339 /* Category+ToDataEntity.swift in Sources */,
 				B4ADB40129D0B87400F09AB6 /* AppCoordinator+BuildRootViewController.swift in Sources */,
 				B48B17D42A1A869100BAF69A /* QueueCollectionAdapter.swift in Sources */,
+				B45053582A481EC0002D6339 /* LectureDetailsAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +799,10 @@
 		B440B1F42A34C71D00F2A37D /* MediaFileSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MediaFileSystem;
+		};
+		B450535D2A487EAF002D6339 /* LectureDetails */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LectureDetails;
 		};
 		B45D9B242A30F944002BA491 /* MediaManagementService */ = {
 			isa = XCSwiftPackageProductDependency;

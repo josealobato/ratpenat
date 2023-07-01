@@ -8,6 +8,7 @@ public enum CoordinationRequest: Equatable {
     /// This case list is potentially lengthy,
     /// so please keep it sorted alphabetically.
     case dismiss
+    case showLectureDetails(id: String)
 
     public var name: CoordinationRequestName {
 
@@ -17,6 +18,7 @@ public enum CoordinationRequest: Equatable {
         /// This case list is potentially lengthy,
         /// so please keep it sorted alphabetically.
         case .dismiss: value = CoordinationRequestName.dismiss
+        case .showLectureDetails: value = CoordinationRequestName.showLectureDetails
         }
 
         return value
@@ -31,6 +33,7 @@ public enum CoordinationRequest: Equatable {
         switch (lhs, rhs) {
 
         case (.dismiss, .dismiss): return true
+        case let (.showLectureDetails(lhsId), .showLectureDetails(rhsId)): return lhsId == rhsId
 
         default: return false
         }

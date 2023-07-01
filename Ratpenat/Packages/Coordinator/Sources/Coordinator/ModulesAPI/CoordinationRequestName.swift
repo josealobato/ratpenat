@@ -7,4 +7,5 @@ public enum CoordinationRequestName: String {
     /// This case list is potentially lengthy,
     /// so please keep it sorted alphabetically.
     case dismiss
+    case showLectureDetails
 }

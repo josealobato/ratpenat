@@ -16,6 +16,7 @@ extension CoordinationRequest {
         switch (lhs, rhs) {
 
         case (.dismiss, .dismiss): return true
+        case (.showLectureDetails, .showLectureDetails): return true
 
         default:
             return false

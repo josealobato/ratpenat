@@ -1,13 +1,16 @@
 import UIKit
 import SwiftUI
+import Coordinator
 
 public struct LectureCollectionBuilder {
 
     public static func build(
-        services: LectureCollectionServiceInterface
+        services: LectureCollectionServiceInterface,
+        coordinator: CoordinationRequestProtocol
     ) -> UIViewController {
 
-        let interactor = Interactor(services: services)
+        let interactor = Interactor(services: services,
+                                    coordinator: coordinator)
 
         return makeViewController(interactor: interactor)
     }

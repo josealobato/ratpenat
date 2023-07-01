@@ -1,12 +1,17 @@
 import Foundation
+import Coordinator
 
 final class Interactor: InteractorInput {
 
     var output: InteractorOutput?
     let services: LectureCollectionServiceInterface
+    let coordinator: CoordinationRequestProtocol
 
-    init(services: LectureCollectionServiceInterface) {
+    init(services: LectureCollectionServiceInterface,
+         coordinator: CoordinationRequestProtocol) {
+
         self.services = services
+        self.coordinator = coordinator
     }
 
     // MARK: - Intercator input
@@ -16,7 +21,7 @@ final class Interactor: InteractorInput {
         switch event {
 
         case .loadInitialData: await fetchData()
-        case .select(_): print("Interactor select")
+        case .select(let id): onSelect(withId: id)
         case .play(_): print("Interactor play")
         case let .enqueue(id): await enqueueLecture(withId: id)
         case let .dequeue(id): await dequeueLecture(withId: id)
@@ -41,6 +46,13 @@ final class Interactor: InteractorInput {
     }
 
     // MARK: - On actions
+
+    private func onSelect(withId id: String) {
+
+        let detailsRequest = CoordinationRequest.showLectureDetails(id: id)
+        coordinator.coordinate(from: .lectureCollection, request: detailsRequest)
+
+    }
 
     private func enqueueLecture(withId id: String) async {
 

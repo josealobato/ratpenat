@@ -13,4 +13,5 @@ let coordinatorManagersMapping: RequestCoordinatorMappingDictionary = [
     /// This list is potentially lengthy,
     /// so please keep it sorted alphabetically.
     CoordinationRequestName.dismiss: DismissManager.self,
+    CoordinationRequestName.showLectureDetails: LectureDetailsManager.self
 ]

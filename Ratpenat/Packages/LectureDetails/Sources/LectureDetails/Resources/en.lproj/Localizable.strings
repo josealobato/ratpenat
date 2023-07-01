@@ -1,0 +1,11 @@
+// Navigation Title
+"navigationTitle" = "Lecture Details";
+
+// Labels
+"titleHint" = "Type your title here...";
+"titleAdvice" = "Use a short title to help quickly identify your lessons.";
+
+// Actions
+"save" = "Save";
+
+// Errors

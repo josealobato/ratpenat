@@ -32,8 +32,8 @@ extension AppCoordinator {
         childCoordinators.append(queueCoordinator)
 
         // List
-        let listNavigation = buildLectureListTabContent()
         let listCoordinator = BaseFlowCoordinator(managersTypeMapping: coordinatorManagersMapping)
+        let listNavigation = buildLectureListTabContent(coordiantor: listCoordinator)
         listCoordinator.navigationController = listNavigation
         listCoordinator.parentCoordinator = self
         childCoordinators.append(listCoordinator)
@@ -60,7 +60,7 @@ extension AppCoordinator {
         return playerVC
     }
 
-    private func buildLectureListTabContent() -> UINavigationController {
+    private func buildLectureListTabContent(coordiantor: CoordinationRequestProtocol) -> UINavigationController {
 
         let listNavigation = UINavigationController()
 
@@ -68,7 +68,8 @@ extension AppCoordinator {
 
         let listAdapter = LectureCollectionAdapter(repository: sharedDataRepository,
                                                    queueManagement: queueManagement)
-        let listVC = LectureCollectionBuilder.build(services: listAdapter)
+        let listVC = LectureCollectionBuilder.build(services: listAdapter,
+                                                    coordinator: coordiantor)
 
         listVC.tabBarItem.image = UIImage(systemName: "books.vertical")
         listVC.tabBarItem.title = "Library"
